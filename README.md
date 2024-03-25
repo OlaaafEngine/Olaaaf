@@ -1,6 +1,7 @@
 # Olaaaf
 
-[Brief description]
+Olaaaf is a general adaptation prototype based on belief revision whose long-term aim is to cover a broad range of adaptation processes. It is based on a formalism that covers both attribute-value pairs
+(often used for representing cases) and taxonomies (often used for representing domain knowledge).
 
 ## Table of Contents
 
@@ -13,10 +14,11 @@
 ## Dependencies
 
 Please note that each dependency might work with an earlier version.
-However, they hasn't been tested and isn't officialy supported.
+However, they haven't been tested and aren't officialy supported.
 
 ### Necessary dependencies
 
+- Python v3.10.13 or higher.
 - [tqdm](https://tqdm.github.io) v4.65.0 or higher.
 - [Pyparsing](https://github.com/pyparsing/pyparsing) v3.0.9 or higher.
 - [SciPy](https://scipy.org) v1.11.4 or higher.
@@ -28,6 +30,8 @@ However, they hasn't been tested and isn't officialy supported.
 - [matplotlib](https://matplotlib.org) v3.8.0 or higher.
 
 ## Usage
+
+**TODO explication de Yan en fonction de ce qu'on a pour un vrai package**
 
 This _README Template_ is easiest to use when copied to your projects main directory. Change its content with a text editor or with a special markdown editor.
 
