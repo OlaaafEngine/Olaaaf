@@ -199,9 +199,9 @@ res = adaptator.execute(src, tgt, dk)[1]
 """
      EXPECTED RESULT
 
-00m40.528s | Solution found with distance of 10644:
+00m35.671s | Solution found with distance of 10644:
 
-        almondMilk_g = 1014.999999999999
+        almondMilk_g = 1014.999999999972
         almondMilk_L = 0.985436893204
             banana_g = 0.0
             banana_u = 0
@@ -215,10 +215,10 @@ granulatedSugar_tbsp = 5
            iceCube_u = 5
               kiwi_g = 200.0
               kiwi_u = 2
-              milk_g = 1014.999999999999
+              milk_g = 1014.999999999972
            soyMilk_g = 0.0
            soyMilk_L = 0.0
-   sweeteningPower_g = 162.980000000002
+   sweeteningPower_g = 162.980000000003
       vanillaSugar_g = 30.0
       vanillaSugar_u = 4
 """
