@@ -195,3 +195,30 @@ src =  LinearConstraint("banana_u = 2")\
 tgt = FormulaManager.parser("kiwi & milkshake")
 
 res = adaptator.execute(src, tgt, dk)[1]
+
+"""
+     EXPECTED RESULT
+
+00m37.095s | Solution found with distance of 9743:
+
+        almondMilk_g = 977.500000000004
+        almondMilk_L = 0.949029126214
+            banana_g = 120.0
+            banana_u = 1
+           cowMilk_g = 0.0
+           cowMilk_L = 0.0
+              food_g = 1445.0
+             fruit_g = 220.0
+   granulatedSugar_g = 14.999999999996
+granulatedSugar_tbsp = 1
+           iceCube_g = 150.0
+           iceCube_u = 6
+              kiwi_g = 100.0
+              kiwi_u = 1
+              milk_g = 977.500000000004
+           soyMilk_g = 0.0
+           soyMilk_L = 0.0
+   sweeteningPower_g = 162.899999999996
+      vanillaSugar_g = 82.5
+      vanillaSugar_u = 11
+"""
