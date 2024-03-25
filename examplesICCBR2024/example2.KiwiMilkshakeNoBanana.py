@@ -1,3 +1,6 @@
+import sys
+sys.path.append(".")
+
 from src.formula import LinearConstraint, PropositionalVariable, FormulaManager
 from src.mlo_solver import  ScipySolverRounded
 from src import Adaptation
