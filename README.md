@@ -41,10 +41,10 @@ Describe here how to add this to your project
 
 As of right now, four examples are availabe for you to go through. Namely:
 
-- [Example 1]()
-- [Example 2]()
-- [Example 3]()
-- [Example 4]()
+- [Example 1](examplesICCBR2024/example1.KiwiMilkshake.py) is the adaptation of a banana milkshake recipe to obtain a kiwi milkshake recipe.
+- [Example 2](examplesICCBR2024/example2.KiwiMilkshakeNoBanana.py) is the adaptation of a banana milkshake recipe to obtain a kiwi milkshake recipe, with no banana.
+- [Example 3](examplesICCBR2024/example3.KiwiMilkshakeSameNumberOfFruitTypes.py) is the adaptation of a banana milkshake reciepe to obtain a kiwi milkshake recipe, while conserving the same number of fruit types between the two recipes.
+- [Example 4](examplesICCBR2024/example4.CarrotCabbageSalad.py) is the adaptation of a carrot and cabbage salad to remove the vinegar, using adaptation rules.
 
 ## Documentation
 
