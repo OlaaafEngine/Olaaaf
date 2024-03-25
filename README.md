@@ -1,2 +1,2 @@
 # Olaaaf
-A general adaptation prototype based on belief revision
+A prototype for belief revision and general revision-based adaptation 
