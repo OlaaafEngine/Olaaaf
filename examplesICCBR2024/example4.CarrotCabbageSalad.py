@@ -112,3 +112,29 @@ y_trgt = PropositionalVariable("saladDish")\
     & ~PropositionalVariable("vinegar")
 
 res = adaptator.execute(x_src, y_trgt, dk & ak)[1]
+
+"""
+     EXPECTED RESULT
+
+00m09.522s | Solution found with distance of 81:
+
+             ak1 = 20.0
+             ak2 = 0.0
+        carrot_g = 244.0
+        carrot_u = 4
+          food_g = 752.0
+greenCabbage_cup = 4
+  greenCabbage_g = 376.0
+    lemonJuice_g = 10.0
+    lemonJuice_L = 0.009090909091
+      oliveOil_g = 50.0
+      oliveOil_L = 0.054722556638
+       shallot_g = 30.0
+       shallot_u = 1
+      soySauce_g = 32.0
+      soySauce_L = 0.029712163417
+       vinegar_g = 0.0
+       vinegar_L = 0.0
+         water_g = 10.0
+         water_L = 0.01
+"""
