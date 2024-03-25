@@ -111,4 +111,4 @@ y_trgt = PropositionalVariable("saladDish")\
     & PropositionalVariable("greenCabbage")\
     & ~PropositionalVariable("vinegar")
 
-res = adaptator.execute(x_src, y_trgt, dk & ak)
+res = adaptator.execute(x_src, y_trgt, dk & ak)[1]
