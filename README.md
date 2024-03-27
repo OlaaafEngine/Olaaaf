@@ -32,15 +32,21 @@ However, they haven't been tested and aren't officialy supported.
 
 ## Usage
 
-**TODO explication de Yan en fonction de ce qu'on a pour un vrai package**
+To install Olaaaf, first download the latest release [here](https://github.com/OlaaafEngine/Olaaaf/releases/latest) (although a .tar.gz is available if necessary, The .whl file is recommended)
 
-This _README Template_ is easiest to use when copied to your projects main directory. Change its content with a text editor or with a special markdown editor.
+Once downloaded, install the package using pip:
 
-    code to install this project
+```
+pip install ./olaaaf-1.0.whl
+```
 
-Describe here how to add this to your project
+Once installed, you can import olaaaf from anywhere like a standard Python package
 
-    code how to load or add this to your project
+```py
+from olaaaf import *
+```
+
+For in-depth examples, feel free to look at the [Examples](#examples) and [Video Demonstration](#video-demonstration) sections.
 
 ## Examples
 
