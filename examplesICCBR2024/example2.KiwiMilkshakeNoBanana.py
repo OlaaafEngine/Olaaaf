@@ -193,24 +193,25 @@ min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk)
 
 00m35.671s | Solution found with distance of 10644:
 
-        almondMilk_g = 1014.999999999972
-        almondMilk_L = 0.985436893204
-            banana_g = 0.0
+        almondMilk_g = 1.01e+03
+        almondMilk_L = 0.985
+            banana_g = 0.
             banana_u = 0
-           cowMilk_g = 0.0
-           cowMilk_L = 0.0
-              food_g = 1445.0
-             fruit_g = 200.0
-   granulatedSugar_g = 75.0
+           cowMilk_g = 0.
+           cowMilk_L = 0.
+              food_g = 1.44e+03
+             fruit_g = 200.
+   granulatedSugar_g = 75.
 granulatedSugar_tbsp = 5
-           iceCube_g = 125.0
+           iceCube_g = 125.
            iceCube_u = 5
-              kiwi_g = 200.0
+              kiwi_g = 200.
               kiwi_u = 2
-              milk_g = 1014.999999999972
-           soyMilk_g = 0.0
-           soyMilk_L = 0.0
-   sweeteningPower_g = 162.980000000003
-      vanillaSugar_g = 30.0
+              milk_g = 1.01e+03
+           soyMilk_g = 0.
+           soyMilk_L = 0.
+   sweeteningPower_g = 163.
+      vanillaSugar_g = 30.
       vanillaSugar_u = 4
+      
 """
