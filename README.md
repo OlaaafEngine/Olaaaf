@@ -8,6 +8,7 @@ Olaaaf is a general adaptation prototype based on belief revision whose long-ter
 - [Dependencies](#dependencies)
 - [Usage](#usage)
 - [Examples](#examples)
+- [Video Demonstration](#video-demonstration)
 - [Documentation](#documentation)
 - [License](#license)
 
@@ -47,8 +48,14 @@ As of right now, four examples are availabe for you to go through. Namely:
 
 - [Example 1](examplesICCBR2024/example1.KiwiMilkshake.py) is the adaptation of a banana milkshake recipe to obtain a kiwi milkshake recipe.
 - [Example 2](examplesICCBR2024/example2.KiwiMilkshakeNoBanana.py) is the adaptation of a banana milkshake recipe to obtain a kiwi milkshake recipe, with no banana.
-- [Example 3](examplesICCBR2024/example3.KiwiMilkshakeSameNumberOfFruitTypes.py) is the adaptation of a banana milkshake reciepe to obtain a kiwi milkshake recipe, while conserving the same number of fruit types between the two recipes.
-- [Example 4](examplesICCBR2024/example4.CarrotCabbageSalad.py) is the adaptation of a carrot and cabbage salad to remove the vinegar, using adaptation rules.
+- [Example 3](examplesICCBR2024/example3.KiwiMilkshakeSameNumberOfFruitTypes.py) is the adaptation of a banana milkshake recipe to obtain a kiwi milkshake recipe, while conserving the same number of fruit types between the two recipes.
+- [Example 4](examplesICCBR2024/example4.CarrotCabbageSalad.py) is the adaptation of a carrot and cabbage salad to remove the vinegar, using an adaptation rule.
+
+## Video demonstration
+
+The execution of Example 3 can be watched on this video:
+
+
 
 ## Documentation
 
