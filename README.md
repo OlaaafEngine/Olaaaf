@@ -65,7 +65,7 @@ The execution of Example 3 can be watched in this video:
 
 ## Documentation
 
-Olaaaf's documentation is available [here]((https://olaaafengine.github.io/Olaaaf/)).
+Olaaaf's documentation is available [here](https://olaaafengine.github.io/Olaaaf/).
 
 ## License
 
