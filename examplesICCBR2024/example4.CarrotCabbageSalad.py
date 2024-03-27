@@ -173,23 +173,22 @@ min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk & ak)
 
 00m09.522s | Solution found with distance of 81:
 
-             ak_deltaVinegarLemonJuiceWater = 20.0
-             ak_equalWaterLemonJuice = 0.0
-        carrot_g = 244.0
-        carrot_u = 4
-          food_g = 752.0
+        carrot_g = 250.
+        carrot_u = 2
+          food_g = 753.
 greenCabbage_cup = 4
-  greenCabbage_g = 376.0
-    lemonJuice_g = 10.0
-    lemonJuice_L = 0.009090909091
-      oliveOil_g = 50.0
-      oliveOil_L = 0.054722556638
-       shallot_g = 30.0
+  greenCabbage_g = 376.
+    lemonJuice_g = 10.
+    lemonJuice_L = 0.00970
+      oliveOil_g = 50.
+      oliveOil_L = 0.0548
+       shallot_g = 25.
        shallot_u = 1
-      soySauce_g = 32.0
-      soySauce_L = 0.029712163417
-       vinegar_g = 0.0
-       vinegar_L = 0.0
-         water_g = 10.0
-         water_L = 0.01
+      soySauce_g = 32.
+      soySauce_L = 0.0297
+       vinegar_g = 0.
+       vinegar_L = 0.
+         water_g = 10.
+         water_L = 0.0100
+         
 """
