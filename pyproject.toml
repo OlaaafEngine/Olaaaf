@@ -1,0 +1,24 @@
+[project]
+name = "olaaaf"
+version = "1.0"
+description = "A general adaptation prototype based on belief revision."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "tqdm>=4.65.0",
+    "pyparsing>=3.0.9",
+    "scipy>=1.11.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/OlaaafEngine/Olaaaf"
+Issues = "https://github.com/OlaaafEngine/Olaaaf/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
