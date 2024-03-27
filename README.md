@@ -59,7 +59,7 @@ As of right now, four examples are availabe for you to go through. Namely:
 
 ## Video demonstration
 
-The execution of Example 3 can be watched on this video:
+The execution of Example 3 can be watched in this video:
 
 
 
