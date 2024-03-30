@@ -61,7 +61,7 @@ As of right now, four examples are availabe for you to go through. Namely:
 
 The execution of Example 3 can be watched in this video:
 
-https://github.com/OlaaafEngine/Olaaaf/assets/164156677/6f0d9086-7329-4d7d-96bd-1acbbaeb7173
+https://github.com/OlaaafEngine/Olaaaf/assets/164156677/4cc68cda-258f-4fef-bf79-3212cff89632
 
 ## Documentation
 
