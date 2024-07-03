@@ -200,21 +200,22 @@ class And(NaryFormula):
         for product in itertools.product(*branchesList):
 
             mergedProduct = dict()
-
+            closedBranch = False
+                
             for literal in product:
 
                 for atom, isNotNeg in literal.items():
-
-                    if atom not in mergedProduct:
+                    
+                    if (atom in mergedProduct) and (mergedProduct[atom] != isNotNeg):
+                            closedBranch = True
+                            break
+                    else:
                         mergedProduct[atom] = isNotNeg
-                    elif mergedProduct[atom] != isNotNeg:
-                        mergedProduct = None
-                        break
                 
-                if mergedProduct is None:
+                if closedBranch:
                     break
-            
-            if mergedProduct is not None:
+
+            if not closedBranch:
                 fullBranches.append(mergedProduct)
 
         if len(fullBranches) == 0:
