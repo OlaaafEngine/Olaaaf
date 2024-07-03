@@ -50,3 +50,36 @@ class NullaryFormula(Formula):
         from ..unaryFormula.notOperator import Not
 
         return Not(self)
+    
+    def _getBranches(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+        
+        return [{self: True}]
+
+    def _getBranchesNeg(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+        Used when a Negation is in play instead of `_getBranches()`.
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+
+        return [{self: False}]

@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>olaaaf.formulaInterpreter API documentation</title>
+<meta name="description" content="Class allowing `olaaaf.revision.Revision` to interact with a `olaaaf.mlo_solver.MLOSolver.MLOSolver`.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>olaaaf.formulaInterpreter</code></h1>
+</header>
+<section id="section-intro">
+<p>Class allowing <code><a title="olaaaf.revision.Revision" href="revision.html#olaaaf.revision.Revision">Revision</a></code> to interact with a <code><a title="olaaaf.mlo_solver.MLOSolver.MLOSolver" href="mlo_solver/MLOSolver.html#olaaaf.mlo_solver.MLOSolver.MLOSolver">MLOSolver</a></code>.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter"><code class="flex name class">
+<span>class <span class="ident">FormulaInterpreter</span></span>
+<span>(</span><span>mloSolver: MLOSolver, distanceFunction: DistanceFunction, simplifications: list[Simplificator] = [])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class allowing <code><a title="olaaaf.revision.Revision" href="revision.html#olaaaf.revision.Revision">Revision</a></code> to interact with a <code><a title="olaaaf.mlo_solver.MLOSolver.MLOSolver" href="mlo_solver/MLOSolver.html#olaaaf.mlo_solver.MLOSolver.MLOSolver">MLOSolver</a></code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>solverInit</code></strong> :&ensp;<code><a title="olaaaf.mlo_solver.MLOSolver.MLOSolver" href="mlo_solver/MLOSolver.html#olaaaf.mlo_solver.MLOSolver.MLOSolver">MLOSolver</a></code></dt>
+<dd>The solver that will be used for optimization.</dd>
+<dt><strong><code>distance</code></strong> :&ensp;<code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code></dt>
+<dd>The distance function that will be used and, more importantly, the weights <span><span class="MathJax_Preview">(w_i)</span><script type="math/tex">(w_i)</script></span> and <span><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span> arguments of it.
+The original algorithm is meant to be used with a <code><a title="olaaaf.distance.distance_function.discreteL1DistanceFunction.DiscreteL1DistanceFunction" href="distance/distance_function/discreteL1DistanceFunction.html#olaaaf.distance.distance_function.discreteL1DistanceFunction.DiscreteL1DistanceFunction">DiscreteL1DistanceFunction</a></code>.</dd>
+<dt><strong><code>simplifiers</code></strong> :&ensp;<code>list</code> of <code><a title="olaaaf.simplificator.simplificator.Simplificator" href="simplificator/simplificator.html#olaaaf.simplificator.simplificator.Simplificator">Simplificator</a></code>, optional</dt>
+<dd>List of all of the <code><a title="olaaaf.simplificator.simplificator.Simplificator" href="simplificator/simplificator.html#olaaaf.simplificator.simplificator.Simplificator">Simplificator</a></code> that will be applied to the <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>,
+in order given by the list.</dd>
+</dl></div>
+<h3>Methods</h3>
+<dl>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter.findOneSolution"><code class="name flex">
+<span>def <span class="ident">findOneSolution</span></span>(<span>self, variables: list[Variable], psi: And, mu: And) ‑> tuple[fractions.Fraction, <a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method used to interact with the initialy specified <code><a title="olaaaf.mlo_solver.MLOSolver.MLOSolver" href="mlo_solver/MLOSolver.html#olaaaf.mlo_solver.MLOSolver.MLOSolver">MLOSolver</a></code>, thus finding one solution of
+the optimization of the following system when <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> are conjunctions of
+<code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>, with <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> the
+<code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class.</p>
+<p><span><span class="MathJax_Preview">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+\text{minimize } d(x, y)
+\end{cases}
+</span><script type="math/tex; mode=display">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+\text{minimize } d(x, y)
+\end{cases}
+</script></span></p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>variables</code></strong> :&ensp;<code>list</code> of <code><a title="olaaaf.variable.variable.Variable" href="variable/variable.html#olaaaf.variable.variable.Variable">Variable</a></code></dt>
+<dd>List of all the <code><a title="olaaaf.variable.variable.Variable" href="variable/variable.html#olaaaf.variable.variable.Variable">Variable</a></code> in use in both <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>.</dd>
+<dt><strong><code>psi</code></strong>, <strong><code>mu</code></strong> :&ensp;<code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code></dt>
+<dd><span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>, conjunctions of litterals as used in the optimization problem above.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Fraction</code></dt>
+<dd>Minimal distance (calculated with the <code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class) that satisfies the optimization problem above.</dd>
+</dl>
+<p><code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>
+<code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code> representing a point <span><span class="MathJax_Preview">y \in \mathcal{M}(\mu)</span><script type="math/tex">y \in \mathcal{M}(\mu)</script></span> that satisfies the optimization problem above.</p></div>
+</dd>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter.findOneSolutionWithLimit"><code class="name flex">
+<span>def <span class="ident">findOneSolutionWithLimit</span></span>(<span>self, variables: list[Variable], psi: And, mu: And, lambdaEpsilon) ‑> tuple[fractions.Fraction, <a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method used to interact with the initialy specified <code><a title="olaaaf.mlo_solver.MLOSolver.MLOSolver" href="mlo_solver/MLOSolver.html#olaaaf.mlo_solver.MLOSolver.MLOSolver">MLOSolver</a></code>, thus finding one solution of
+the optimization of the following system when <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> are conjunctions of
+<code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>, with <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> the
+<code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class.</p>
+<p><span><span class="MathJax_Preview">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+d(x,y) \geq \lambda_\epsilon\\
+\text{minimize } d(x, y)
+\end{cases}
+</span><script type="math/tex; mode=display">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+d(x,y) \geq \lambda_\epsilon\\
+\text{minimize } d(x, y)
+\end{cases}
+</script></span></p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>variables</code></strong> :&ensp;<code>list</code> of <code><a title="olaaaf.variable.variable.Variable" href="variable/variable.html#olaaaf.variable.variable.Variable">Variable</a></code></dt>
+<dd>List of all the <code><a title="olaaaf.variable.variable.Variable" href="variable/variable.html#olaaaf.variable.variable.Variable">Variable</a></code> in use in both <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>.</dd>
+<dt><strong><code>psi</code></strong>, <strong><code>mu</code></strong> :&ensp;<code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code></dt>
+<dd><span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>, conjunctions of litterals as used in the optimization problem above.</dd>
+<dt><strong><code>lambdaEpsilon</code></strong> :&ensp;<code>fraction.Fraction</code></dt>
+<dd>The <span><span class="MathJax_Preview">\lambda_\epsilon</span><script type="math/tex">\lambda_\epsilon</script></span> specified in the system above.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Fraction</code></dt>
+<dd>Minimal distance (calculated with the <code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class) that satisfies the optimization problem above.</dd>
+</dl>
+<p><code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>
+<code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code> representing a point <span><span class="MathJax_Preview">y \in \mathcal{M}(\mu)</span><script type="math/tex">y \in \mathcal{M}(\mu)</script></span> that satisfies the optimization problem above.</p></div>
+</dd>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter.optimizeCouple"><code class="name flex">
+<span>def <span class="ident">optimizeCouple</span></span>(<span>self, psi: And, mu: And) ‑> tuple[fractions.Fraction, <a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method used to interact with the initialy specified <code><a title="olaaaf.mlo_solver.MLOSolver.MLOSolver" href="mlo_solver/MLOSolver.html#olaaaf.mlo_solver.MLOSolver.MLOSolver">MLOSolver</a></code>, thus finding one solution of
+the optimization of the following system when <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> are conjunctions of
+<code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>, with <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> the
+<code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class.</p>
+<p><span><span class="MathJax_Preview">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+\text{minimize } d(x, y)
+\end{cases}
+</span><script type="math/tex; mode=display">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+\text{minimize } d(x, y)
+\end{cases}
+</script></span></p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>psi</code></strong>, <strong><code>mu</code></strong> :&ensp;<code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code></dt>
+<dd><span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>, conjunctions of litterals as used in the optimization problem above.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Fraction</code></dt>
+<dd>Minimal distance (calculated with the <code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class) that satisfies the optimization problem above.</dd>
+</dl>
+<p><code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>
+<code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code> representing a point <span><span class="MathJax_Preview">y \in \mathcal{M}(\mu)</span><script type="math/tex">y \in \mathcal{M}(\mu)</script></span> that satisfies the optimization problem above.</p></div>
+</dd>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter.optimizeCoupleWithLimit"><code class="name flex">
+<span>def <span class="ident">optimizeCoupleWithLimit</span></span>(<span>self, psi: And, mu: And, lambdaEpsilon) ‑> tuple[fractions.Fraction, <a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method used to interact with the initialy specified <code><a title="olaaaf.mlo_solver.MLOSolver.MLOSolver" href="mlo_solver/MLOSolver.html#olaaaf.mlo_solver.MLOSolver.MLOSolver">MLOSolver</a></code>, thus finding one solution of
+the optimization of the following system when <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> are conjunctions of
+<code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>, with <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> the
+<code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class.</p>
+<p><span><span class="MathJax_Preview">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+d(x,y) \geq \lambda_\epsilon\\
+\text{minimize } d(x, y)
+\end{cases}
+</span><script type="math/tex; mode=display">
+\begin{cases}
+x \in \mathcal{M}(\psi) \\
+y \in \mathcal{M}(\mu) \\
+d(x,y) \geq \lambda_\epsilon\\
+\text{minimize } d(x, y)
+\end{cases}
+</script></span></p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>variables</code></strong> :&ensp;<code>list</code> of <code><a title="olaaaf.variable.variable.Variable" href="variable/variable.html#olaaaf.variable.variable.Variable">Variable</a></code></dt>
+<dd>List of all the <code><a title="olaaaf.variable.variable.Variable" href="variable/variable.html#olaaaf.variable.variable.Variable">Variable</a></code> in use in both <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>.</dd>
+<dt><strong><code>psi</code></strong>, <strong><code>mu</code></strong> :&ensp;<code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code></dt>
+<dd><span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>, conjunctions of litterals as used in the optimization problem above.</dd>
+<dt><strong><code>lambdaEpsilon</code></strong> :&ensp;<code>fraction.Fraction</code></dt>
+<dd>The <span><span class="MathJax_Preview">\lambda_\epsilon</span><script type="math/tex">\lambda_\epsilon</script></span> specified in the system above.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Fraction</code></dt>
+<dd>Minimal distance (calculated with the <code><a title="olaaaf.distance.distance_function.distanceFunction.DistanceFunction" href="distance/distance_function/distanceFunction.html#olaaaf.distance.distance_function.distanceFunction.DistanceFunction">DistanceFunction</a></code>
+given at the initialization of the class) that satisfies the optimization problem above.</dd>
+</dl>
+<p><code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>
+<code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code> representing a point <span><span class="MathJax_Preview">y \in \mathcal{M}(\mu)</span><script type="math/tex">y \in \mathcal{M}(\mu)</script></span> that satisfies the optimization problem above.</p></div>
+</dd>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter.removeNot"><code class="name flex">
+<span>def <span class="ident">removeNot</span></span>(<span>self, phi: And, epsilon=Fraction(0, 1)) ‑> <a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method used to transform a conjunction of litterals (i.e <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>
+and <code><a title="olaaaf.formula.unaryFormula.notOperator.Not" href="formula/unaryFormula/notOperator.html#olaaaf.formula.unaryFormula.notOperator.Not">Not</a></code> of <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>) in a conjunction of <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>,
+where every <code><a title="olaaaf.formula.unaryFormula.notOperator.Not" href="formula/unaryFormula/notOperator.html#olaaaf.formula.unaryFormula.notOperator.Not">Not</a></code> of <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>
+<span><span class="MathJax_Preview">\neg(\sum_{j=1}^{n}a_jx_j \leqslant b) = \sum_{j=1}^{n}a_jx_j &gt; b</span><script type="math/tex">\neg(\sum_{j=1}^{n}a_jx_j \leqslant b) = \sum_{j=1}^{n}a_jx_j > b</script></span> is replaced by a <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code>
+of the form <span><span class="MathJax_Preview">\sum_{j=1}^{n}-a_jx_j \leqslant -b</span><script type="math/tex">\sum_{j=1}^{n}-a_jx_j \leqslant -b</script></span>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>phi</code></strong> :&ensp;<code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code></dt>
+<dd>Conjunctions of litterals to transform, as specified above.</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>Fraction</code>, optional</dt>
+<dd>The approximation for the removed Not. By default, equals <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code></dt>
+<dd>Conjunctions of <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code> transformed from <span><span class="MathJax_Preview">\varphi</span><script type="math/tex">\varphi</script></span>,
+as specified above.</dd>
+</dl></div>
+</dd>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter.sat"><code class="name flex">
+<span>def <span class="ident">sat</span></span>(<span>self, phi: Formula) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method used to verify the feasability of a <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>phi</code></strong> :&ensp;<code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code></dt>
+<dd>The <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code> you want to verify the feasability.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>boolean</code></dt>
+<dd>Booean symbolizing if <span><span class="MathJax_Preview">\varphi</span><script type="math/tex">\varphi</script></span> is feasable (<code>True</code>) or not (<code>False</code>).</dd>
+</dl></div>
+</dd>
+<dt id="olaaaf.formulaInterpreter.FormulaInterpreter.simplifyMLC"><code class="name flex">
+<span>def <span class="ident">simplifyMLC</span></span>(<span>self, phi: Formula)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method used to simplify a conjonction of mixed linear constraints.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>phi</code></strong> :&ensp;<code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code></dt>
+<dd>The <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code> to simplify.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p><code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>
+The simplified <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="olaaaf" href="index.html">olaaaf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter" href="#olaaaf.formulaInterpreter.FormulaInterpreter">FormulaInterpreter</a></code></h4>
+<ul class="">
+<li><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter.findOneSolution" href="#olaaaf.formulaInterpreter.FormulaInterpreter.findOneSolution">findOneSolution</a></code></li>
+<li><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter.findOneSolutionWithLimit" href="#olaaaf.formulaInterpreter.FormulaInterpreter.findOneSolutionWithLimit">findOneSolutionWithLimit</a></code></li>
+<li><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter.optimizeCouple" href="#olaaaf.formulaInterpreter.FormulaInterpreter.optimizeCouple">optimizeCouple</a></code></li>
+<li><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter.optimizeCoupleWithLimit" href="#olaaaf.formulaInterpreter.FormulaInterpreter.optimizeCoupleWithLimit">optimizeCoupleWithLimit</a></code></li>
+<li><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter.removeNot" href="#olaaaf.formulaInterpreter.FormulaInterpreter.removeNot">removeNot</a></code></li>
+<li><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter.sat" href="#olaaaf.formulaInterpreter.FormulaInterpreter.sat">sat</a></code></li>
+<li><code><a title="olaaaf.formulaInterpreter.FormulaInterpreter.simplifyMLC" href="#olaaaf.formulaInterpreter.FormulaInterpreter.simplifyMLC">simplifyMLC</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

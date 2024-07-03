@@ -93,7 +93,7 @@ class Revision:
         self.boolToInt[var] = intVar
         weights[intVar] = weights[var]
 
-    def execute(self, psi : Formula, mu : Formula) -> tuple[Fraction, Formula]:
+    def execute(self, psi : Formula, mu : Formula, withTableaux = True) -> tuple[Fraction, Formula]:
         r"""
         Execute the revision of \(\psi\) by \(\mu\).
 
@@ -103,7 +103,8 @@ class Revision:
             \(\psi\), left part of the knowledge revision operator and `olaaaf.formula.formula.Formula` that will be revised.
         mu : `olaaaf.formula.formula.Formula`
             \(\mu\), right part of the knowledge revision operator and `olaaaf.formula.formula.Formula` that will be used to revise \(\psi\) by.
-
+        withTableaux: `boolean`
+            Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to `True`.
 
         Returns
         -------
@@ -122,11 +123,19 @@ class Revision:
 
         if self.__verbose:
             print("\n" + self.__getTime(), "Transforming Psi in DNF form")
-        psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
+
+        if withTableaux:
+            psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+        else:
+            psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
 
         if self.__verbose:
             print("\n" + self.__getTime(), "Transforming Mu in DNF form")
-        muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
+
+        if withTableaux:
+            muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+        else:
+            muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
 
         res = self.__executeDNF(self.__convertExplicit(psiDNF), self.__convertExplicit(muDNF))
 

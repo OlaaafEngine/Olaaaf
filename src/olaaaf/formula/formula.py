@@ -132,6 +132,70 @@ class Formula(ABC):
     @abstractmethod
     def _toPCMLCNeg(self, varDict) -> Formula:
         pass
+
+    def toDNFWithTableaux(self) -> Formula:
+        '''
+        Method returning the current Formula in Disjunctive Normal Form, using analytic tableaux to prune
+        a part of the unsatisfiable branches.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The current `olaaaf.formula.formula.Formula` in Disjunctive Normal Form, with pruned branches.
+        '''
+
+        from .naryFormula import Or, And
+
+        orList = list()
+
+        for branch in self._getBranches():
+            
+            andList = list()
+
+            for atom, isNotNeg in branch.items():
+                if isNotNeg:
+                    andList.append(atom)
+                else:
+                    andList.append(~atom)
+
+            orList.append(And(*andList))
+
+        return(Or(*orList))
+
+    @abstractmethod
+    def _getBranches(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+
+        pass
+
+    @abstractmethod 
+    def _getBranchesNeg(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+        Used when a Negation is in play instead of `_getBranches()`.
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+
+        pass
         
     def clone(self) -> Formula:
         """
