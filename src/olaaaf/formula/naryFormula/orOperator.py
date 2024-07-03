@@ -191,19 +191,8 @@ class Or(NaryFormula):
             If all branches are closed, return `None`.
         '''
         
-        branchesList = list()
+        return [branch for child in self.children for branch in child._getBranches() if branch is not None] or None
 
-        for child in self.children:
-            branch = child._getBranches()
-
-            if branch is not None:
-                branchesList += branch
-
-        # Si aucune branche n'est satisfiable, on retourne None
-        if len(branchesList) == 0:
-            return None
-        
-        return branchesList
 
     def _getBranchesNeg(self):
         '''
@@ -226,22 +215,21 @@ class Or(NaryFormula):
         for product in itertools.product(*branchesList):
 
             mergedProduct = dict()
-            closedBranch = False
-                
+
             for literal in product:
 
                 for atom, isNotNeg in literal.items():
-                    
-                    if (atom in mergedProduct) and (mergedProduct[atom] != isNotNeg):
-                            closedBranch = True
-                            break
-                    else:
-                        mergedProduct[atom] = isNotNeg
-                
-                if closedBranch:
-                    break
 
-            if not closedBranch:
+                    if atom not in mergedProduct:
+                        mergedProduct[atom] = isNotNeg
+                    elif mergedProduct[atom] != isNotNeg:
+                        mergedProduct = None
+                        break
+                
+                if mergedProduct is None:
+                    break
+            
+            if mergedProduct is not None:
                 fullBranches.append(mergedProduct)
 
         if len(fullBranches) == 0:
