@@ -145,29 +145,31 @@ class FormulaInterpreter:
         `olaaaf.formula.formula.Formula`
             `olaaaf.formula.formula.Formula` representing a point \(y \in \mathcal{M}(\mu)\) that satisfies the optimization problem above. 
         """
-        # Reorder variables order
         variables = list(variables)
         constraints = self.__buildConstraints(variables, psi, mu)
 
-        # creation of the objective function
-        obj = [0]*len(variables)*2
-        for variable in variables:
-            obj.append(self.__distanceFunction.getWeights()[variable])
-        res = self.__MLOSolver.solve(variables*3, obj, constraints)
-
-        # interpretation of the mlo solver result
-        if(res[0] == OptimizationValues.INFEASIBLE): 
-            raise Exception("Optimize couple impossible") 
+        # Creation of the objective function
+        weights = self.__distanceFunction.getWeights()
+        obj = [0] * len(variables) * 2 + [weights[variable] for variable in variables]
         
+        # Solve the optimization problem
+        res = self.__MLOSolver.solve(variables * 3, obj, constraints)
+
+        # Interpretation of the MLO solver result
+        if res[0] == OptimizationValues.INFEASIBLE: 
+            raise Exception("Optimize couple impossible") 
+
         values = res[1]
-        resSet = set([])
-        for i in range(0,len(variables)):
-            lc = LinearConstraint("") 
-            lc.variables = {variables[i]: Fraction(1)}
+        resSet = set()
+        for i, variable in enumerate(variables):
+            lc = LinearConstraint("")
+            lc.variables = {variable: Fraction(1)}
             lc.operator = ConstraintOperator.EQ
-            lc.bound = Fraction(values[len(variables)+i])
+            lc.bound = Fraction(values[len(variables) + i])
             resSet.add(lc)
-        return (res[2], And(*resSet))
+        
+        return res[2], And(*resSet)
+
 
     def __buildConstraints(self, variables : list[Variable], psi : And, mu : And) -> dict[tuple[dict[Fraction], ConstraintOperator, Fraction]]:
         '''

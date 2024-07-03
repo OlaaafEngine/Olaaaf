@@ -55,7 +55,7 @@ class Adaptation:
 
         self.__revision.preload()
 
-    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula):
+    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, withTableaux = True):
         r"""
         Execute the adaptation of \(srce_case\) by \(tgt_problem\), with the domain knowledge \(DK\).
 
@@ -67,6 +67,8 @@ class Adaptation:
             \(tgt_problem\), target problem for the adaptation and `olaaaf.formula.formula.Formula` that will be used to adapt \(srce_case\) by.
         dk : `olaaaf.formula.formula.Formula`
             \(DK\), the domain knowledge.
+        withTableaux: `boolean`
+            Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to `True`.
 
         Returns
         -------
@@ -77,4 +79,4 @@ class Adaptation:
             Result of the adaptation of \(srce_case\) by \(tgt_problem\).
         """
 
-        return self.__revision.execute(srce_case & dk, trgt & dk)
+        return self.__revision.execute(srce_case & dk, trgt & dk, withTableaux)

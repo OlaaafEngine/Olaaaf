@@ -16,7 +16,7 @@ class Constants():
     """
 
     SET_VERBOSE = True #: Select the default value for the verbose display of the algorithm.
-    DISPLAY_DEPENDENCIES_WARNING = True #: Choose to display dependencies warning for optional packages.
+    DISPLAY_DEPENDENCIES_WARNING = False #: Choose to display dependencies warning for optional packages.
 
     # ---------------------------------------------------
     # Operator used in `olaaaf.formula.formulaManager.FormulaManager.parser`.
