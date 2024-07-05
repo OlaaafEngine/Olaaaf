@@ -126,6 +126,8 @@ class Revision:
 
         if withTableaux:
             psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            if not psiDNF:
+                raise(AttributeError("Psi is not satisfiable"))
         else:
             psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
 
@@ -134,6 +136,8 @@ class Revision:
 
         if withTableaux:
             muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            if not muDNF:
+                raise(AttributeError("Mu is not satisfiable"))
         else:
             muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
 
