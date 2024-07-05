@@ -136,19 +136,26 @@ class Formula(ABC):
     def toDNFWithTableaux(self) -> Formula:
         '''
         Method returning the current Formula in Disjunctive Normal Form, using analytic tableaux to prune
-        a part of the unsatisfiable branches.
+        a part of the unsatisfiable branches, or `None` if the whole `olaaaf.formula.formula.Formula` is unsatisfiable.
 
         Returns
         -------
         `olaaaf.formula.formula.Formula`
-            The current `olaaaf.formula.formula.Formula` in Disjunctive Normal Form, with pruned branches.
+            The current `olaaaf.formula.formula.Formula` in Disjunctive Normal Form, with pruned branches,
+            or `None` if the whole `olaaaf.formula.formula.Formula` is unsatisfiable.
         '''
 
         from .naryFormula import Or, And
 
         orList = list()
 
-        for branch in self._getBranches():
+        branchesList = self._getBranches()
+
+        # Eveything is unsatisfiable
+        if not branchesList:
+            return None
+
+        for branch in branchesList:
             
             andList = list()
 
