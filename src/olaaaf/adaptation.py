@@ -5,13 +5,14 @@ Main class of the module, allowing the user to make the adaptation between two `
 
 from __future__ import annotations
 
-from .formula import Formula
+from .formula import Formula, And, Not, PropositionalVariable
 from .mlo_solver import MLOSolver
 from .distance import DistanceFunction
 from .constants import Constants
 from .simplificator import Simplificator
 from .projector import Projector
 from .revision import Revision
+from .taxonomy import Taxonomy
 
 class Adaptation:
     r"""
@@ -55,7 +56,7 @@ class Adaptation:
 
         self.__revision.preload()
 
-    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, withTableaux = True):
+    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, withTableaux: bool = True, taxonomy: Taxonomy = None):
         r"""
         Execute the adaptation of \(srce_case\) by \(tgt_problem\), with the domain knowledge \(DK\).
 
@@ -79,4 +80,34 @@ class Adaptation:
             Result of the adaptation of \(srce_case\) by \(tgt_problem\).
         """
 
+        if taxonomy is not None:
+            srce_case = self.__inferFromTaxonomy(srce_case, taxonomy)
+            trgt = self.__inferFromTaxonomy(trgt, taxonomy)
+
+            # Add taxonomy to DK ?
+
         return self.__revision.execute(srce_case & dk, trgt & dk, withTableaux)
+    
+    def __inferFromTaxonomy(self, phi: Formula, tax: Taxonomy):
+
+        inferedChildren = set()
+
+        if isinstance(phi, And):
+            
+            for c in phi.children:
+
+                if isinstance(c, Not) and isinstance(c.children, PropositionalVariable):
+                    try:
+                        inferedChildren |= {~PropositionalVariable(d) for d in tax.getDescendants(c.children)}
+                    except KeyError:
+                        pass
+                elif isinstance(c, PropositionalVariable):
+                    try:
+                        inferedChildren |= {PropositionalVariable(a) for a in tax.getAncestors(c)}
+                    except KeyError:
+                        pass
+
+        if len(inferedChildren) != 0:
+            phi = phi & And(*inferedChildren)
+
+        return phi

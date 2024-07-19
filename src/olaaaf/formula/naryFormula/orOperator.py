@@ -191,8 +191,19 @@ class Or(NaryFormula):
             If all branches are closed, return `None`.
         '''
         
-        return [branch for child in self.children for branch in child._getBranches() if branch is not None] or None
+        branchesList = list()
 
+        for child in self.children:
+            branch = child._getBranches()
+
+            if branch is not None:
+                branchesList += branch
+
+        # Si aucune branche n'est satisfiable, on retourne None
+        if len(branchesList) == 0:
+            return None
+
+        return branchesList 
 
     def _getBranchesNeg(self):
         '''
@@ -236,7 +247,7 @@ class Or(NaryFormula):
             return None
         
         return fullBranches
-    
+
     def __str__(self):
 
         symbol = Constants.OR_STRING_OPERATOR

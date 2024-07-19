@@ -237,8 +237,19 @@ class And(NaryFormula):
             If all branches are closed, return `None`.
         '''
                 
-        return [branch for child in self.children for branch in child._getBranchesNeg() if branch is not None] or None
+        branchesList = list()
 
+        for child in self.children:
+            branch = child._getBranchesNeg()
+
+            if branch is not None:
+                branchesList += branch
+
+        # Si aucune branche n'est satisfiable, on retourne None
+        if len(branchesList) == 0:
+            return None
+
+        return branchesList 
     def __str__(self):
 
         symbol = Constants.AND_STRING_OPERATOR
