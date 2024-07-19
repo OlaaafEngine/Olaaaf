@@ -101,7 +101,7 @@ class Formula(ABC):
         pass
     
     @abstractmethod
-    def toLessOrEqConstraint(self):
+    def toLessOrEqConstraint(self) -> Formula:
         '''
         Method used to transform a `olaaaf.formula.formula.Formula` into another one, with only `olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.LEQ` constraints.
 
@@ -203,7 +203,7 @@ class Formula(ABC):
         '''
 
         pass
-        
+    
     def clone(self) -> Formula:
         """
         Method returning a clone of the current Formula.

@@ -15,3 +15,4 @@ from .constants import *
 from .formulaInterpreter import *
 from .revision import *
 from .adaptation import *
+from .taxonomy import *

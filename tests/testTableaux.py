@@ -51,7 +51,7 @@ class TestTableaux(unittest.TestCase):
         Case where a branch is unsatisfiable due to linear constraints; can't be caught by tableaux.
         """
 
-        fm = (LinearConstraint("x <= 0") & LinearConstraint("x >= 1")) | LinearConstraint(LinearConstraint("x <= 0") & ~LinearConstraint("x <= 0"))
+        fm = (LinearConstraint("x <= 0") & LinearConstraint("x >= 1")) | (LinearConstraint("x <= 0") & ~LinearConstraint("x <= 0"))
         expected = (LinearConstraint("x <= 0") & LinearConstraint("x >= 1"))
 
         self.assertEqual(fm.toDNFWithTableaux(), expected)

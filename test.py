@@ -1,26 +1,24 @@
-from src.olaaaf.formula import LinearConstraint
-from src.olaaaf.variable import RealVariable
-from src.olaaaf.mlo_solver import ScipySolverRounded
-from src.olaaaf.simplificator import Daalmans
-from src.olaaaf.distance import DiscreteL1DistanceFunction
-from src.olaaaf.revision import Revision
+from src.olaaaf.taxonomy import Taxonomy
+from src.olaaaf.formula import PropositionalVariable
 
-from fractions import Fraction
+tax = Taxonomy()
 
-weights = {
-    RealVariable.declare("x"): Fraction(1),
-}
+tax.addElement(PropositionalVariable("a"))
+tax.addElement(PropositionalVariable("b"))
+tax.addElement(PropositionalVariable("c"))
+tax.addElement(PropositionalVariable("d"))
+tax.addElement(PropositionalVariable("e"))
 
-solver = ScipySolverRounded()
-simplifiers = [Daalmans(solver)]
+tax.addChild(src="a", trgt="b")
+tax.addChild(src="b", trgt="c")
+tax.addChild(src="d", trgt="e")
 
-distanceFunction = DiscreteL1DistanceFunction(weights, epsilon=Fraction("1e-4"))
+for elem in tax.getElements():
+    print(tax[elem])
 
-revisor = Revision(solver, distanceFunction, simplifiers, onlyOneSolution=True)
+print("-------------")
 
-revisor.preload()
+tax.removeElement("b")
 
-psi = LinearConstraint("x <= 0")
-mu = ~LinearConstraint("x <= 1")
-
-print(revisor.execute(psi, mu))
+for elem in tax.getElements():
+    print(tax[elem])

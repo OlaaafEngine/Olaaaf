@@ -125,7 +125,7 @@ class Revision:
             print("\n" + self.__getTime(), "Transforming Psi in DNF form")
 
         if withTableaux:
-            psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            psiDNF = psi.toDNFWithTableaux().toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
             if not psiDNF:
                 raise(AttributeError("Psi is not satisfiable"))
         else:
@@ -135,7 +135,7 @@ class Revision:
             print("\n" + self.__getTime(), "Transforming Mu in DNF form")
 
         if withTableaux:
-            muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            muDNF = mu.toDNFWithTableaux().toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
             if not muDNF:
                 raise(AttributeError("Mu is not satisfiable"))
         else:
