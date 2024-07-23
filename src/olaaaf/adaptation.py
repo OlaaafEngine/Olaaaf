@@ -56,7 +56,7 @@ class Adaptation:
 
         self.__revision.preload()
 
-    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, withTableaux: bool = True, taxonomy: Taxonomy = None):
+    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, withTableaux: bool = True, taxonomy: Taxonomy = None, taxToDk: bool = False):
         r"""
         Execute the adaptation of \(srce_case\) by \(tgt_problem\), with the domain knowledge \(DK\).
 
@@ -84,7 +84,8 @@ class Adaptation:
             srce_case = self.__inferFromTaxonomy(srce_case, taxonomy)
             trgt = self.__inferFromTaxonomy(trgt, taxonomy)
 
-            # Add taxonomy to DK ?
+            if taxToDk:
+                dk &= taxonomy.toConstraints()
 
         return self.__revision.execute(srce_case & dk, trgt & dk, withTableaux)
     

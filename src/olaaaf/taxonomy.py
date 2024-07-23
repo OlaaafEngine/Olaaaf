@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from src.olaaaf.formula import PropositionalVariable
+from src.olaaaf.formula import Formula, PropositionalVariable, And
 
 from collections import namedtuple
 
@@ -155,6 +155,16 @@ class Taxonomy:
             ancestors |= children
 
         return ancestors
+
+    def toConstraints(self) -> Formula:
+
+        fmSet = set()
+
+        for elem in self._elements:
+            for parent in self._elements[elem].parents:
+                fmSet.add(PropositionalVariable(elem) >> PropositionalVariable(parent))
+
+        return And(*fmSet)
 
     def getElements(self) -> dict:
         return self._elements
