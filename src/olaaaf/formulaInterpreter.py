@@ -115,7 +115,7 @@ class FormulaInterpreter:
             
         return False
 
-    def findOneSolution(self, variables : list[Variable], psi : And, mu : And) -> tuple[Fraction, Formula]:
+    def findOneSolution(self, variables : list[Variable], psi : And, mu : And, maxDist: Fraction) -> tuple[Fraction, Formula]:
         r"""
         Method used to interact with the initialy specified `olaaaf.mlo_solver.MLOSolver.MLOSolver`, thus finding one solution of
         the optimization of the following system when \(\psi\) and \(\mu\) are conjunctions of
@@ -145,11 +145,16 @@ class FormulaInterpreter:
         `olaaaf.formula.formula.Formula`
             `olaaaf.formula.formula.Formula` representing a point \(y \in \mathcal{M}(\mu)\) that satisfies the optimization problem above. 
         """
-        variables = list(variables)
+
+        weights = self.__distanceFunction.getWeights()
         constraints = self.__buildConstraints(variables, psi, mu)
 
+        if maxDist is not None:
+            # Ptet faire ça plus tôt mais bon, ça fonctionne comme ça c'est du prototypage
+            minDistLc = ([0] * len(variables) * 2 + [weights[variable] for variable in variables], ConstraintOperator.LEQ, maxDist)
+            constraints.append(minDistLc)
+
         # Creation of the objective function
-        weights = self.__distanceFunction.getWeights()
         obj = [0] * len(variables) * 2 + [weights[variable] for variable in variables]
         
         # Solve the optimization problem
@@ -157,7 +162,7 @@ class FormulaInterpreter:
 
         # Interpretation of the MLO solver result
         if res[0] == OptimizationValues.INFEASIBLE: 
-            raise Exception("Optimize couple impossible") 
+            raise UnfeasableException("Optimize couple impossible") 
 
         values = res[1]
         resSet = set()
@@ -223,7 +228,7 @@ class FormulaInterpreter:
             constraints.append((constraintN, ConstraintOperator.LEQ, 0))
         return constraints
 
-    def optimizeCouple(self, psi : And, mu : And) -> tuple[Fraction, Formula]:
+    def optimizeCouple(self, psi : And, mu : And, maxDist: Fraction) -> tuple[Fraction, Formula]:
         r"""
         Method used to interact with the initialy specified `olaaaf.mlo_solver.MLOSolver.MLOSolver`, thus finding one solution of
         the optimization of the following system when \(\psi\) and \(\mu\) are conjunctions of
@@ -254,7 +259,7 @@ class FormulaInterpreter:
 
         variables = list(And(psi,mu).getVariables())
 
-        return self.findOneSolution(variables, psi, mu)    
+        return self.findOneSolution(variables, psi, mu, maxDist)    
 
     def removeNot(self, phi: And, epsilon = Fraction(0)) -> And:
         r"""
@@ -289,7 +294,7 @@ class FormulaInterpreter:
             
         return And(*andSet)
 
-    def findOneSolutionWithLimit(self, variables : list[Variable], psi : And, mu : And, lambdaEpsilon) -> tuple[Fraction, Formula]:
+    def findOneSolutionWithLimit(self, variables : list[Variable], psi : And, mu : And, lambdaEpsilon, maxDist: Faction) -> tuple[Fraction, Formula]:
         r"""
         Method used to interact with the initialy specified `olaaaf.mlo_solver.MLOSolver.MLOSolver`, thus finding one solution of
         the optimization of the following system when \(\psi\) and \(\mu\) are conjunctions of
@@ -327,18 +332,26 @@ class FormulaInterpreter:
         variables = list(variables)
         constraints = self.__buildConstraints(variables, psi, mu)
 
+        weights = self.__distanceFunction.getWeights()
+
+        if maxDist is not None:
+            # Ptet faire ça plus tôt mais bon, ça fonctionne comme ça c'est du prototypage
+            minDistLc = ([0] * len(variables) * 2 + [weights[variable] for variable in variables], ConstraintOperator.LEQ, maxDist)
+            constraints.append(minDistLc)
+
         # creation of the objective function
         obj = [0]*len(variables)*2
         constraintLambdaEpsilon = [0]*len(variables)*2
         for variable in variables:
-            obj.append(self.__distanceFunction.getWeights()[variable])
-            constraintLambdaEpsilon.append(-self.__distanceFunction.getWeights()[variable])
+            obj.append(weights[variable])
+            constraintLambdaEpsilon.append(-weights[variable])
         constraints.append((constraintLambdaEpsilon, ConstraintOperator.LEQ, -lambdaEpsilon))
+
         res = self.__MLOSolver.solve(variables*3, obj, constraints)
 
         # interpretation of the mlo solver result
         if(res[0] == OptimizationValues.INFEASIBLE): 
-            raise Exception("Optimize couple impossible") 
+            raise UnfeasableException("Optimize couple impossible") 
         
         values = res[1]
         resSet = set([])
@@ -350,7 +363,7 @@ class FormulaInterpreter:
             resSet.add(lc)
         return (res[2], And(*resSet))
 
-    def optimizeCoupleWithLimit(self, psi : And, mu : And, lambdaEpsilon) -> tuple[Fraction, Formula]:
+    def optimizeCoupleWithLimit(self, psi : And, mu : And, lambdaEpsilon, maxDist: Fraction) -> tuple[Fraction, Formula]:
         r"""
         Method used to interact with the initialy specified `olaaaf.mlo_solver.MLOSolver.MLOSolver`, thus finding one solution of
         the optimization of the following system when \(\psi\) and \(\mu\) are conjunctions of
@@ -386,4 +399,7 @@ class FormulaInterpreter:
 
         variables = list(And(psi,mu).getVariables())
 
-        return self.findOneSolutionWithLimit(variables, psi, mu, lambdaEpsilon)  
+        return self.findOneSolutionWithLimit(variables, psi, mu, lambdaEpsilon, maxDist)
+    
+class UnfeasableException(Exception):
+    pass
