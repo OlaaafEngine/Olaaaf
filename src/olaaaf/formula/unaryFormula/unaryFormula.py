@@ -41,4 +41,4 @@ class UnaryFormula(Formula):
         return self.children.getVariables()
     
     def __hash__(self):
-        return hash(self.children)
+        return hash(self.children)*-1

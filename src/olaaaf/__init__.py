@@ -10,9 +10,9 @@ from .mlo_solver import *
 from .projector import *
 from .simplificator import *
 from .variable import *
+from .domainKnowledge import *
 
 from .constants import *
 from .formulaInterpreter import *
 from .revision import *
 from .adaptation import *
-from .taxonomy import *

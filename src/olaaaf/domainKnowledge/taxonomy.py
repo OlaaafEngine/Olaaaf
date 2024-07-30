@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from src.olaaaf.formula import Formula, PropositionalVariable, And
+from .domainKnowledge import DomainKnowledge
+from ..formula import Formula, PropositionalVariable, And, Not
 
 from collections import namedtuple
 
-class Taxonomy:
+class Taxonomy(DomainKnowledge):
     
     _elements = dict()
 
@@ -165,6 +166,30 @@ class Taxonomy:
                 fmSet.add(PropositionalVariable(elem) >> PropositionalVariable(parent))
 
         return And(*fmSet)
+    
+    def inferFrom(self, psi: Formula) -> Formula:
+                
+        inferedChildren = set()
+
+        if isinstance(psi, And):
+            
+            for c in psi.children:
+
+                if isinstance(c, Not) and isinstance(c.children, PropositionalVariable):
+                    try:
+                        inferedChildren |= {~PropositionalVariable(d) for d in self.getDescendants(c.children)}
+                    except KeyError:
+                        pass
+                elif isinstance(c, PropositionalVariable):
+                    try:
+                        inferedChildren |= {PropositionalVariable(a) for a in self.getAncestors(c)}
+                    except KeyError:
+                        pass
+
+        if len(inferedChildren) != 0:
+            return psi & And(*inferedChildren)
+        
+        return psi
 
     def getElements(self) -> dict:
         return self._elements

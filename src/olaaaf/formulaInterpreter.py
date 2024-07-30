@@ -66,7 +66,7 @@ class FormulaInterpreter:
                     newMiniPhi = simplifier.run(newMiniPhi.toLessOrEqConstraint().toDNF())
                 orChild.append(newMiniPhi)
             return Or(*orChild)
-
+            
     def sat(self, phi : Formula) -> bool:
         r"""
         Method used to verify the feasability of a `olaaaf.formula.formula.Formula`.
@@ -294,7 +294,7 @@ class FormulaInterpreter:
             
         return And(*andSet)
 
-    def findOneSolutionWithLimit(self, variables : list[Variable], psi : And, mu : And, lambdaEpsilon, maxDist: Faction) -> tuple[Fraction, Formula]:
+    def findOneSolutionWithLimit(self, variables : list[Variable], psi : And, mu : And, lambdaEpsilon, maxDist: Fraction) -> tuple[Fraction, Formula]:
         r"""
         Method used to interact with the initialy specified `olaaaf.mlo_solver.MLOSolver.MLOSolver`, thus finding one solution of
         the optimization of the following system when \(\psi\) and \(\mu\) are conjunctions of

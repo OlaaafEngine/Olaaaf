@@ -225,7 +225,7 @@ class Formula(ABC):
             return self.children == o.children
         
     def __hash__(self):
-        return hash(frozenset(self.children))
+        return id(self)
     
     @abstractmethod
     def __str__(self):

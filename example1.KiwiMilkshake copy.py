@@ -1,3 +1,7 @@
+# Garage collecting
+import gc
+gc.collect()
+
 """
      Example 1: adaptation of a banana milkshake recipe to a kiwi milkshake recipe.
 """
@@ -5,9 +9,10 @@
 from src.olaaaf.formula import LinearConstraint, PropositionalVariable, FormulaManager
 from src.olaaaf.mlo_solver import  ScipySolverRounded
 from src.olaaaf import Adaptation
-from src.olaaaf.variable import RealVariable, IntegerVariable
+from src.olaaaf.variable import RealVariable, IntegerVariable, VariableManager
 from src.olaaaf.distance import DiscreteL1DistanceFunction
 from src.olaaaf.simplificator import Daalmans
+from src.olaaaf.domainKnowledge import ExistenceKnowledge, ConversionKnowledge, Taxonomy
 
 from fractions import Fraction
 
@@ -100,7 +105,7 @@ solver = ScipySolverRounded()
 simplifiers = [Daalmans(solver)]
 
 # Declaration of the discretized Manhattan distance function used for this example, using the weights declared above and an epsilon of 1e-4.
-distanceFunction = DiscreteL1DistanceFunction(weights, epsilon=Fraction("1e-4"))
+distanceFunction = DiscreteL1DistanceFunction(weights)
 
 # Declaration of the Adaptation object used for this example, using all the variables declared beforehand and specifying
 # that we wish to have only one valid solution instead of all the possible ones.
@@ -115,7 +120,11 @@ adaptator.preload()
 """
 
 # DK1: Bananas and kiwis are fruits.
-dk = FormulaManager.parser("(banana -> fruit) & (kiwi -> fruit)")
+# dk = FormulaManager.parser("(banana -> fruit) & (kiwi -> fruit)")
+
+tax = Taxonomy()
+tax.addElements(["banana", "kiwi", "fruit"])
+tax.addChildren("fruit", ["banana", "kiwi"])
 
 # DK2: For each food type and unit, there is a known correspondence of one unit of this food type to its mass,
 #      e.g. the mass of 1 banana and the mass of 1 tablespoon of granulated sugar.
@@ -126,21 +135,31 @@ dk = FormulaManager.parser("(banana -> fruit) & (kiwi -> fruit)")
 #    - Vanilla sugar (https://www.vahine.fr/produits/sucres-et-levures/sucre-vanille)
 #    - Tablespoon of granulated sugar (https://www.mgc-prevention.fr/cuisiner-sans-balance/)
 #    - Ice cube of water of dimension 3x3x3cm : 27cm^3 * 0.917g/cm^3 = 24.759g, rounded to 25g (https://fr.wikipedia.org/wiki/Glace)
-dk &=  LinearConstraint("banana_g - 120 * banana_u = 0")\
-     & LinearConstraint("cowMilk_g - 1030 * cowMilk_L = 0")\
-     & LinearConstraint("soyMilk_g - 1030 * soyMilk_L = 0")\
-     & LinearConstraint("almondMilk_g - 1030 * almondMilk_L = 0")\
-     & LinearConstraint("kiwi_g - 100 * kiwi_u = 0")\
-     & LinearConstraint("vanillaSugar_g - 7.5 * vanillaSugar_u = 0")\
-     & LinearConstraint("granulatedSugar_g - 15 * granulatedSugar_tbsp = 0")\
-     & LinearConstraint("iceCube_g - 25 * iceCube_u = 0")
+# dk &=  LinearConstraint("banana_g - 120 * banana_u = 0")\
+#      & LinearConstraint("cowMilk_g - 1030 * cowMilk_L = 0")\
+#      & LinearConstraint("soyMilk_g - 1030 * soyMilk_L = 0")\
+#      & LinearConstraint("almondMilk_g - 1030 * almondMilk_L = 0")\
+#      & LinearConstraint("kiwi_g - 100 * kiwi_u = 0")\
+#      & LinearConstraint("vanillaSugar_g - 7.5 * vanillaSugar_u = 0")\
+#      & LinearConstraint("granulatedSugar_g - 15 * granulatedSugar_tbsp = 0")\
+#      & LinearConstraint("iceCube_g - 25 * iceCube_u = 0")
+
+ck = ConversionKnowledge()
+ck.addConversions([((VariableManager.get("banana_g"), Fraction(120)), (VariableManager.get("banana_u"), Fraction(1))),
+                   ((VariableManager.get("cowMilk_g"), Fraction(1030)), (VariableManager.get("cowMilk_L"), Fraction(1))),
+                   ((VariableManager.get("soyMilk_g"), Fraction(1030)), (VariableManager.get("soyMilk_L"), Fraction(1))),
+                   ((VariableManager.get("almondMilk_g"), Fraction(1030)), (VariableManager.get("almondMilk_L"), Fraction(1))),
+                   ((VariableManager.get("kiwi_g"), Fraction(100)), (VariableManager.get("kiwi_u"), Fraction(1))),
+                   ((VariableManager.get("vanillaSugar_g"), Fraction(7.5)), (VariableManager.get("vanillaSugar_u"), Fraction(1))),
+                   ((VariableManager.get("granulatedSugar_g"), Fraction(15)), (VariableManager.get("granulatedSugar_tbsp"), Fraction(1))),
+                   ((VariableManager.get("iceCube_g"), Fraction(25)), (VariableManager.get("iceCube_u"), Fraction(1)))])
 
 # DK3: Relation between each type of food and its subtypes in the taxonomy (e.g. the mass of fruits is the sum of the masses of bananas,kiwis, etc.).
 # The sweetening power is known for every ingredient type, e.g. 0.158 for bananas (1 gram of banana has the same sweetening power as 0.158 gram of granulated sugar), 1 for granulated sugar, etc.
 # Source: The sweetening power of each ingredient is coming from USDA (https://fdc.nal.usda.gov/) apart from almond milk (https://www.bjorg.fr/produits/lait-amande-bio/)
 # and vanilla sugar (https://www.vahine.fr/produits/sucres-et-levures/sucre-vanille)
 
-dk &= LinearConstraint("sweeteningPower_g  - granulatedSugar_g\
+dk = LinearConstraint("sweeteningPower_g  - granulatedSugar_g\
                                            - 0.158 * banana_g\
                                            - 0.0899 * kiwi_g\
                                            - 0.98 * vanillaSugar_g\
@@ -161,12 +180,21 @@ dk &= FormulaManager.parser("((cowMilk | soyMilk) & kiwi) -> bitter")
 # DK6: A milkshake is a dessert and a dessert must not be bitter.
 dk &=  FormulaManager.parser("(milkshake -> dessert) & (dessert -> ~bitter)")
 
-# DK7: Relations between propositional variables and numerical variables.
-dk &=  (PropositionalVariable("banana") // ~LinearConstraint("banana_g <= 0"))\
-     & (PropositionalVariable("kiwi") // ~LinearConstraint("kiwi_g <= 0"))\
-     & (PropositionalVariable("cowMilk") // ~LinearConstraint("cowMilk_g <= 0"))\
-     & (PropositionalVariable("soyMilk") // ~LinearConstraint("soyMilk_g <= 0"))\
-     & (PropositionalVariable("almondMilk") // ~LinearConstraint("almondMilk_g <= 0"))\
+
+ek = ExistenceKnowledge({
+    PropositionalVariable("banana"): VariableManager.get("banana_g"),
+     PropositionalVariable("kiwi"): VariableManager.get("kiwi_g"),
+     PropositionalVariable("cowMilk"): VariableManager.get("cowMilk_g"),
+     PropositionalVariable("soyMilk"): VariableManager.get("soyMilk_g"),
+     PropositionalVariable("almondMilk"): VariableManager.get("almondMilk_g")
+})
+
+# # DK7: Relations between propositional variables and numerical variables.
+# dk &=  (PropositionalVariable("banana") // ~LinearConstraint("banana_g <= 0"))\
+#      & (PropositionalVariable("kiwi") // ~LinearConstraint("kiwi_g <= 0"))\
+#      & (PropositionalVariable("cowMilk") // ~LinearConstraint("cowMilk_g <= 0"))\
+#      & (PropositionalVariable("soyMilk") // ~LinearConstraint("soyMilk_g <= 0"))\
+#      & (PropositionalVariable("almondMilk") // ~LinearConstraint("almondMilk_g <= 0"))\
 
 """
      SPECIFICATION OF THE SOURCE CASE AND OF THE TARGET PROBLEM
@@ -186,7 +214,8 @@ srce_case =  LinearConstraint("banana_u = 2")\
 # Target problem
 tgt_problem = FormulaManager.parser("kiwi & milkshake")
 
-min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk)
+min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk, conversionKnowledge=ck, ckToDk=True,\
+                                       existenceKnowledge=ek, ekToDk=True, taxonomy=tax, taxToDk=False)
 
 """
      RESULT
