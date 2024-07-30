@@ -5,14 +5,16 @@ Main class of the module, allowing the user to make the adaptation between two `
 
 from __future__ import annotations
 
-from .formula import Formula, And, Not, PropositionalVariable
+from .formula import Formula, And, Not, PropositionalVariable, LinearConstraint, ConstraintOperator
 from .mlo_solver import MLOSolver
 from .distance import DistanceFunction
 from .constants import Constants
 from .simplificator import Simplificator
 from .projector import Projector
 from .revision import Revision
-from .taxonomy import Taxonomy
+from .domainKnowledge import Taxonomy, ExistenceKnowledge, ConversionKnowledge
+
+from fractions import Fraction
 
 class Adaptation:
     r"""
@@ -56,7 +58,9 @@ class Adaptation:
 
         self.__revision.preload()
 
-    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, taxonomy: Taxonomy = None, taxToDk: bool = False, withTableaux: bool = True, withMaxDist: bool = True):
+    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, conversionKnowledge: ConversionKnowledge = None, ckToDk: bool = True,\
+                      existenceKnowledge: ExistenceKnowledge = None, ekToDk: bool = False,\
+                      taxonomy: Taxonomy = None, taxToDk: bool = False, withTableaux: bool = True, withMaxDist: bool = True):
         r"""
         Execute the adaptation of \(srce_case\) by \(tgt_problem\), with the domain knowledge \(DK\).
 
@@ -80,35 +84,25 @@ class Adaptation:
             Result of the adaptation of \(srce_case\) by \(tgt_problem\).
         """
 
+        if conversionKnowledge is not None:
+            srce_case = conversionKnowledge.inferFrom(srce_case)
+            trgt = conversionKnowledge.inferFrom(trgt)
+
+            if ckToDk:
+                dk &= conversionKnowledge.toConstraints()
+
+        if existenceKnowledge is not None:
+            srce_case = existenceKnowledge.inferFrom(srce_case)
+            trgt = existenceKnowledge.inferFrom(trgt)
+
+            if ekToDk:
+                dk &= existenceKnowledge.toConstraints()
+
         if taxonomy is not None:
-            srce_case = self.__inferFromTaxonomy(srce_case, taxonomy)
-            trgt = self.__inferFromTaxonomy(trgt, taxonomy)
+            srce_case = taxonomy.inferFrom(srce_case)
+            trgt = taxonomy.inferFrom(trgt)
 
             if taxToDk:
                 dk &= taxonomy.toConstraints()
 
         return self.__revision.execute(srce_case & dk, trgt & dk, withTableaux=withTableaux, withMaxDist=withMaxDist)
-    
-    def __inferFromTaxonomy(self, phi: Formula, tax: Taxonomy):
-
-        inferedChildren = set()
-
-        if isinstance(phi, And):
-            
-            for c in phi.children:
-
-                if isinstance(c, Not) and isinstance(c.children, PropositionalVariable):
-                    try:
-                        inferedChildren |= {~PropositionalVariable(d) for d in tax.getDescendants(c.children)}
-                    except KeyError:
-                        pass
-                elif isinstance(c, PropositionalVariable):
-                    try:
-                        inferedChildren |= {PropositionalVariable(a) for a in tax.getAncestors(c)}
-                    except KeyError:
-                        pass
-
-        if len(inferedChildren) != 0:
-            phi = phi & And(*inferedChildren)
-
-        return phi

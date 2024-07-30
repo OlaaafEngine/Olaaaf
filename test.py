@@ -1,24 +1,19 @@
-from src.olaaaf.taxonomy import Taxonomy
-from src.olaaaf.formula import PropositionalVariable
+from src.olaaaf.domainKnowledge import ConversionKnowledge
+from src.olaaaf.formula import LinearConstraint
+from src.olaaaf.variable import IntegerVariable, RealVariable
 
-tax = Taxonomy()
+from fractions import Fraction
 
-tax.addElement(PropositionalVariable("a"))
-tax.addElement(PropositionalVariable("b"))
-tax.addElement(PropositionalVariable("c"))
-tax.addElement(PropositionalVariable("d"))
-tax.addElement(PropositionalVariable("e"))
+ck = ConversionKnowledge()
 
-tax.addChild(src="a", trgt="b")
-tax.addChild(src="b", trgt="c")
-tax.addChild(src="d", trgt="e")
+RealVariable.declare("milk_g")
+RealVariable.declare("milk_mL")
+RealVariable.declare("milk_L")
+IntegerVariable.declare("milk_u")
 
-for elem in tax.getElements():
-    print(tax[elem])
+ck.addConversion((RealVariable("milk_g"), Fraction(1030)), (RealVariable("milk_L"), Fraction(1)))
+ck.addConversion((RealVariable("milk_L"), Fraction(1)), (RealVariable("milk_mL"), Fraction(1000)))
+ck.addConversion((IntegerVariable("milk_u"), Fraction(1)), (RealVariable("milk_g"), Fraction(1030)))
 
-print("-------------")
-
-tax.removeElement("b")
-
-for elem in tax.getElements():
-    print(tax[elem])
+print(ck.toConstraints())
+print(ck.inferFrom(LinearConstraint("milk_u = 1")))

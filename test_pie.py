@@ -5,10 +5,10 @@ gc.collect()
 from src.olaaaf.formula import LinearConstraint, PropositionalVariable, FormulaManager
 from src.olaaaf.mlo_solver import  ScipySolverRounded
 from src.olaaaf import Adaptation
-from src.olaaaf.variable import RealVariable, IntegerVariable
+from src.olaaaf.variable import RealVariable, IntegerVariable, VariableManager
 from src.olaaaf.distance import DiscreteL1DistanceFunction
 from src.olaaaf.simplificator import Daalmans
-from src.olaaaf.taxonomy import Taxonomy
+from src.olaaaf.domainKnowledge import Taxonomy, ExistenceKnowledge, ConversionKnowledge
 
 from fractions import Fraction
 
@@ -65,8 +65,8 @@ solver = ScipySolverRounded()
 # Here, we chose to only use Daalmans' algorithm.
 simplifiers = [Daalmans(solver)]
 
-# Declaration of the discretized Manhattan distance function used for this example, using the weights declared above and an epsilon of 1e-4.
-distanceFunction = DiscreteL1DistanceFunction(weights, epsilon=Fraction("1e-4"))
+# Declaration of the discretized Manhattan distance function used for this example, using the weights declared above.
+distanceFunction = DiscreteL1DistanceFunction(weights)
 
 # Declaration of the Adaptation object used for this example, using all the variables declared beforehand and specifying
 # that we wish to have only one valid solution instead of all the possible ones.
@@ -87,6 +87,26 @@ tax.addElements(["meat", "beef", "chicken", "groundBeef", "beefSteak", "chickenB
 tax.addChildren("meat", ["beef", "chicken"])
 tax.addChildren("beef", ["groundBeef", "beefSteak"])
 tax.addChildren("chicken", ["chickenBreast", "chickenThigh"])
+
+# Existence Knowledge
+
+ek = ExistenceKnowledge({
+    PropositionalVariable("beef"): VariableManager.get("beef_g"),
+    PropositionalVariable("groundBeef"): VariableManager.get("groundBeef_g"),
+    PropositionalVariable("beefSteak"): VariableManager.get("beefSteak_g"),
+    PropositionalVariable("chicken"): VariableManager.get("chicken_g"),
+    PropositionalVariable("chickenBreast"): VariableManager.get("chickenBreast_g"),
+    PropositionalVariable("chickenThigh"): VariableManager.get("chickenThigh_g"),
+    PropositionalVariable("eggYolk"): VariableManager.get("eggYolk_g"),
+    PropositionalVariable("puffPastry"): VariableManager.get("puffPastry_g"),
+    PropositionalVariable("cream"): VariableManager.get("cream_g"),
+})
+
+# Conversion Knowledge
+
+ck = ConversionKnowledge()
+ck.addConversions([((VariableManager.get("eggYolk_u"), Fraction(1)), (VariableManager.get("eggYolk_g"), Fraction(17))),
+                   ((VariableManager.get("puffPastry_u"), Fraction(1)), (VariableManager.get("puffPastry_g"), Fraction(130)))])
 
 # DK: protein and fat
 dk = LinearConstraint("protein_g - 0.259*groundBeef_g\
@@ -124,27 +144,22 @@ dk &= (PropositionalVariable("beef") // ~LinearConstraint("beef_g = 0"))\
     & (PropositionalVariable("puffPastry") // ~LinearConstraint("puffPastry_g = 0"))\
     & (PropositionalVariable("cream") // ~LinearConstraint("cream_g = 0"))
 
-dk &= LinearConstraint("eggYolk_u - 17*eggYolk_g = 0")\
-    & LinearConstraint("puffPastry_u - 130*puffPastry_g = 0")\
+# dk &= LinearConstraint("eggYolk_u - 17*eggYolk_g = 0")\
+#     & LinearConstraint("puffPastry_u - 130*puffPastry_g = 0")\
 
 dk &= FormulaManager.parser("pie -> (puffPastry & eggYolk)")
 
 # Source case
 srce_case = LinearConstraint("groundBeef_g = 200.")\
-          & PropositionalVariable("groundBeef")\
           & LinearConstraint("puffPastry_u = 2")\
-          & PropositionalVariable("puffPastry")\
           & LinearConstraint("eggYolk_u = 1")\
-          & PropositionalVariable("eggYolk")\
           & LinearConstraint("beefSteak_g = 0.")\
-          & ~PropositionalVariable("beefSteak")\
           & LinearConstraint("chicken_g = 0.")\
-          & ~PropositionalVariable("chicken")\
           & LinearConstraint("cream_g = 0.")\
-          & ~PropositionalVariable("cream")\
           & PropositionalVariable("pie")
 
 # Target problem
 tgt_problem = FormulaManager.parser("pie & chicken & (~beef)")
 
-min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk, taxonomy=tax, taxToDk=False)
+min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk, conversionKnowledge=ck, ckToDk=True,\
+                                       existenceKnowledge=ek, ekToDk=False, taxonomy=tax, taxToDk=False)
