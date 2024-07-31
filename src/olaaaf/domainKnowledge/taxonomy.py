@@ -12,7 +12,7 @@ class Taxonomy(DomainKnowledge):
     ElementTuple = namedtuple("element", "children parents")
 
     def __init__(self) -> None:
-        pass
+        self._elements["_TOP"] = self.ElementTuple(children=set(), parents=set())
 
     def addElement(self, propVar):
 
@@ -21,7 +21,8 @@ class Taxonomy(DomainKnowledge):
         if isinstance(propVar, PropositionalVariable):
             propVar = propVar.name
         
-        self._elements[propVar] = self.ElementTuple(children=set(), parents=set())
+        self._elements[propVar] = self.ElementTuple(children=set(), parents={"_TOP"})
+        self._elements["_TOP"].children.add(propVar)
 
     def addElements(self, propVars):
 
@@ -38,7 +39,10 @@ class Taxonomy(DomainKnowledge):
             trgt = trgt.name
 
         self._elements[src].children.add(trgt)
+
         self._elements[trgt].parents.add(src)
+        self._elements[trgt].parents.discard("_TOP")
+        self._elements["_TOP"].children.discard(trgt)
 
     def addChildren(self, src, trgts):
 
@@ -46,16 +50,7 @@ class Taxonomy(DomainKnowledge):
             self.addChild(src, trgt)
 
     def addParent(self, src, trgt):
-
-        # TODO error checking and handling
-
-        if isinstance(src, PropositionalVariable):
-            src = src.name
-        if isinstance(trgt, PropositionalVariable):
-            trgt = trgt.name
-
-        self._elements[src].parents.add(trgt)
-        self._elements[trgt].children.add(src)
+        self.addChild(trgt, src)
 
     def addParents(self, src, trgts):
 
@@ -70,9 +65,15 @@ class Taxonomy(DomainKnowledge):
             propVar = propVar.name
 
         for child in self._elements[propVar].children:
-            self._elements[child].parents.remove(propVar)
+
+            self._elements[child].parents.discard(propVar)
+
+            if len(self._elements[child].parents) == 0:
+                self._elements[child].parents.add("_TOP")
+                self._elements["_TOP"].children.add(child)
+
         for parent in self._elements[propVar].parents:
-            self._elements[parent].children.remove(propVar)
+            self._elements[parent].children.discard(propVar)
 
         del self._elements[propVar]
 
@@ -90,8 +91,13 @@ class Taxonomy(DomainKnowledge):
         if isinstance(trgt, PropositionalVariable):
             trgt = trgt.name
 
-        self._elements[src].children.remove(trgt)
-        self._elements[trgt].parents.remove(src)
+        self._elements[src].children.discard(trgt)
+
+        self._elements[trgt].parents.discard(src)
+        if len(self._elements[trgt].parents) == 0:
+            self._elements[trgt].parents.add("_TOP")
+            self._elements["_TOP"].children.add(trgt)
+
 
     def removeChildren(self, src, trgts):
 
@@ -99,16 +105,7 @@ class Taxonomy(DomainKnowledge):
             self.removeChild(src, trgt)
 
     def removeParent(self, src, trgt):
-
-        # TODO error checking and handling
-
-        if isinstance(src, PropositionalVariable):
-            src = src.name
-        if isinstance(trgt, PropositionalVariable):
-            trgt = trgt.name
-
-        self._elements[src].parents.remove(trgt)
-        self._elements[trgt].children.remove(src)
+        self.removeChild(trgt, src)
 
     def removeParents(self, src, trgts):
 
@@ -129,7 +126,7 @@ class Taxonomy(DomainKnowledge):
             parents = self._elements[a].parents
 
             for p in parents:
-                if not p in ancestors:
+                if (not p in ancestors) and (p != "_TOP"):
                     toCheck.add(p)
 
             ancestors |= parents
@@ -141,8 +138,8 @@ class Taxonomy(DomainKnowledge):
         if isinstance(src, PropositionalVariable):
             src = src.name
         
-        ancestors = self._elements[src].children.copy()
-        toCheck = ancestors.copy()
+        descendants = self._elements[src].children.copy()
+        toCheck = descendants.copy()
 
         while len(toCheck) != 0:
             
@@ -150,12 +147,12 @@ class Taxonomy(DomainKnowledge):
             children = self._elements[a].children
 
             for c in children:
-                if not c in ancestors:
+                if (not c in descendants) and (c != "_TOP"):
                     toCheck.add(c)
 
-            ancestors |= children
+            descendants |= children
 
-        return ancestors
+        return descendants
 
     def toConstraints(self) -> Formula:
 

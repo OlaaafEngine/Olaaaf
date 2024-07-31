@@ -1,12 +1,24 @@
 from src.olaaaf.domainKnowledge import Taxonomy
-from src.olaaaf.formula import And, Or, Not, NullaryFormula, Formula
 from src.olaaaf.formula import PropositionalVariable
 
-a = PropositionalVariable("a")
-b = PropositionalVariable("b")
-c = PropositionalVariable("c")
-d = PropositionalVariable("d")
+tax = Taxonomy()
 
-psi = a & (~c | d | ~b)
+tax.addElement(PropositionalVariable("a"))
+tax.addElement(PropositionalVariable("b"))
+tax.addElement(PropositionalVariable("c"))
+tax.addElement(PropositionalVariable("d"))
+tax.addElement(PropositionalVariable("e"))
 
-print(psi.toDNFWithTableaux())
+tax.addChild(src="a", trgt="b")
+tax.addChild(src="b", trgt="c")
+tax.addChild(src="d", trgt="e")
+
+for elem in tax.getElements():
+    print(tax[elem])
+
+print("-------------")
+
+tax.removeParent("c", "b")
+
+for elem in tax.getElements():
+    print(tax[elem])

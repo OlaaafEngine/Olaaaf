@@ -5,14 +5,16 @@ Main class of the module, allowing the user to make the knowledge revision betwe
 
 from __future__ import annotations
 
+
 from .formula import Formula, Or, And, UnaryFormula, NullaryFormula, LinearConstraint, Not, ConstraintOperator, PropositionalVariable, EnumeratedType
-from .formulaInterpreter import FormulaInterpreter, UnfeasableException
+from .formulaInterpreter import FormulaInterpreter
 from .mlo_solver import MLOSolver
 from .distance import DistanceFunction
 from .constants import Constants
 from .simplificator import Simplificator
 from .projector import Projector
 from .variable import IntegerVariable
+from . import InfeasableException
 
 from fractions import Fraction
 from tqdm import tqdm
@@ -277,7 +279,7 @@ class Revision:
         # second step: find dStar (and psiPrime if onlyOneSoltuion)
         try:
             dStar, psiPrime = self.__executeConstraint(self.__interpreter.removeNot(psi), self.__interpreter.removeNot(mu), maxDist)
-        except UnfeasableException as e:
+        except InfeasableException as e:
             return None
 
         # third step: lambdaEpsilon
@@ -297,7 +299,7 @@ class Revision:
             if self._onlyOneSolution & (not self.__interpreter.sat(psiPrime & mu)):
                 try:
                     psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
-                except UnfeasableException as e:
+                except InfeasableException as e:
                     return None
             # print("psiPrime2:", psiPrime)
             return (lambdaEpsilon, psiPrime & mu)

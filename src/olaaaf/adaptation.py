@@ -5,16 +5,16 @@ Main class of the module, allowing the user to make the adaptation between two `
 
 from __future__ import annotations
 
-from .formula import Formula, And, Not, PropositionalVariable, LinearConstraint, ConstraintOperator
+from .formula import Formula, And
 from .mlo_solver import MLOSolver
 from .distance import DistanceFunction
 from .constants import Constants
 from .simplificator import Simplificator
 from .projector import Projector
 from .revision import Revision
-from .domainKnowledge import Taxonomy, ExistenceKnowledge, ConversionKnowledge
+from .domainKnowledge import DomainKnowledge
 
-from fractions import Fraction
+from .constants import Constants
 
 class Adaptation:
     r"""
@@ -58,9 +58,8 @@ class Adaptation:
 
         self.__revision.preload()
 
-    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula, conversionKnowledge: ConversionKnowledge = None, ckToDk: bool = True,\
-                      existenceKnowledge: ExistenceKnowledge = None, ekToDk: bool = False,\
-                      taxonomy: Taxonomy = None, taxToDk: bool = False, withTableaux: bool = True, withMaxDist: bool = True):
+    def execute(self, srce_case : Formula, trgt : Formula, domainKnowledge: dict[str, DomainKnowledge],\
+                domainKnowledgeInclusion: dict[str, bool] = {}, withTableaux: bool = True, withMaxDist: bool = True):
         r"""
         Execute the adaptation of \(srce_case\) by \(tgt_problem\), with the domain knowledge \(DK\).
 
@@ -84,25 +83,20 @@ class Adaptation:
             Result of the adaptation of \(srce_case\) by \(tgt_problem\).
         """
 
-        if conversionKnowledge is not None:
-            srce_case = conversionKnowledge.inferFrom(srce_case)
-            trgt = conversionKnowledge.inferFrom(trgt)
+        dkSet = set()
 
-            if ckToDk:
-                dk &= conversionKnowledge.toConstraints()
+        # Populate domainKnowledgeInclusion with default values for non filled keys
+        for key, value in Constants.DOMAINK_NOWLEDGE_INCLUSION_DEFAULT.items():
+            if domainKnowledgeInclusion.get(key) is None:
+                domainKnowledgeInclusion[key] = value
 
-        if existenceKnowledge is not None:
-            srce_case = existenceKnowledge.inferFrom(srce_case)
-            trgt = existenceKnowledge.inferFrom(trgt)
+        for key, dk in domainKnowledge.items():
+            srce_case = dk.inferFrom(srce_case)
+            trgt = dk.inferFrom(trgt)
 
-            if ekToDk:
-                dk &= existenceKnowledge.toConstraints()
+            if domainKnowledgeInclusion[key]:
+                dkSet.add(dk.toConstraints())
 
-        if taxonomy is not None:
-            srce_case = taxonomy.inferFrom(srce_case)
-            trgt = taxonomy.inferFrom(trgt)
-
-            if taxToDk:
-                dk &= taxonomy.toConstraints()
+        dk = And(*dkSet)
 
         return self.__revision.execute(srce_case & dk, trgt & dk, withTableaux=withTableaux, withMaxDist=withMaxDist)
