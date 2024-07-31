@@ -10,6 +10,7 @@ from .mlo_solver import OptimizationValues
 from .mlo_solver import MLOSolver
 from .distance import DistanceFunction
 from .simplificator import Simplificator
+from . import InfeasableException
 
 from fractions import Fraction
 
@@ -162,7 +163,7 @@ class FormulaInterpreter:
 
         # Interpretation of the MLO solver result
         if res[0] == OptimizationValues.INFEASIBLE: 
-            raise UnfeasableException("Optimize couple impossible") 
+            raise InfeasableException("Optimize couple impossible") 
 
         values = res[1]
         resSet = set()
@@ -351,7 +352,7 @@ class FormulaInterpreter:
 
         # interpretation of the mlo solver result
         if(res[0] == OptimizationValues.INFEASIBLE): 
-            raise UnfeasableException("Optimize couple impossible") 
+            raise InfeasableException("Optimize couple impossible") 
         
         values = res[1]
         resSet = set([])
@@ -401,5 +402,3 @@ class FormulaInterpreter:
 
         return self.findOneSolutionWithLimit(variables, psi, mu, lambdaEpsilon, maxDist)
     
-class UnfeasableException(Exception):
-    pass

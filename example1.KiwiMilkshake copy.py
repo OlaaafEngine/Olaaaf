@@ -12,7 +12,7 @@ from src.olaaaf import Adaptation
 from src.olaaaf.variable import RealVariable, IntegerVariable, VariableManager
 from src.olaaaf.distance import DiscreteL1DistanceFunction
 from src.olaaaf.simplificator import Daalmans
-from src.olaaaf.domainKnowledge import ExistenceKnowledge, ConversionKnowledge, Taxonomy
+from src.olaaaf.domainKnowledge import ExistenceKnowledge, ConversionKnowledge, Taxonomy, MiscellanousDomainKnowledge
 
 from fractions import Fraction
 
@@ -214,8 +214,10 @@ srce_case =  LinearConstraint("banana_u = 2")\
 # Target problem
 tgt_problem = FormulaManager.parser("kiwi & milkshake")
 
-min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk, conversionKnowledge=ck, ckToDk=True,\
-                                       existenceKnowledge=ek, ekToDk=True, taxonomy=tax, taxToDk=False)
+min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, domainKnowledge={"conversion": ck,
+                                                                                "existence": ek,
+                                                                                "taxonomy": tax,
+                                                                                "miscellanous": MiscellanousDomainKnowledge(dk)})
 
 """
      RESULT

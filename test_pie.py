@@ -8,7 +8,7 @@ from src.olaaaf import Adaptation
 from src.olaaaf.variable import RealVariable, IntegerVariable, VariableManager
 from src.olaaaf.distance import DiscreteL1DistanceFunction
 from src.olaaaf.simplificator import Daalmans
-from src.olaaaf.domainKnowledge import Taxonomy, ExistenceKnowledge, ConversionKnowledge
+from src.olaaaf.domainKnowledge import Taxonomy, ExistenceKnowledge, ConversionKnowledge, MiscellanousDomainKnowledge
 
 from fractions import Fraction
 
@@ -161,5 +161,11 @@ srce_case = LinearConstraint("groundBeef_g = 200.")\
 # Target problem
 tgt_problem = FormulaManager.parser("pie & chicken & (~beef)")
 
-min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk, conversionKnowledge=ck, ckToDk=True,\
-                                       existenceKnowledge=ek, ekToDk=False, taxonomy=tax, taxToDk=False)
+min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, domainKnowledge={"conversion": ck,
+                                                                                "existence": ek,
+                                                                                "taxonomy": tax,
+                                                                                "miscellanous": MiscellanousDomainKnowledge(dk)},\
+                                                                 domainKnowledgeInclusion={"conversion": True,
+                                                                                           "existence": False,
+                                                                                           "taxonomy": False,
+                                                                                           "miscellanous": True})

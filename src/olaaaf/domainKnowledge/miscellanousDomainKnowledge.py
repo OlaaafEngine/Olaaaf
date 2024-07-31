@@ -2,7 +2,7 @@ from .domainKnowledge import DomainKnowledge
 
 from ..formula import Formula
 
-class MiscDomainKnowledge(DomainKnowledge):
+class MiscellanousDomainKnowledge(DomainKnowledge):
 
     miscDk: Formula
 
