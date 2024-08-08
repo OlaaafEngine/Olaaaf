@@ -165,7 +165,6 @@ min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, domainKnowledge={
                                                                                 "existence": ek,
                                                                                 "taxonomy": tax,
                                                                                 "miscellanous": MiscellanousDomainKnowledge(dk)},\
-                                                                 domainKnowledgeInclusion={"conversion": True,
-                                                                                           "existence": False,
-                                                                                           "taxonomy": False,
-                                                                                           "miscellanous": True})
+                                                               domainKnowledgeInclusion={"existence": False,
+                                                                                         "taxonomy": False},
+                                                               withMaxDist=True, withTableaux=True)

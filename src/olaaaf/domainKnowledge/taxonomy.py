@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from .domainKnowledge import DomainKnowledge
-from ..formula import Formula, PropositionalVariable, And, Not
+from ..formula import Formula, PropositionalVariable, And, Not, Or
 
 from collections import namedtuple
 
@@ -118,6 +118,8 @@ class Taxonomy(DomainKnowledge):
             src = src.name
         
         ancestors = self._elements[src].parents.copy()
+        ancestors.discard("_TOP")
+
         toCheck = ancestors.copy()
 
         while len(toCheck) != 0:
@@ -126,10 +128,12 @@ class Taxonomy(DomainKnowledge):
             parents = self._elements[a].parents
 
             for p in parents:
-                if (not p in ancestors) and (p != "_TOP"):
+                if (not p in ancestors):
                     toCheck.add(p)
 
             ancestors |= parents
+
+        ancestors.discard("_TOP")
 
         return ancestors
 
@@ -147,10 +151,12 @@ class Taxonomy(DomainKnowledge):
             children = self._elements[a].children
 
             for c in children:
-                if (not c in descendants) and (c != "_TOP"):
+                if (not c in descendants):
                     toCheck.add(c)
 
             descendants |= children
+
+        descendants.discard("_TOP")
 
         return descendants
 
@@ -158,9 +164,14 @@ class Taxonomy(DomainKnowledge):
 
         fmSet = set()
 
-        for elem in self._elements:
-            for parent in self._elements[elem].parents:
-                fmSet.add(PropositionalVariable(elem) >> PropositionalVariable(parent))
+        realElements = self._elements.copy()
+        del realElements["_TOP"]
+
+        for elem in realElements:
+            for child in self._elements[elem].children:
+                fmSet.add(PropositionalVariable(child) >> PropositionalVariable(elem))
+            # if len(self._elements[elem].children) != 0:
+            #     fmSet.add(Or(*{PropositionalVariable(child) for child in self._elements[elem].children}) >> PropositionalVariable(elem))
 
         return And(*fmSet)
     

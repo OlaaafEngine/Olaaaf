@@ -86,7 +86,7 @@ class Adaptation:
         dkSet = set()
 
         # Populate domainKnowledgeInclusion with default values for non filled keys
-        for key, value in Constants.DOMAINK_NOWLEDGE_INCLUSION_DEFAULT.items():
+        for key, value in Constants.DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT.items():
             if domainKnowledgeInclusion.get(key) is None:
                 domainKnowledgeInclusion[key] = value
 

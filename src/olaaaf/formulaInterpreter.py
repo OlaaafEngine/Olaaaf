@@ -10,7 +10,6 @@ from .mlo_solver import OptimizationValues
 from .mlo_solver import MLOSolver
 from .distance import DistanceFunction
 from .simplificator import Simplificator
-from . import InfeasableException
 
 from fractions import Fraction
 
@@ -146,6 +145,8 @@ class FormulaInterpreter:
         `olaaaf.formula.formula.Formula`
             `olaaaf.formula.formula.Formula` representing a point \(y \in \mathcal{M}(\mu)\) that satisfies the optimization problem above. 
         """
+
+        from . import InfeasableException
 
         weights = self.__distanceFunction.getWeights()
         constraints = self.__buildConstraints(variables, psi, mu)
@@ -328,6 +329,8 @@ class FormulaInterpreter:
         `olaaaf.formula.formula.Formula`
             `olaaaf.formula.formula.Formula` representing a point \(y \in \mathcal{M}(\mu)\) that satisfies the optimization problem above. 
         """
+
+        from . import InfeasableException
 
         # Reorder variables order
         variables = list(variables)
