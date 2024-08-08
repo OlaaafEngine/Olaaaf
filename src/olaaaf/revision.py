@@ -14,7 +14,6 @@ from .constants import Constants
 from .simplificator import Simplificator
 from .projector import Projector
 from .variable import IntegerVariable
-from . import InfeasableException
 
 from fractions import Fraction
 from tqdm import tqdm
@@ -274,6 +273,8 @@ class Revision:
     
     def __executeLiteral(self, psi: Formula, mu: Formula, maxDist: Fraction = None) -> tuple[Fraction, Formula]:
         
+        from . import InfeasableException
+
         epsilon = self.__distance._epsilon
 
         # second step: find dStar (and psiPrime if onlyOneSoltuion)
@@ -311,7 +312,7 @@ class Revision:
             if (self._onlyOneSolution):
                 try:
                     psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
-                except UnfeasableException as e:
+                except InfeasableException as e:
                     return None
             else:
                 psiPrime = self.__expand(psi, lambdaEpsilon)

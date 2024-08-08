@@ -20,7 +20,7 @@ class Constants():
 
     # ---------------------------------------------------
     # Default values for domain knowledge inclusion
-    DOMAINK_NOWLEDGE_INCLUSION_DEFAULT = {"conversion": True,
+    DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT = {"conversion": True,
                                           "existence": True,
                                           "taxonomy": True,
                                           "miscellanous": True}

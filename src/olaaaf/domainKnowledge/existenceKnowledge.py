@@ -20,7 +20,7 @@ class ExistenceKnowledge(DomainKnowledge):
             
             lc = LinearConstraint("")
             lc.variables[v] = Fraction(1)
-            lc.operator = ConstraintOperator.EQ
+            lc.operator = ConstraintOperator.LEQ
             lc.bound = Fraction(0)
 
             fmSet.add(k // ~lc)

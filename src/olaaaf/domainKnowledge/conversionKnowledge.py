@@ -6,12 +6,11 @@ from ..variable import Variable
 from fractions import Fraction
 
 class ConversionKnowledge(DomainKnowledge):
-    # To redo
 
-    __unitsConversion: dict[Variable, dict[Variable, Fraction]] = {}
+    __unitsConversion: dict[Variable, dict[Variable, Fraction]]
 
     def __init__(self) -> None:
-        pass
+        self.__unitsConversion = {}
 
     def addConversion(self, src: tuple[Variable, Fraction], trgt: tuple[Variable, Fraction]):
 
