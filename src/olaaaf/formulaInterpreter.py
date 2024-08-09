@@ -136,7 +136,9 @@ class FormulaInterpreter:
             List of all the `olaaaf.variable.variable.Variable` in use in both \(\psi\) and \(\mu\).
         psi, mu : `olaaaf.formula.naryFormula.andOperator.And`
             \(\psi\) and \(\mu\), conjunctions of litterals as used in the optimization problem above.
-
+        maxDist: `fraction.Fraction`
+            The currently maximum known distance for the revision process.
+            If set to `None`, the optimization problem is solved without a constraint on the maximum distance.
         Returns
         -------
         Fraction
@@ -249,7 +251,10 @@ class FormulaInterpreter:
         ----------
         psi, mu : `olaaaf.formula.naryFormula.andOperator.And`
             \(\psi\) and \(\mu\), conjunctions of litterals as used in the optimization problem above.
-
+        maxDist: `fraction.Fraction`
+            The currently maximum known distance for the revision process.
+            If set to `None`, the optimization problem is solved without a constraint on the maximum distance.
+            
         Returns
         -------
         Fraction
@@ -320,7 +325,10 @@ class FormulaInterpreter:
             \(\psi\) and \(\mu\), conjunctions of litterals as used in the optimization problem above.
         lambdaEpsilon: `fraction.Fraction`
             The \(\lambda_\epsilon\) specified in the system above.
-
+        maxDist: `fraction.Fraction`
+            The currently maximum known distance for the revision process.
+            If set to `None`, the optimization problem is solved without a constraint on the maximum distance.
+            
         Returns
         -------
         Fraction
@@ -391,7 +399,10 @@ class FormulaInterpreter:
             \(\psi\) and \(\mu\), conjunctions of litterals as used in the optimization problem above.
         lambdaEpsilon: `fraction.Fraction`
             The \(\lambda_\epsilon\) specified in the system above.
-
+        maxDist: `fraction.Fraction`
+            The currently maximum known distance for the revision process.
+            If set to `None`, the optimization problem is solved without a constraint on the maximum distance.
+            
         Returns
         -------
         Fraction

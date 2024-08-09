@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>src.olaaaf.formula.nullaryFormula.constraint.linearConstraint API documentation</title>
+<meta name="description" content="Representation of a LinearConstraint in PCMLC.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.olaaaf.formula.nullaryFormula.constraint.linearConstraint</code></h1>
+</header>
+<section id="section-intro">
+<p>Representation of a LinearConstraint in PCMLC.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint"><code class="flex name class">
+<span>class <span class="ident">LinearConstraint</span></span>
+<span>(</span><span>string: str, fmName: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Abstract Constraint class, representing a Constraint in PCMLC.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>string</code></strong> :&ensp;<code>String</code></dt>
+<dd>The linear constraint you want to define, following the syntax rules:
+- only accepted characters are 1234567890*/+-=&lt;&gt;. and letters
+- spaces doesn't matter
+- &gt;=, = and &lt;= only accepted operators
+- var needs to be defined before
+- var names must start with a letter and be followed by numbers or letters
+- case matters
+- always a * between var and coef
+- no duplicates variables in the same constraint</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>SyntaxError</code></dt>
+<dd>If the syntax of string is wrong.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>variables</code></strong> :&ensp;<code>dictionnary</code> of <code>fractions.Fraction with olaaaf.variable.variable.Variable as key</code></dt>
+<dd>The variables in the constraint, associated with their coefficient</dd>
+<dt><strong><code>operator</code></strong> :&ensp;<code>olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator</code></dt>
+<dd>The operator of the constraint</dd>
+<dt><strong><code>bound</code></strong> :&ensp;<code>fractions.Fraction</code></dt>
+<dd>The bound of the constraint</dd>
+<dt><strong><code>children</code></strong> :&ensp;<code>None</code></dt>
+<dd>The children of the current node. Since a cosntraint doesn't have any,
+it's None.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LinearConstraint(Constraint):
+    &#39;&#39;&#39;
+    Abstract Constraint class, representing a Constraint in PCMLC.
+
+    Parameters
+    ----------
+    string: String
+        The linear constraint you want to define, following the syntax rules:
+            - only accepted characters are 1234567890*/+-=&lt;&gt;. and letters
+            - spaces doesn&#39;t matter
+            - &gt;=, = and &lt;= only accepted operators
+            - var needs to be defined before
+            - var names must start with a letter and be followed by numbers or letters
+            - case matters
+            - always a * between var and coef
+            - no duplicates variables in the same constraint
+            
+    Raises
+    ------
+    SyntaxError
+        If the syntax of string is wrong.
+        
+    Attributes
+    ----------
+    variables: dictionnary of fractions.Fraction with olaaaf.variable.variable.Variable as key
+        The variables in the constraint, associated with their coefficient
+    operator: olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator
+        The operator of the constraint
+    bound: fractions.Fraction
+        The bound of the constraint
+    children: None
+        The children of the current node. Since a cosntraint doesn&#39;t have any,
+        it&#39;s None.
+    &#39;&#39;&#39;
+    
+    variables: dict[Variable, Fraction]
+    operator: ConstraintOperator
+    bound: Fraction
+    
+    def __init__(self, string: str, fmName: str = None):
+
+        if(string == &#34;&#34;):
+            self.variables = dict()
+            self.operator = None
+            self.bound = Fraction(&#34;0&#34;)
+            return None
+
+        self.variables = {}
+        # rule 1, only accepted characters 
+        unknownChar = re.match(r&#34;[^\d a-zA-Z/\:\*+\-&lt;&gt;=\.]&#34;, string)
+        if unknownChar:
+            raise SyntaxError(f&#34;Unknown character {unknownChar}&#34;)
+        
+        # rule 2, spaces doesn&#39;t matter
+        string = re.sub(r&#34;\s*&#34;,&#34;&#34;, string)
+        
+        leftRightParts = []
+        
+        #rule 3, only accepted operators
+        if string.find(&#34;&lt;=&#34;) != -1:
+            leftRightParts = string.split(&#34;&lt;=&#34;)
+            self.operator = ConstraintOperator.LEQ
+        elif string.find(&#34;&gt;=&#34;) != -1:
+            leftRightParts = string.split(&#34;&gt;=&#34;)
+            self.operator = ConstraintOperator.GEQ
+        elif string.find(&#34;=&#34;) != -1:
+            leftRightParts = string.split(&#34;=&#34;)
+            self.operator = ConstraintOperator.EQ
+        else:
+            raise SyntaxError(&#34;Operator not recognized&#34;)
+
+        if leftRightParts[1] == &#34;&#34;:
+            raise SyntaxError(&#34;Bound not found&#34;)
+        else:
+            self.bound = Fraction(leftRightParts[1])
+        
+        leftRightParts[0] = leftRightParts[0].replace(&#34;-&#34;, &#34;+-&#34;)
+        leftRightParts[0] = leftRightParts[0].replace(&#34;++&#34;, &#34;+&#34;)
+        if leftRightParts[0].find(&#34;+-&#34;) == 0:
+            leftRightParts[0] = leftRightParts[0][1:]
+        splitLeft = leftRightParts[0].split(&#34;+&#34;)
+        
+        for split in splitLeft:
+            
+            var = None
+            coef = None
+            
+            if split.find(&#34;*&#34;) != -1:
+                (coefString, varName) = split.split(&#34;*&#34;)
+                if(varName != &#34;@&#34;):
+                    var = VariableManager.get(varName)
+                    coef = Fraction(coefString)
+            else:
+                if split[0] == &#34;-&#34;:
+                    coef = Fraction(&#34;-1&#34;)
+                    var = VariableManager.get(split[1:])
+                else:
+                    coef = Fraction(&#34;1&#34;)
+                    var = VariableManager.get(split)
+            
+            if var in self.variables:
+                raise ValueError(f&#34;Duplicate variable {var._name} found&#34;)
+            elif var != None:
+                self.variables[var] = coef
+
+        # Declare if name
+        if(fmName is not None):
+            FormulaManager.declare(fmName, self)
+
+    def getVariables(self) -&gt; set[Variable]:
+        &#39;&#39;&#39;
+        Method recurcivly returning a set containing all the variables used in
+        the Formula.
+
+        Returns
+        -------
+        variables: set of olaaaf.variable.variable.Variable
+            All the variables used in the Formula.
+        &#39;&#39;&#39;
+        
+        return self.variables.keys()
+    
+    def getAdherence(self, var : Variable = None) -&gt; list[list[Constraint]]:
+        &#39;&#39;&#39;
+        Returns a 2D list containing all the constraints of the adherence of 
+        the Formula, in Disjunctive Normal Form.
+
+        Attributes
+        ----------
+        var : variable used in case of inequality
+
+        Returns
+        -------
+        list of list of olaaaf.formula.nullaryFormula.constraint.constraint.Constraint
+            2D list containing all the constraints of discute vraiment de l&#39;implémentationthe adherence of the Formula,
+            in Disjunctive Normal Form.
+        &#39;&#39;&#39;
+        return [[self]]
+
+    def _getAdherenceNeg(self, var : Variable = None)  -&gt; list[list[Constraint]]:
+        &#39;&#39;&#39;
+        Protected method used in the algorithm to recursivly determine the
+        constraints of the adherence of the Formula, used when a Negation is in play
+        instead of getAdherence().
+
+        Attributes
+        ----------
+        var : variable used in case of inequality
+
+        Returns
+        -------
+        list of list of olaaaf.formula.nullaryFormula.constraint.constraint.Constraint
+            2D list containing all the constraints of the adherence of the Formula,
+            in Disjunctive Normal Form under Negation.
+        &#39;&#39;&#39;
+        copyConstrainte = self.clone()
+        for variable in copyConstrainte.variables.keys():
+            copyConstrainte.variables[variable] *= -1
+        if var is not None:
+            copyConstrainte.variables[var] = Fraction(1,1)
+        copyConstrainte.bound *= -1
+        res = [[copyConstrainte]]
+
+        return res
+    
+    def getTuple(self, variables : list) -&gt; tuple:
+
+        tabVar = []
+        op = self.operator
+        bound = self.bound
+        for variable in variables:
+            if not variable in self.variables: tabVar.append(0)
+            else: tabVar.append(self.variables[variable])
+
+        if(op == ConstraintOperator.GEQ):
+            for i in range(0, len(tabVar)-1):
+                tabVar[i] *= -1
+            bound *= -1
+            op = ConstraintOperator.LEQ
+        
+        return (tabVar, op, bound)
+    
+    def __str__(self):
+
+        s = &#34;&#34;
+
+        for var, coef in self.variables.items():
+
+            if abs(coef) == 1:
+                coefString = &#34;&#34;
+            else:
+                coefString = str(coef)
+
+            if coef &lt; 0:
+                s += &#34;- &#34; + coefString[1:]
+            else:
+                s += &#34;+ &#34; + coefString
+
+            if(Constants.LINEAR_CONSTRAINT_STRING_DISPLAY_MULT &amp; (coefString != &#34;&#34;)):
+                s += &#34;*&#34; + str(var) + &#34; &#34;
+            else:
+                s += str(var) + &#34; &#34;
+
+        if (s != &#34;&#34;):
+            if(s[0] == &#34;+&#34;):
+                s = s[2:]
+        s += str(self.operator.value) + &#34; &#34;
+        s += str(self.bound)
+        return s
+    
+    def toLatex(self):
+        r&#34;&#34;&#34;
+        Method returning a \(\LaTeX\) expression representing the Formula. Operators are customisable in `olaaaf.constants.Constants`.
+        
+        Returns
+        -------
+        String
+            The \(\LaTeX\) expression representing the Formula.
+        &#34;&#34;&#34;
+
+        s = &#34;&#34;
+        for var, coef in self.variables.items():
+
+            if int(coef) == coef:
+                if abs(coef) == 1:
+                    coefString = &#34;&#34;
+                else:
+                    coefString = str(abs(int(coef)))
+            else:
+                coefString = &#34; \\frac{&#34; + str(abs(coef.numerator)) + &#34;}{&#34; + str(coef.denominator) + &#34;}&#34;
+
+            if coef &lt; 0:
+                s += &#34;- &#34;
+            else:
+                s += &#34;+ &#34; 
+
+            s += coefString
+            
+            s+= str(var) + &#34; &#34;
+
+        if (s[0] == &#34;+&#34;):
+            s = s[2:]
+        elif (s[0] == &#34;-&#34;):
+            s = s[0] + s[2:]
+        s += str(self.operator.getLatexOperator()) + &#34; &#34;
+        if (int(self.bound) == self.bound):
+            s +=  str(self.bound)
+        else:
+            s +=  &#34;\\frac{&#34; + str(self.bound.numerator) + &#34;}{&#34; + str(self.bound.denominator) + &#34;}&#34;
+        return s
+            
+    def toLessOrEqConstraint(self):
+        &#39;&#39;&#39;
+        Method used to transform a `olaaaf.formula.formula.Formula` into another one, with only `olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.LEQ` constraints.
+
+        Returns
+        ------
+        `olaaaf.formula.formula.Formula`
+            A `olaaaf.formula.formula.Formula` with only `olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.LEQ` constraints.
+        &#39;&#39;&#39;
+        from ...naryFormula.andOperator import And
+        res = self.clone()
+
+        if self.operator == ConstraintOperator.GEQ :
+            for variable in res.variables.keys():
+                res.variables[variable] *= -1
+            res.bound *= -1
+            res.operator = ConstraintOperator.LEQ
+        elif self.operator == ConstraintOperator.EQ:
+            res = [self.clone()]
+            res[0].operator = ConstraintOperator.GEQ
+            res.append(res[0].toLessOrEqConstraint())
+            res[0].operator = ConstraintOperator.LEQ
+            res = And(*res)
+
+        return res
+    
+    def toPCMLC(self, varDict) -&gt; Formula:
+        &#39;&#39;&#39;
+        Method used to transform a `olaaaf.formula.formula.Formula` into a new one, in the PCMLC formalism.
+
+        Parameters
+        ----------
+        varDict : dictionnary
+            Dictionnary used to tell which variable should be replaced by which.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            A `olaaaf.formula.formula.Formula` in the PCMLC formalism.
+        &#39;&#39;&#39;
+        return self
+    
+    def _toPCMLCNeg(self, varDict) -&gt; Formula:
+        from ...unaryFormula import Not
+
+        return Not(self)
+    
+    def clone(self) -&gt; LinearConstraint:
+        &#34;&#34;&#34;
+        Method returning a clone of the current Formula.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            Clone of the current `olaaaf.formula.formula.Formula`.
+        &#34;&#34;&#34;
+                
+        clonedLc = LinearConstraint(&#34;&#34;)
+        clonedLc.variables = self.variables.copy()
+        clonedLc.operator = self.operator
+        clonedLc.bound = self.bound
+        return clonedLc
+    
+    def replace(self, variable : Variable, num : Fraction):
+        if variable in self.variables:
+            self.bound = self.bound - num * self.variables[variable]
+            del self.variables[variable]
+        if len(self.variables) == 0: raise IndexError(&#34;Not enough values in constraint&#34;)
+
+    def __eq__(self, o) -&gt; bool:
+        
+        if o.__class__ != self.__class__:
+            return False
+        elif (o.variables != self.variables) | (o.operator != self.operator) | (o.bound != self.bound):
+            return False
+        else:
+            return True
+        
+    def __hash__(self):
+        return hash(str(self))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="constraint.html#src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a></li>
+<li><a title="src.olaaaf.formula.nullaryFormula.nullaryFormula.NullaryFormula" href="../nullaryFormula.html#src.olaaaf.formula.nullaryFormula.nullaryFormula.NullaryFormula">NullaryFormula</a></li>
+<li><a title="src.olaaaf.formula.formula.Formula" href="../../formula.html#src.olaaaf.formula.formula.Formula">Formula</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.bound"><code class="name">var <span class="ident">bound</span> : fractions.Fraction</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.operator"><code class="name">var <span class="ident">operator</span> : <a title="src.olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator" href="constraintOperator.html#src.olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator">ConstraintOperator</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.variables"><code class="name">var <span class="ident">variables</span> : dict[<a title="src.olaaaf.variable.variable.Variable" href="../../../variable/variable.html#src.olaaaf.variable.variable.Variable">Variable</a>, fractions.Fraction]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getAdherence"><code class="name flex">
+<span>def <span class="ident">getAdherence</span></span>(<span>self, var: Variable = None) ‑> list[list[<a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="constraint.html#src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a 2D list containing all the constraints of the adherence of
+the Formula, in Disjunctive Normal Form.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>var</code></strong> :&ensp;<code>variable used in case</code> of <code>inequality</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>list</code> of <code>olaaaf.formula.nullaryFormula.constraint.constraint.Constraint</code></dt>
+<dd>2D list containing all the constraints of discute vraiment de l'implémentationthe adherence of the Formula,
+in Disjunctive Normal Form.</dd>
+</dl></div>
+</dd>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getTuple"><code class="name flex">
+<span>def <span class="ident">getTuple</span></span>(<span>self, variables: list) ‑> tuple</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getVariables"><code class="name flex">
+<span>def <span class="ident">getVariables</span></span>(<span>self) ‑> set[<a title="src.olaaaf.variable.variable.Variable" href="../../../variable/variable.html#src.olaaaf.variable.variable.Variable">Variable</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method recurcivly returning a set containing all the variables used in
+the Formula.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>variables</code></strong> :&ensp;<code>set</code> of <code>olaaaf.variable.variable.Variable</code></dt>
+<dd>All the variables used in the Formula.</dd>
+</dl></div>
+</dd>
+<dt id="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.replace"><code class="name flex">
+<span>def <span class="ident">replace</span></span>(<span>self, variable: Variable, num: Fraction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="constraint.html#src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a></b></code>:
+<ul class="hlist">
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint.clone" href="../../formula.html#src.olaaaf.formula.formula.Formula.clone">clone</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint.toDNF" href="../nullaryFormula.html#src.olaaaf.formula.nullaryFormula.nullaryFormula.NullaryFormula.toDNF">toDNF</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint.toDNFWithTableaux" href="../../formula.html#src.olaaaf.formula.formula.Formula.toDNFWithTableaux">toDNFWithTableaux</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint.toLatex" href="../../formula.html#src.olaaaf.formula.formula.Formula.toLatex">toLatex</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint.toLessOrEqConstraint" href="../../formula.html#src.olaaaf.formula.formula.Formula.toLessOrEqConstraint">toLessOrEqConstraint</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.constraint.Constraint.toPCMLC" href="../../formula.html#src.olaaaf.formula.formula.Formula.toPCMLC">toPCMLC</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint" href="index.html">src.olaaaf.formula.nullaryFormula.constraint</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.bound" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.bound">bound</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getAdherence" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getAdherence">getAdherence</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getTuple" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getTuple">getTuple</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getVariables" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.getVariables">getVariables</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.operator" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.operator">operator</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.replace" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.replace">replace</a></code></li>
+<li><code><a title="src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.variables" href="#src.olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint.variables">variables</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

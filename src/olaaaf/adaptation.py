@@ -69,11 +69,21 @@ class Adaptation:
             \(srce_case\), source case for the adaptation and `olaaaf.formula.formula.Formula` that will be adapted.
         tgt_problem : `olaaaf.formula.formula.Formula`
             \(tgt_problem\), target problem for the adaptation and `olaaaf.formula.formula.Formula` that will be used to adapt \(srce_case\) by.
-        dk : `olaaaf.formula.formula.Formula`
-            \(DK\), the domain knowledge.
+        domainKnowledge : `dict[str, olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge]`
+            \(DK\), the domain knowledges to use.
+            Currently, the only officialy supported keys are "conversion", "existence", "taxonomy" and "miscellanous",
+            corresponding to their eponym object from `olaaaf.domainKnowledge`.
+            The order on which the domain knowledges are given in this dictionary is the order in which they will be used for the inference process.
+            Therefore, it is heavily recommended to have the domain knowledge in the following order: "conversion", "existence", "taxonomy" and "miscellanous".
+        domainKnowledgeInclusion : `dict[str, boolean]`
+            Wether the corresponding domain knowledge should be used in the knowledge revision process.
+            By default, all domain knowledge are used.
+            Removing specific domain knowledges from this process will result in faster computation time, but might affect the result.
         withTableaux: `boolean`
             Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to `True`.
-
+        withMaxDist: `boolean`
+            Wether the currently known maximum distance should be used during the revision process. By default, set to `True`.
+            
         Returns
         -------
         Fraction
