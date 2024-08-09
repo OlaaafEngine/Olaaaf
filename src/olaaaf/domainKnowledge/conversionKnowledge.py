@@ -1,3 +1,7 @@
+"""
+Class representing conversion knowledges.
+"""
+
 from .domainKnowledge import DomainKnowledge
 
 from ..formula import And, Formula, LinearConstraint, ConstraintOperator
@@ -6,6 +10,9 @@ from ..variable import Variable
 from fractions import Fraction
 
 class ConversionKnowledge(DomainKnowledge):
+    """
+    Class representing conversion knowledges, i.e. knowledges linking two numerical variables.
+    """
 
     __unitsConversion: dict[Variable, dict[Variable, Fraction]]
 
@@ -13,6 +20,19 @@ class ConversionKnowledge(DomainKnowledge):
         self.__unitsConversion = {}
 
     def addConversion(self, src: tuple[Variable, Fraction], trgt: tuple[Variable, Fraction]):
+        """
+        Adds a new conversion to the conversion knowledge.
+        For exemple, the conversion 1*banana_kg = 1000*banana_g could be added with the following call:
+
+            knowledge.addConversion((banana_kg, Fraction(1)), (banana_g, Fraction(1000)))
+
+        Parameters
+        ----------
+        src: `tuple[Variable, Fraction]`
+            The source of the conversion, with a given coefficent.
+        trgt: `tuple[Variable, Fraction]`
+            The target of the conversion, with a given coefficent.
+        """
 
         src_var, src_coef = src
         trgt_var, trgt_coef = trgt
@@ -26,11 +46,29 @@ class ConversionKnowledge(DomainKnowledge):
         self.__unitsConversion[trgt_var][src_var] = src_coef/trgt_coef
 
     def addConversions(self, conversions: list[tuple[tuple[Variable, Fraction], tuple[Variable, Fraction]]]):
+        """
+        Adds new conversions to the conversion knowledge.
+
+        Parameters
+        ----------
+        conversions: `list[tuple[tuple[Variable, Fraction], tuple[Variable, Fraction]]]`
+            The new conversions.
+        """
 
         for conv in conversions:
             self.addConversion(*conv)
 
     def removeConversion(self, src: Variable, trgt: Variable):
+        """
+        Removes a conversion from the conversion knowledge.
+
+        Parameters
+        ----------
+        src: `olaaaf.formula.formula.Variable`
+            The source of the conversion.
+        trgt: `olaaaf.formula.formula.Variable`
+            The target of the conversion.
+        """
 
         if (self.__unitsConversion.get(src) is not None) and (self.__unitsConversion[src].get(trgt) is not None):
             del self.__unitsConversion[src][trgt]
@@ -43,10 +81,26 @@ class ConversionKnowledge(DomainKnowledge):
                 del self.__unitsConversion[trgt]
 
     def getConversions(self):
+        """
+        Returns the conversions.
+        
+        Returns
+        -------
+        `dict[Variable, dict[Variable, Fraction]]`
+            The conversions.
+        """
         return self.__unitsConversion
 
     def toConstraints(self):
+        """
+        Converts the domain knowledge object to constraints.
         
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The formula representing the domain knowledges.
+        """
+     
         copyCk = self.copy()
         fmSet = set()
 
@@ -69,7 +123,20 @@ class ConversionKnowledge(DomainKnowledge):
         return And(*fmSet)
     
     def inferFrom(self, psi: Formula):
-        
+        """
+        Infer new knowledges from a given formula using the domain knowledges.
+
+        Parameters
+        ----------
+        psi: `olaaaf.formula.formula.Formula`
+            The formula to infer from.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The inferred formula.
+        """
+
         inferedChildren = set()
         knownVariables = set()
 

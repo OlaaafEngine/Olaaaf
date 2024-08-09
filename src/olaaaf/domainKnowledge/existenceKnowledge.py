@@ -1,3 +1,7 @@
+"""
+Class representing existence knowledges.
+"""
+
 from .domainKnowledge import DomainKnowledge
 
 from ..formula import Formula, And, PropositionalVariable, LinearConstraint, Not, ConstraintOperator
@@ -6,13 +10,30 @@ from ..variable import Variable
 from fractions import Fraction
 
 class ExistenceKnowledge(DomainKnowledge):
+    """
+    Class representing existence knowledges, i.e. knowledges linking a propositional variable to a numerical variable.
+
+    Parameters
+    ----------
+    existenceLinks: `dict[PropositionalVariable, Variable]`
+        A dictionary linking a propositional variable to a numerical variable.
+    """
 
     existenceLinks: dict[PropositionalVariable, Variable] = dict()
 
     def __init__(self, existenceLinks: dict[PropositionalVariable, Variable]) -> None:
+
         self.existenceLinks = existenceLinks
 
     def toConstraints(self) -> Formula:
+        """
+        Converts the domain knowledge object to constraints.
+        
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The formula representing the domain knowledges.
+        """
 
         fmSet = set()
 
@@ -28,6 +49,19 @@ class ExistenceKnowledge(DomainKnowledge):
         return And(*fmSet)
     
     def inferFrom(self, psi: Formula) -> Formula:
+        """
+        Infer new knowledges from a given formula using the domain knowledges.
+
+        Parameters
+        ----------
+        psi: `olaaaf.formula.formula.Formula`
+            The formula to infer from.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The inferred formula.
+        """
         
         inferedChildren = set()
 

@@ -106,7 +106,9 @@ class Revision:
             \(\mu\), right part of the knowledge revision operator and `olaaaf.formula.formula.Formula` that will be used to revise \(\psi\) by.
         withTableaux: `boolean`
             Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to `True`.
-
+        withMaxDist: `boolean`
+            Wether the currently known maximum distance should be used during the revision process. By default, set to `True`.
+            
         Returns
         -------
         Fraction
