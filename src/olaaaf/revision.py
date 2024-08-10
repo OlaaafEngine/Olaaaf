@@ -5,6 +5,7 @@ Main class of the module, allowing the user to make the knowledge revision betwe
 
 from __future__ import annotations
 
+
 from .formula import Formula, Or, And, UnaryFormula, NullaryFormula, LinearConstraint, Not, ConstraintOperator, PropositionalVariable, EnumeratedType
 from .formulaInterpreter import FormulaInterpreter
 from .mlo_solver import MLOSolver
@@ -93,7 +94,7 @@ class Revision:
         self.boolToInt[var] = intVar
         weights[intVar] = weights[var]
 
-    def execute(self, psi : Formula, mu : Formula) -> tuple[Fraction, Formula]:
+    def execute(self, psi : Formula, mu : Formula, withTableaux = True, withMaxDist = True) -> tuple[Fraction, Formula]:
         r"""
         Execute the revision of \(\psi\) by \(\mu\).
 
@@ -103,8 +104,11 @@ class Revision:
             \(\psi\), left part of the knowledge revision operator and `olaaaf.formula.formula.Formula` that will be revised.
         mu : `olaaaf.formula.formula.Formula`
             \(\mu\), right part of the knowledge revision operator and `olaaaf.formula.formula.Formula` that will be used to revise \(\psi\) by.
-
-
+        withTableaux: `boolean`
+            Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to `True`.
+        withMaxDist: `boolean`
+            Wether the currently known maximum distance should be used during the revision process. By default, set to `True`.
+            
         Returns
         -------
         Fraction
@@ -114,6 +118,8 @@ class Revision:
             Result of the knowledge revison of \(\psi\) by \(\mu\).
         """
 
+        self.__withMaxDist = withMaxDist
+
         self.__timeStart = time.perf_counter()
 
         if len(self.__e2bConstraints) >= 1:
@@ -122,11 +128,23 @@ class Revision:
 
         if self.__verbose:
             print("\n" + self.__getTime(), "Transforming Psi in DNF form")
-        psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
+
+        if withTableaux:
+            psiDNF = psi.toDNFWithTableaux().toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            if not psiDNF:
+                raise(AttributeError("Psi is not satisfiable"))
+        else:
+            psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
 
         if self.__verbose:
             print("\n" + self.__getTime(), "Transforming Mu in DNF form")
-        muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
+
+        if withTableaux:
+            muDNF = mu.toDNFWithTableaux().toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            if not muDNF:
+                raise(AttributeError("Mu is not satisfiable"))
+        else:
+            muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
 
         res = self.__executeDNF(self.__convertExplicit(psiDNF), self.__convertExplicit(muDNF))
 
@@ -191,9 +209,14 @@ class Revision:
                         # print("-----------------")
                         # print("miniPsi:", miniPsi)
                         # print("miniMu:", miniMu)
-                        lit = self.__executeLiteral(miniPsi, miniMu)
+                        if self.__withMaxDist:      
+                            lit = self.__executeLiteral(miniPsi, miniMu, disRes)
+                        else:
+                            lit = self.__executeLiteral(miniPsi, miniMu)
 
-                        if self.__interpreter.sat(lit[1]):
+                        if lit is None:
+                            pass
+                        elif self.__interpreter.sat(lit[1]):
 
                             if not (lit[0] is None):
                                 if (disRes is None):
@@ -222,9 +245,14 @@ class Revision:
 
                 for miniPsi in satPsi:
                     for miniMu in satMu:
-                                            
-                        lit = self.__executeLiteral(miniPsi, miniMu)
+
+                        if self.__withMaxDist:      
+                            lit = self.__executeLiteral(miniPsi, miniMu, disRes)
+                        else:
+                            lit = self.__executeLiteral(miniPsi, miniMu)
                         
+                        if lit is None:
+                            pass
                         if not (lit[0] is None):
                             if (disRes is None):
                                 disRes = lit[0]
@@ -245,12 +273,17 @@ class Revision:
 
         return (disRes, self.__interpreter.simplifyMLC(res.toLessOrEqConstraint().toDNF()))
     
-    def __executeLiteral(self, psi: Formula, mu: Formula) -> tuple[Fraction, Formula]:
+    def __executeLiteral(self, psi: Formula, mu: Formula, maxDist: Fraction = None) -> tuple[Fraction, Formula]:
         
+        from . import InfeasableException
+
         epsilon = self.__distance._epsilon
 
         # second step: find dStar (and psiPrime if onlyOneSoltuion)
-        dStar, psiPrime = self.__executeConstraint(self.__interpreter.removeNot(psi), self.__interpreter.removeNot(mu))
+        try:
+            dStar, psiPrime = self.__executeConstraint(self.__interpreter.removeNot(psi), self.__interpreter.removeNot(mu), maxDist)
+        except InfeasableException as e:
+            return None
 
         # third step: lambdaEpsilon
         if dStar % epsilon == 0:
@@ -267,7 +300,10 @@ class Revision:
         if dStar % epsilon != 0:
             # print("dStar % epsilon != 0")
             if self._onlyOneSolution & (not self.__interpreter.sat(psiPrime & mu)):
-                psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon)[1]
+                try:
+                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
+                except InfeasableException as e:
+                    return None
             # print("psiPrime2:", psiPrime)
             return (lambdaEpsilon, psiPrime & mu)
         elif self.__interpreter.sat(psiPrime & mu):
@@ -276,14 +312,17 @@ class Revision:
             # print("else")
             lambdaEpsilon = dStar + epsilon
             if (self._onlyOneSolution):
-                psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon)[1]
+                try:
+                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
+                except InfeasableException as e:
+                    return None
             else:
                 psiPrime = self.__expand(psi, lambdaEpsilon)
             # print("psiPrime2:", psiPrime)
             return(dStar, psiPrime & mu)
     
-    def __executeConstraint(self, phi: Formula, mu: Formula) -> tuple[Fraction, Formula]:
-        return self.__interpreter.optimizeCouple(phi, mu)
+    def __executeConstraint(self, phi: Formula, mu: Formula, maxDist: Fraction) -> tuple[Fraction, Formula]:
+        return self.__interpreter.optimizeCouple(phi, mu, maxDist)
     
     def __convertExplicit(self, phi: Formula) -> Formula:
         

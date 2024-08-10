@@ -5,13 +5,16 @@ Main class of the module, allowing the user to make the adaptation between two `
 
 from __future__ import annotations
 
-from .formula import Formula
+from .formula import Formula, And
 from .mlo_solver import MLOSolver
 from .distance import DistanceFunction
 from .constants import Constants
 from .simplificator import Simplificator
 from .projector import Projector
 from .revision import Revision
+from .domainKnowledge import DomainKnowledge
+
+from .constants import Constants
 
 class Adaptation:
     r"""
@@ -55,7 +58,8 @@ class Adaptation:
 
         self.__revision.preload()
 
-    def execute(self, srce_case : Formula, trgt : Formula, dk : Formula):
+    def execute(self, srce_case : Formula, trgt : Formula, domainKnowledge: dict[str, DomainKnowledge],\
+                domainKnowledgeInclusion: dict[str, bool] = {}, withTableaux: bool = True, withMaxDist: bool = True):
         r"""
         Execute the adaptation of \(srce_case\) by \(tgt_problem\), with the domain knowledge \(DK\).
 
@@ -65,9 +69,21 @@ class Adaptation:
             \(srce_case\), source case for the adaptation and `olaaaf.formula.formula.Formula` that will be adapted.
         tgt_problem : `olaaaf.formula.formula.Formula`
             \(tgt_problem\), target problem for the adaptation and `olaaaf.formula.formula.Formula` that will be used to adapt \(srce_case\) by.
-        dk : `olaaaf.formula.formula.Formula`
-            \(DK\), the domain knowledge.
-
+        domainKnowledge : `dict[str, olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge]`
+            \(DK\), the domain knowledges to use.
+            Currently, the only officialy supported keys are "conversion", "existence", "taxonomy" and "miscellanous",
+            corresponding to their eponym object from `olaaaf.domainKnowledge`.
+            The order on which the domain knowledges are given in this dictionary is the order in which they will be used for the inference process.
+            Therefore, it is heavily recommended to have the domain knowledge in the following order: "conversion", "existence", "taxonomy" and "miscellanous".
+        domainKnowledgeInclusion : `dict[str, boolean]`
+            Wether the corresponding domain knowledge should be used in the knowledge revision process.
+            By default, all domain knowledge are used.
+            Removing specific domain knowledges from this process will result in faster computation time, but might affect the result.
+        withTableaux: `boolean`
+            Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to `True`.
+        withMaxDist: `boolean`
+            Wether the currently known maximum distance should be used during the revision process. By default, set to `True`.
+            
         Returns
         -------
         Fraction
@@ -77,4 +93,20 @@ class Adaptation:
             Result of the adaptation of \(srce_case\) by \(tgt_problem\).
         """
 
-        return self.__revision.execute(srce_case & dk, trgt & dk)
+        dkSet = set()
+
+        # Populate domainKnowledgeInclusion with default values for non filled keys
+        for key, value in Constants.DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT.items():
+            if domainKnowledgeInclusion.get(key) is None:
+                domainKnowledgeInclusion[key] = value
+
+        for key, dk in domainKnowledge.items():
+            srce_case = dk.inferFrom(srce_case)
+            trgt = dk.inferFrom(trgt)
+
+            if domainKnowledgeInclusion[key]:
+                dkSet.add(dk.toConstraints())
+
+        dk = And(*dkSet)
+
+        return self.__revision.execute(srce_case & dk, trgt & dk, withTableaux=withTableaux, withMaxDist=withMaxDist)

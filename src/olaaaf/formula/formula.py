@@ -101,7 +101,7 @@ class Formula(ABC):
         pass
     
     @abstractmethod
-    def toLessOrEqConstraint(self):
+    def toLessOrEqConstraint(self) -> Formula:
         '''
         Method used to transform a `olaaaf.formula.formula.Formula` into another one, with only `olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.LEQ` constraints.
 
@@ -132,7 +132,78 @@ class Formula(ABC):
     @abstractmethod
     def _toPCMLCNeg(self, varDict) -> Formula:
         pass
-        
+
+    def toDNFWithTableaux(self) -> Formula:
+        '''
+        Method returning the current Formula in Disjunctive Normal Form, using analytic tableaux to prune
+        a part of the unsatisfiable branches, or `None` if the whole `olaaaf.formula.formula.Formula` is unsatisfiable.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The current `olaaaf.formula.formula.Formula` in Disjunctive Normal Form, with pruned branches,
+            or `None` if the whole `olaaaf.formula.formula.Formula` is unsatisfiable.
+        '''
+
+        from .naryFormula import Or, And
+
+        orList = list()
+
+        branchesList = self._getBranches()
+
+        # Eveything is unsatisfiable
+        if not branchesList:
+            return None
+
+        for branch in branchesList:
+            
+            andList = list()
+
+            for atom, isNotNeg in branch.items():
+                if isNotNeg:
+                    andList.append(atom)
+                else:
+                    andList.append(~atom)
+
+            orList.append(And(*andList))
+
+        return(Or(*orList))
+
+    @abstractmethod
+    def _getBranches(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+
+        pass
+
+    @abstractmethod 
+    def _getBranchesNeg(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+        Used when a Negation is in play instead of `_getBranches()`.
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+
+        pass
+    
     def clone(self) -> Formula:
         """
         Method returning a clone of the current Formula.
@@ -154,7 +225,7 @@ class Formula(ABC):
             return self.children == o.children
         
     def __hash__(self):
-        return hash(frozenset(self.children))
+        return id(self)
     
     @abstractmethod
     def __str__(self):

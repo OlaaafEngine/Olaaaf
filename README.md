@@ -5,12 +5,20 @@ Olaaaf is a general adaptation prototype based on belief revision whose long-ter
 
 ## Table of Contents
 
+- [Migration](#migration)
 - [Dependencies](#dependencies)
 - [Usage](#usage)
 - [Examples](#examples)
 - [Video Demonstration](#video-demonstration)
 - [Documentation](#documentation)
 - [License](#license)
+
+## Migration
+
+As of august 2024, the v2 of Olaaaf came out and with it came some breaking changes. Mainly, the arguments of ``Adaptation.execute()`` changed to offer a more in-depth support for domain knowledges.
+Although it is recommended to use the specific domain knowledges classes when applicable, the only step necessary to convert a Olaaaf v1 code to work with Olaaaf v2, is to change the ``dk`` argument in ``Adaptation.execute(psi, mu, dk)`` to a miscellanous domain knowledge like so ``Adaptation.execute(psi, mu, {"miscellanous": MiscellanousDomainKnowledge(dk)})``.
+
+See the document for this method and for the multiple domain knowledges classes for more information on the way they work.
 
 ## Dependencies
 
@@ -37,7 +45,7 @@ To install Olaaaf, first download the latest release [here](https://github.com/O
 Once downloaded, install the package using pip:
 
 ```
-pip install ./olaaaf-1.0.whl
+pip install ./olaaaf-2.0.whl
 ```
 
 Once installed, you can import olaaaf from anywhere like a standard Python package
