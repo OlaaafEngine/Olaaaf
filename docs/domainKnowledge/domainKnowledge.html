@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>olaaaf.simplificator API documentation</title>
-<meta name="description" content="Representation of simplification algorithms, used to simplify a conjunction of litterals
-(i.e …">
+<title>src.olaaaf.domainKnowledge.domainKnowledge API documentation</title>
+<meta name="description" content="Abstract class, representing a domain knowledge.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -25,35 +24,102 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>olaaaf.simplificator</code></h1>
+<h1 class="title">Module <code>src.olaaaf.domainKnowledge.domainKnowledge</code></h1>
 </header>
 <section id="section-intro">
-<p>Representation of simplification algorithms, used to simplify a conjunction of litterals
-(i.e <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="../formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code> or
-<code><a title="olaaaf.formula.unaryFormula.notOperator.Not" href="../formula/unaryFormula/notOperator.html#olaaaf.formula.unaryFormula.notOperator.Not">Not</a></code>).</p>
+<p>Abstract class, representing a domain knowledge.</p>
 </section>
 <section>
-<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt><code class="name"><a title="olaaaf.simplificator.caron" href="caron.html">olaaaf.simplificator.caron</a></code></dt>
+<dt id="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge"><code class="flex name class">
+<span>class <span class="ident">DomainKnowledge</span></span>
+</code></dt>
 <dd>
-<div class="desc"><p>Implementation of the Caron algorithm for simplification of conjunction of literals (i.e …</p></div>
+<div class="desc"><p>Abstract class, representing a domain knowledge.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DomainKnowledge(ABC):
+    &#34;&#34;&#34;
+    Abstract class, representing a domain knowledge.
+    &#34;&#34;&#34;
+    
+    @abstractmethod
+    def toConstraints(self) -&gt; Formula:
+        &#34;&#34;&#34;
+        Converts the domain knowledge object to constraints.
+        
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The formula representing the domain knowledges.
+        &#34;&#34;&#34;
+        pass
+
+    @abstractmethod
+    def inferFrom(self, psi: Formula) -&gt; Formula:
+        &#34;&#34;&#34;
+        Infer new knowledges from a given formula using the domain knowledges.
+
+        Parameters
+        ----------
+        psi: `olaaaf.formula.formula.Formula`
+            The formula to infer from.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The inferred formula.
+        &#34;&#34;&#34;
+        pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="src.olaaaf.domainKnowledge.conversionKnowledge.ConversionKnowledge" href="conversionKnowledge.html#src.olaaaf.domainKnowledge.conversionKnowledge.ConversionKnowledge">ConversionKnowledge</a></li>
+<li><a title="src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge" href="existenceKnowledge.html#src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge">ExistenceKnowledge</a></li>
+<li><a title="src.olaaaf.domainKnowledge.miscellanousDomainKnowledge.MiscellanousDomainKnowledge" href="miscellanousDomainKnowledge.html#src.olaaaf.domainKnowledge.miscellanousDomainKnowledge.MiscellanousDomainKnowledge">MiscellanousDomainKnowledge</a></li>
+<li><a title="src.olaaaf.domainKnowledge.taxonomy.Taxonomy" href="taxonomy.html#src.olaaaf.domainKnowledge.taxonomy.Taxonomy">Taxonomy</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.inferFrom"><code class="name flex">
+<span>def <span class="ident">inferFrom</span></span>(<span>self, psi: <a title="src.olaaaf.formula.formula.Formula" href="../formula/formula.html#src.olaaaf.formula.formula.Formula">Formula</a>) ‑> <a title="src.olaaaf.formula.formula.Formula" href="../formula/formula.html#src.olaaaf.formula.formula.Formula">Formula</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Infer new knowledges from a given formula using the domain knowledges.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>psi</code></strong> :&ensp;<code>olaaaf.formula.formula.Formula</code></dt>
+<dd>The formula to infer from.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p><code>olaaaf.formula.formula.Formula</code>
+The inferred formula.</p></div>
 </dd>
-<dt><code class="name"><a title="olaaaf.simplificator.daalmans" href="daalmans.html">olaaaf.simplificator.daalmans</a></code></dt>
+<dt id="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.toConstraints"><code class="name flex">
+<span>def <span class="ident">toConstraints</span></span>(<span>self) ‑> <a title="src.olaaaf.formula.formula.Formula" href="../formula/formula.html#src.olaaaf.formula.formula.Formula">Formula</a></span>
+</code></dt>
 <dd>
-<div class="desc"><p>Implementation of the Daalmans method for simplification of conjunction of literals (i.e …</p></div>
-</dd>
-<dt><code class="name"><a title="olaaaf.simplificator.simplificator" href="simplificator.html">olaaaf.simplificator.simplificator</a></code></dt>
-<dd>
-<div class="desc"><p>Abstract class, representing a simplificator of conjunction of litterals (i.e …</p></div>
+<div class="desc"><p>Converts the domain knowledge object to constraints.</p>
+<h2 id="returns">Returns</h2>
+<p><code>olaaaf.formula.formula.Formula</code>
+The formula representing the domain knowledges.</p></div>
 </dd>
 </dl>
-</section>
-<section>
-</section>
-<section>
-</section>
-<section>
+</dd>
+</dl>
 </section>
 </article>
 <nav id="sidebar">
@@ -63,14 +129,18 @@ hljs.highlightAll();
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="olaaaf" href="../index.html">olaaaf</a></code></li>
+<li><code><a title="src.olaaaf.domainKnowledge" href="index.html">src.olaaaf.domainKnowledge</a></code></li>
 </ul>
 </li>
-<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
-<li><code><a title="olaaaf.simplificator.caron" href="caron.html">olaaaf.simplificator.caron</a></code></li>
-<li><code><a title="olaaaf.simplificator.daalmans" href="daalmans.html">olaaaf.simplificator.daalmans</a></code></li>
-<li><code><a title="olaaaf.simplificator.simplificator" href="simplificator.html">olaaaf.simplificator.simplificator</a></code></li>
+<li>
+<h4><code><a title="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge" href="#src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge">DomainKnowledge</a></code></h4>
+<ul class="">
+<li><code><a title="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.inferFrom" href="#src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.inferFrom">inferFrom</a></code></li>
+<li><code><a title="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.toConstraints" href="#src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.toConstraints">toConstraints</a></code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

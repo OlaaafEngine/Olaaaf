@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>olaaaf.formula.unaryFormula.notOperator API documentation</title>
-<meta name="description" content="Class representing the Not operator.">
+<title>src.olaaaf.domainKnowledge.existenceKnowledge API documentation</title>
+<meta name="description" content="Class representing existence knowledges.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -24,10 +24,10 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>olaaaf.formula.unaryFormula.notOperator</code></h1>
+<h1 class="title">Module <code>src.olaaaf.domainKnowledge.existenceKnowledge</code></h1>
 </header>
 <section id="section-intro">
-<p>Class representing the Not operator.</p>
+<p>Class representing existence knowledges.</p>
 </section>
 <section>
 </section>
@@ -38,71 +38,138 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="olaaaf.formula.unaryFormula.notOperator.Not"><code class="flex name class">
-<span>class <span class="ident">Not</span></span>
-<span>(</span><span>formulaInit: Formula, fmName: str = None)</span>
+<dt id="src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge"><code class="flex name class">
+<span>class <span class="ident">ExistenceKnowledge</span></span>
+<span>(</span><span>existenceLinks: dict[<a title="src.olaaaf.formula.nullaryFormula.constraint.propositionalVariable.PropositionalVariable" href="../formula/nullaryFormula/constraint/propositionalVariable.html#src.olaaaf.formula.nullaryFormula.constraint.propositionalVariable.PropositionalVariable">PropositionalVariable</a>, <a title="src.olaaaf.variable.variable.Variable" href="../variable/variable.html#src.olaaaf.variable.variable.Variable">Variable</a>])</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing the Not operator.</p>
-<h2 id="attributes">Attributes</h2>
-<dl>
-<dt><strong><code>children</code></strong> :&ensp;<code><a title="olaaaf.formula.formula.Formula" href="../formula.html#olaaaf.formula.formula.Formula">Formula</a></code></dt>
-<dd>The child of the current node.</dd>
-</dl></div>
-<h3>Ancestors</h3>
-<ul class="hlist">
-<li><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula" href="unaryFormula.html#olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula">UnaryFormula</a></li>
-<li><a title="olaaaf.formula.formula.Formula" href="../formula.html#olaaaf.formula.formula.Formula">Formula</a></li>
-<li>abc.ABC</li>
-</ul>
-<h3>Methods</h3>
-<dl>
-<dt id="olaaaf.formula.unaryFormula.notOperator.Not.copyNegLitteral"><code class="name flex">
-<span>def <span class="ident">copyNegLitteral</span></span>(<span>self, epsilon=Fraction(0, 1)) ‑> <a title="olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="../nullaryFormula/constraint/constraint.html#olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a></span>
-</code></dt>
-<dd>
-<div class="desc"><p>Method used to transform the strict operators (i.e the negation) in an open one.</p>
+<div class="desc"><p>Class representing existence knowledges, i.e. knowledges linking a propositional variable to a numerical variable.</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
-<dt><strong><code>epsilon</code></strong> :&ensp;<code>Fraction</code>, optional</dt>
-<dd>The approximation for the removed Not. By default, equals <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code><a title="olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="../nullaryFormula/constraint/constraint.html#olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a></code></dt>
-<dd>The transformed <code><a title="olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="../nullaryFormula/constraint/constraint.html#olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a></code></dd>
+<dt><strong><code>existenceLinks</code></strong> :&ensp;<code>dict[PropositionalVariable, Variable]</code></dt>
+<dd>A dictionary linking a propositional variable to a numerical variable.</dd>
 </dl></div>
-</dd>
-<dt id="olaaaf.formula.unaryFormula.notOperator.Not.getAdherence"><code class="name flex">
-<span>def <span class="ident">getAdherence</span></span>(<span>self, var: Variable = None) ‑> list[list[<a title="olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="../nullaryFormula/constraint/constraint.html#olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a>]]</span>
-</code></dt>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ExistenceKnowledge(DomainKnowledge):
+    &#34;&#34;&#34;
+    Class representing existence knowledges, i.e. knowledges linking a propositional variable to a numerical variable.
+
+    Parameters
+    ----------
+    existenceLinks: `dict[PropositionalVariable, Variable]`
+        A dictionary linking a propositional variable to a numerical variable.
+    &#34;&#34;&#34;
+
+    existenceLinks: dict[PropositionalVariable, Variable] = dict()
+
+    def __init__(self, existenceLinks: dict[PropositionalVariable, Variable]) -&gt; None:
+
+        self.existenceLinks = existenceLinks
+
+    def toConstraints(self) -&gt; Formula:
+        &#34;&#34;&#34;
+        Converts the domain knowledge object to constraints.
+        
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The formula representing the domain knowledges.
+        &#34;&#34;&#34;
+
+        fmSet = set()
+
+        for k, v in self.existenceLinks.items():
+            
+            lc = LinearConstraint(&#34;&#34;)
+            lc.variables[v] = Fraction(1)
+            lc.operator = ConstraintOperator.LEQ
+            lc.bound = Fraction(0)
+
+            fmSet.add(k // ~lc)
+
+        return And(*fmSet)
+    
+    def inferFrom(self, psi: Formula) -&gt; Formula:
+        &#34;&#34;&#34;
+        Infer new knowledges from a given formula using the domain knowledges.
+
+        Parameters
+        ----------
+        psi: `olaaaf.formula.formula.Formula`
+            The formula to infer from.
+
+        Returns
+        -------
+        `olaaaf.formula.formula.Formula`
+            The inferred formula.
+        &#34;&#34;&#34;
+        
+        inferedChildren = set()
+
+        inversedEkLinks = {v: k for k, v in self.existenceLinks.items()}
+
+        if isinstance(psi, And):
+            
+            for c in psi.children:
+
+                if isinstance(c, LinearConstraint) and len(c.variables) == 1 and (c.operator == ConstraintOperator.EQ):
+                    try:
+                        if c.bound == Fraction(0):
+                            inferedChildren.add(~inversedEkLinks[list(c.variables.keys())[0]])
+                        else:
+                            inferedChildren.add(inversedEkLinks[list(c.variables.keys())[0]])
+                    except:
+                        pass
+                        
+                elif isinstance(c, Not) and isinstance(c.children, PropositionalVariable):
+                    try:
+                        inferedLc = LinearConstraint(&#34;&#34;)
+
+                        inferedLc.variables[self.existenceLinks[c.children]] = Fraction(1)
+                        inferedLc.operator = ConstraintOperator.EQ
+                        inferedLc.bound = Fraction(0)
+
+                        inferedChildren.add(inferedLc)
+                    except KeyError:
+                        pass
+                elif isinstance(c, PropositionalVariable):
+                    try:
+                        inferedLc = LinearConstraint(&#34;&#34;)
+                        
+                        inferedLc.variables[self.existenceLinks[c.children]] = Fraction(1)
+                        inferedLc.operator = ConstraintOperator.LEQ
+                        inferedLc.bound = Fraction(0)
+
+                        inferedChildren.add(~inferedLc)
+                    except KeyError:
+                        pass
+
+        if len(inferedChildren) != 0:
+            return psi &amp; And(*inferedChildren)
+        
+        return psi</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge" href="domainKnowledge.html#src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge">DomainKnowledge</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge.existenceLinks"><code class="name">var <span class="ident">existenceLinks</span> : dict[<a title="src.olaaaf.formula.nullaryFormula.constraint.propositionalVariable.PropositionalVariable" href="../formula/nullaryFormula/constraint/propositionalVariable.html#src.olaaaf.formula.nullaryFormula.constraint.propositionalVariable.PropositionalVariable">PropositionalVariable</a>, <a title="src.olaaaf.variable.variable.Variable" href="../variable/variable.html#src.olaaaf.variable.variable.Variable">Variable</a>]</code></dt>
 <dd>
-<div class="desc"><p>Returns a 2D list containing all the constraints of the adherence of
-the Formula, in Disjunctive Normal Form.</p>
-<h2 id="attributes">Attributes</h2>
-<dl>
-<dt><strong><code>var</code></strong> :&ensp;<code><a title="olaaaf.variable.variable.Variable" href="../../variable/variable.html#olaaaf.variable.variable.Variable">Variable</a></code></dt>
-<dd>variable used in case of inequality.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>list</code> of <code>list</code> of <code><a title="olaaaf.formula.nullaryFormula.constraint.constraint.Constraint" href="../nullaryFormula/constraint/constraint.html#olaaaf.formula.nullaryFormula.constraint.constraint.Constraint">Constraint</a></code></dt>
-<dd>2D list containing all the constraints of discute vraiment de l'implémentationthe adherence of the Formula,
-in Disjunctive Normal Form.</dd>
-</dl></div>
+<div class="desc"></div>
 </dd>
 </dl>
 <h3>Inherited members</h3>
 <ul class="hlist">
-<li><code><b><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula" href="unaryFormula.html#olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula">UnaryFormula</a></b></code>:
+<li><code><b><a title="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge" href="domainKnowledge.html#src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge">DomainKnowledge</a></b></code>:
 <ul class="hlist">
-<li><code><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.clone" href="../formula.html#olaaaf.formula.formula.Formula.clone">clone</a></code></li>
-<li><code><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.getVariables" href="unaryFormula.html#olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.getVariables">getVariables</a></code></li>
-<li><code><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.toDNF" href="../formula.html#olaaaf.formula.formula.Formula.toDNF">toDNF</a></code></li>
-<li><code><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.toDNFWithTableaux" href="../formula.html#olaaaf.formula.formula.Formula.toDNFWithTableaux">toDNFWithTableaux</a></code></li>
-<li><code><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.toLatex" href="../formula.html#olaaaf.formula.formula.Formula.toLatex">toLatex</a></code></li>
-<li><code><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.toLessOrEqConstraint" href="../formula.html#olaaaf.formula.formula.Formula.toLessOrEqConstraint">toLessOrEqConstraint</a></code></li>
-<li><code><a title="olaaaf.formula.unaryFormula.unaryFormula.UnaryFormula.toPCMLC" href="../formula.html#olaaaf.formula.formula.Formula.toPCMLC">toPCMLC</a></code></li>
+<li><code><a title="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.inferFrom" href="domainKnowledge.html#src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.inferFrom">inferFrom</a></code></li>
+<li><code><a title="src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.toConstraints" href="domainKnowledge.html#src.olaaaf.domainKnowledge.domainKnowledge.DomainKnowledge.toConstraints">toConstraints</a></code></li>
 </ul>
 </li>
 </ul>
@@ -117,16 +184,15 @@ in Disjunctive Normal Form.</dd>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="olaaaf.formula.unaryFormula" href="index.html">olaaaf.formula.unaryFormula</a></code></li>
+<li><code><a title="src.olaaaf.domainKnowledge" href="index.html">src.olaaaf.domainKnowledge</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="olaaaf.formula.unaryFormula.notOperator.Not" href="#olaaaf.formula.unaryFormula.notOperator.Not">Not</a></code></h4>
+<h4><code><a title="src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge" href="#src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge">ExistenceKnowledge</a></code></h4>
 <ul class="">
-<li><code><a title="olaaaf.formula.unaryFormula.notOperator.Not.copyNegLitteral" href="#olaaaf.formula.unaryFormula.notOperator.Not.copyNegLitteral">copyNegLitteral</a></code></li>
-<li><code><a title="olaaaf.formula.unaryFormula.notOperator.Not.getAdherence" href="#olaaaf.formula.unaryFormula.notOperator.Not.getAdherence">getAdherence</a></code></li>
+<li><code><a title="src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge.existenceLinks" href="#src.olaaaf.domainKnowledge.existenceKnowledge.ExistenceKnowledge.existenceLinks">existenceLinks</a></code></li>
 </ul>
 </li>
 </ul>
