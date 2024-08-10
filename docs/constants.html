@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.10.0" />
-<title>olaaaf.constants API documentation</title>
-<meta name="description" content="Class storing all global variables, allowing the user to easily customise the program to their liking." />
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
-<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
-<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>src.olaaaf.constants API documentation</title>
+<meta name="description" content="Class storing all global variables, allowing the user to easily customise the program to their liking.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
-<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
 </head>
 <body>
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>olaaaf.constants</code></h1>
+<h1 class="title">Module <code>src.olaaaf.constants</code></h1>
 </header>
 <section id="section-intro">
 <p>Class storing all global variables, allowing the user to easily customise the program to their liking.</p>
@@ -34,134 +38,206 @@
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="olaaaf.constants.Constants"><code class="flex name class">
+<dt id="src.olaaaf.constants.Constants"><code class="flex name class">
 <span>class <span class="ident">Constants</span></span>
 </code></dt>
 <dd>
 <div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Constants():
+
+
+    ONLY_ONE_SOLUTION = True
+    &#34;&#34;&#34;
+    If set to `True`, the revision algorithm will by default only return one point that satisfies \(\psi \circ \mu\).
+    If not, it will return all solutions.
+    By default, this constant is set to `True`.
+
+    Note that this only change the default value of the `onlyOneSolution` parameter of `olaaaf.revision.Revision`, it could still be changed
+    on a case-by-case basis for every new instance of this class.
+    &#34;&#34;&#34;
+
+    SET_VERBOSE = True #: Select the default value for the verbose display of the algorithm.
+    DISPLAY_DEPENDENCIES_WARNING = False #: Choose to display dependencies warning for optional packages.
+
+    # ---------------------------------------------------
+    # Default values for domain knowledge inclusion
+    DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT = {&#34;conversion&#34;: True,
+                                          &#34;existence&#34;: True,
+                                          &#34;taxonomy&#34;: True,
+                                          &#34;miscellanous&#34;: True}
+
+    # ---------------------------------------------------
+    # Operator used in `olaaaf.formula.formulaManager.FormulaManager.parser`.
+
+    AND_PARSER_OPERATOR = &#34;&amp;&#34; #: Value for the operator used in `olaaaf.formula.formulaManager.FormulaManager.parser` for the `olaaaf.formula.naryFormula.andOperator.And` operator, defaulted as `&amp;`.
+    OR_PARSER_OPERATOR = &#34;|&#34; #: Value for the operator used in `olaaaf.formula.formulaManager.FormulaManager.parser` for the `olaaaf.formula.naryFormula.orOperator.Or` operator, defaulted as `|`.
+    NOT_PARSER_OPERATOR = &#34;~&#34; #: Value for the operator used in `olaaaf.formula.formulaManager.FormulaManager.parser` for the `olaaaf.formula.unaryFormula.notOperator.Not` operator, defaulted as `~`.
+    XOR_PARSER_OPERATOR = &#34;&lt;+&gt;&#34; #: Value for the operator used in `olaaaf.formula.formulaManager.FormulaManager.parser` for the `olaaaf.formula.binaryFormula.xorOperator.Xor` operator, defaulted as `&lt;+&gt;`.
+    IMPLICATION_PARSER_OPERATOR = &#34;-&gt;&#34; #: Value for the operator used in `olaaaf.formula.formulaManager.FormulaManager.parser` for the `olaaaf.formula.binaryFormula.implicationOperator.Implication` operator, defaulted as `-&gt;`.
+    EQUIVALENCE_PARSER_OPERATOR = &#34;&lt;-&gt;&#34; #: Value for the operator used in `olaaaf.formula.formulaManager.FormulaManager.parser` for the `olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence` operator, defaulted as `&lt;-&gt;`.
+
+    # ---------------------------------------------------
+    # Display-only constants
+
+    LINEAR_CONSTRAINT_STRING_DISPLAY_MULT = True
+    &#34;&#34;&#34;
+    If set to `True`, the string display of a `olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint` will put
+    multiplicaiton signs between each variable and their coefficient.
+    By default, this constant is set to `True`.\n
+    &#34;&#34;&#34;
+
+    AND_STRING_OPERATOR = &#34;&amp;&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.naryFormula.andOperator.And` operator, defaulted as `&amp;`.
+    OR_STRING_OPERATOR = &#34;|&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.naryFormula.orOperator.Or` operator, defaulted as `|`.
+    NOT_STRING_OPERATOR = &#34;~&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.unaryFormula.notOperator.Not` operator, defaulted as `~`.
+    XOR_STRING_OPERATOR = &#34;XOR&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.binaryFormula.xorOperator.Xor` operator, defaulted as `XOR`.
+    IMPLICATION_STRING_OPERATOR = &#34;-&gt;&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.binaryFormula.implicationOperator.Implication` operator, defaulted as `-&gt;`.
+    EQUIVALENCE_STRING_OPERATOR = &#34;&lt;-&gt;&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence` operator, defaulted as `&lt;-&gt;`.
+    TOP_STRING_OPERATOR = &#34;TOP&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.nullaryFormula.top.Top` operator, defaulted as `TOP`.
+    BOTTOM_STRING_OPERATOR = &#34;BOT&#34; #: Value for the operator used in `olaaaf.formula.formula.Formula`&#39;s string display for the `olaaaf.formula.nullaryFormula.bottom.Bottom` operator, defaulted as `BOT`.
+
+    AND_LATEX_OPERATOR = &#34;\\land&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.naryFormula.andOperator.And` operator, defaulted as `\land`.
+    OR_LATEX_OPERATOR = &#34;\\lor&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.naryFormula.orOperator.Or` operator, defaulted as `\lor`.
+    NOT_LATEX_OPERATOR = &#34;\\lnot&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.unaryFormula.notOperator.Not` operator, defaulted as `\lnot`.
+    XOR_LATEX_OPERATOR = &#34;\\oplus&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.binaryFormula.xorOperator.Xor` operator, defaulted as `\oplus`.
+    IMPLICATION_LATEX_OPERATOR = &#34;\\rightarrow&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.binaryFormula.implicationOperator.Implication` operator, defaulted as `\rightarrow`.
+    EQUIVALENCE_LATEX_OPERATOR = &#34;\\leftrightarrow&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence` operator, defaulted as `\leftrightarrow`.
+    TOP_LATEX_OPERATOR = &#34;\\top&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.nullaryFormula.top.Top` operator, defaulted as `\top`.
+    BOTTOM_LATEX_OPERATOR = &#34;\\bot&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.nullaryFormula.bottom.Bottom` operator, defaulted as `\bot`.
+    EQ_LATEX_OPERATOR = &#34;=&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.EQ` operator, defaulted as `=`.
+    LEQ_LATEX_OPERATOR = &#34;\\leqslant&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.LEQ` operator, defaulted as `\leqslant`.
+    GEQ_LATEX_OPERATOR = &#34;\\geqslant&#34; #: Value for the operator used in ``olaaaf.formula.formula.Formula`.toLatex` for the `olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.GEQ` operator, defaulted as `\geqslant`.</code></pre>
+</details>
 <h3>Class variables</h3>
 <dl>
-<dt id="olaaaf.constants.Constants.AND_LATEX_OPERATOR"><code class="name">var <span class="ident">AND_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.AND_LATEX_OPERATOR"><code class="name">var <span class="ident">AND_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.naryFormula.andOperator.And&lt;code&gt; operator, defaulted as &lt;/code&gt;\land</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.naryFormula.andOperator.And&lt;code&gt; operator, defaulted as &lt;/code&gt;\land</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.AND_PARSER_OPERATOR"><code class="name">var <span class="ident">AND_PARSER_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.AND_PARSER_OPERATOR"><code class="name">var <span class="ident">AND_PARSER_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formulaManager.FormulaManager.parser" href="formula/formulaManager.html#olaaaf.formula.formulaManager.FormulaManager.parser">FormulaManager.parser()</a></code> for the <code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code> operator, defaulted as <code>&amp;</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formulaManager.FormulaManager.parser</code> for the <code>olaaaf.formula.naryFormula.andOperator.And</code> operator, defaulted as <code>&amp;</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.AND_STRING_OPERATOR"><code class="name">var <span class="ident">AND_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.AND_STRING_OPERATOR"><code class="name">var <span class="ident">AND_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.naryFormula.andOperator.And" href="formula/naryFormula/andOperator.html#olaaaf.formula.naryFormula.andOperator.And">And</a></code> operator, defaulted as <code>&amp;</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.naryFormula.andOperator.And</code> operator, defaulted as <code>&amp;</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.BOTTOM_LATEX_OPERATOR"><code class="name">var <span class="ident">BOTTOM_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.BOTTOM_LATEX_OPERATOR"><code class="name">var <span class="ident">BOTTOM_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.bottom.Bottom&lt;code&gt; operator, defaulted as &lt;/code&gt;\bot</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.bottom.Bottom&lt;code&gt; operator, defaulted as &lt;/code&gt;\bot</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.BOTTOM_STRING_OPERATOR"><code class="name">var <span class="ident">BOTTOM_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.BOTTOM_STRING_OPERATOR"><code class="name">var <span class="ident">BOTTOM_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.nullaryFormula.bottom.Bottom" href="formula/nullaryFormula/bottom.html#olaaaf.formula.nullaryFormula.bottom.Bottom">Bottom</a></code> operator, defaulted as <code>BOT</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.nullaryFormula.bottom.Bottom</code> operator, defaulted as <code>BOT</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.DISPLAY_DEPENDENCIES_WARNING"><code class="name">var <span class="ident">DISPLAY_DEPENDENCIES_WARNING</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.DISPLAY_DEPENDENCIES_WARNING"><code class="name">var <span class="ident">DISPLAY_DEPENDENCIES_WARNING</span></code></dt>
 <dd>
 <div class="desc"><p>Choose to display dependencies warning for optional packages.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.EQUIVALENCE_LATEX_OPERATOR"><code class="name">var <span class="ident">EQUIVALENCE_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT"><code class="name">var <span class="ident">DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence&lt;code&gt; operator, defaulted as &lt;/code&gt;\leftrightarrow</code>.</p></div>
+<div class="desc"></div>
 </dd>
-<dt id="olaaaf.constants.Constants.EQUIVALENCE_PARSER_OPERATOR"><code class="name">var <span class="ident">EQUIVALENCE_PARSER_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.EQUIVALENCE_LATEX_OPERATOR"><code class="name">var <span class="ident">EQUIVALENCE_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formulaManager.FormulaManager.parser" href="formula/formulaManager.html#olaaaf.formula.formulaManager.FormulaManager.parser">FormulaManager.parser()</a></code> for the <code><a title="olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence" href="formula/binaryFormula/equivalenceOperator.html#olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence">Equivalence</a></code> operator, defaulted as <code>&lt;-&gt;</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence&lt;code&gt; operator, defaulted as &lt;/code&gt;\leftrightarrow</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.EQUIVALENCE_STRING_OPERATOR"><code class="name">var <span class="ident">EQUIVALENCE_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.EQUIVALENCE_PARSER_OPERATOR"><code class="name">var <span class="ident">EQUIVALENCE_PARSER_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence" href="formula/binaryFormula/equivalenceOperator.html#olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence">Equivalence</a></code> operator, defaulted as <code>&lt;-&gt;</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formulaManager.FormulaManager.parser</code> for the <code>olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence</code> operator, defaulted as <code>&lt;-&gt;</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.EQ_LATEX_OPERATOR"><code class="name">var <span class="ident">EQ_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.EQUIVALENCE_STRING_OPERATOR"><code class="name">var <span class="ident">EQUIVALENCE_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.EQ&lt;code&gt; operator, defaulted as &lt;/code&gt;=</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.binaryFormula.equivalenceOperator.Equivalence</code> operator, defaulted as <code>&lt;-&gt;</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.GEQ_LATEX_OPERATOR"><code class="name">var <span class="ident">GEQ_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.EQ_LATEX_OPERATOR"><code class="name">var <span class="ident">EQ_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.GEQ&lt;code&gt; operator, defaulted as &lt;/code&gt;\geqslant</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.EQ&lt;code&gt; operator, defaulted as &lt;/code&gt;=</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.IMPLICATION_LATEX_OPERATOR"><code class="name">var <span class="ident">IMPLICATION_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.GEQ_LATEX_OPERATOR"><code class="name">var <span class="ident">GEQ_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.binaryFormula.implicationOperator.Implication&lt;code&gt; operator, defaulted as &lt;/code&gt;\rightarrow</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.GEQ&lt;code&gt; operator, defaulted as &lt;/code&gt;\geqslant</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.IMPLICATION_PARSER_OPERATOR"><code class="name">var <span class="ident">IMPLICATION_PARSER_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.IMPLICATION_LATEX_OPERATOR"><code class="name">var <span class="ident">IMPLICATION_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formulaManager.FormulaManager.parser" href="formula/formulaManager.html#olaaaf.formula.formulaManager.FormulaManager.parser">FormulaManager.parser()</a></code> for the <code><a title="olaaaf.formula.binaryFormula.implicationOperator.Implication" href="formula/binaryFormula/implicationOperator.html#olaaaf.formula.binaryFormula.implicationOperator.Implication">Implication</a></code> operator, defaulted as <code>-&gt;</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.binaryFormula.implicationOperator.Implication&lt;code&gt; operator, defaulted as &lt;/code&gt;\rightarrow</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.IMPLICATION_STRING_OPERATOR"><code class="name">var <span class="ident">IMPLICATION_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.IMPLICATION_PARSER_OPERATOR"><code class="name">var <span class="ident">IMPLICATION_PARSER_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.binaryFormula.implicationOperator.Implication" href="formula/binaryFormula/implicationOperator.html#olaaaf.formula.binaryFormula.implicationOperator.Implication">Implication</a></code> operator, defaulted as <code>-&gt;</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formulaManager.FormulaManager.parser</code> for the <code>olaaaf.formula.binaryFormula.implicationOperator.Implication</code> operator, defaulted as <code>-&gt;</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.LEQ_LATEX_OPERATOR"><code class="name">var <span class="ident">LEQ_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.IMPLICATION_STRING_OPERATOR"><code class="name">var <span class="ident">IMPLICATION_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.LEQ&lt;code&gt; operator, defaulted as &lt;/code&gt;\leqslant</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.binaryFormula.implicationOperator.Implication</code> operator, defaulted as <code>-&gt;</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.LINEAR_CONSTRAINT_STRING_DISPLAY_MULT"><code class="name">var <span class="ident">LINEAR_CONSTRAINT_STRING_DISPLAY_MULT</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.LEQ_LATEX_OPERATOR"><code class="name">var <span class="ident">LEQ_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>If set to <code>True</code>, the string display of a <code><a title="olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint" href="formula/nullaryFormula/constraint/linearConstraint.html#olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint">LinearConstraint</a></code> will put
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.constraint.constraintOperator.ConstraintOperator.LEQ&lt;code&gt; operator, defaulted as &lt;/code&gt;\leqslant</code>.</p></div>
+</dd>
+<dt id="src.olaaaf.constants.Constants.LINEAR_CONSTRAINT_STRING_DISPLAY_MULT"><code class="name">var <span class="ident">LINEAR_CONSTRAINT_STRING_DISPLAY_MULT</span></code></dt>
+<dd>
+<div class="desc"><p>If set to <code>True</code>, the string display of a <code>olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint</code> will put
 multiplicaiton signs between each variable and their coefficient.
 By default, this constant is set to <code>True</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.NOT_LATEX_OPERATOR"><code class="name">var <span class="ident">NOT_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.NOT_LATEX_OPERATOR"><code class="name">var <span class="ident">NOT_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.unaryFormula.notOperator.Not&lt;code&gt; operator, defaulted as &lt;/code&gt;\lnot</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.unaryFormula.notOperator.Not&lt;code&gt; operator, defaulted as &lt;/code&gt;\lnot</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.NOT_PARSER_OPERATOR"><code class="name">var <span class="ident">NOT_PARSER_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.NOT_PARSER_OPERATOR"><code class="name">var <span class="ident">NOT_PARSER_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formulaManager.FormulaManager.parser" href="formula/formulaManager.html#olaaaf.formula.formulaManager.FormulaManager.parser">FormulaManager.parser()</a></code> for the <code><a title="olaaaf.formula.unaryFormula.notOperator.Not" href="formula/unaryFormula/notOperator.html#olaaaf.formula.unaryFormula.notOperator.Not">Not</a></code> operator, defaulted as <code>~</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formulaManager.FormulaManager.parser</code> for the <code>olaaaf.formula.unaryFormula.notOperator.Not</code> operator, defaulted as <code>~</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.NOT_STRING_OPERATOR"><code class="name">var <span class="ident">NOT_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.NOT_STRING_OPERATOR"><code class="name">var <span class="ident">NOT_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.unaryFormula.notOperator.Not" href="formula/unaryFormula/notOperator.html#olaaaf.formula.unaryFormula.notOperator.Not">Not</a></code> operator, defaulted as <code>~</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.unaryFormula.notOperator.Not</code> operator, defaulted as <code>~</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.ONLY_ONE_SOLUTION"><code class="name">var <span class="ident">ONLY_ONE_SOLUTION</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.ONLY_ONE_SOLUTION"><code class="name">var <span class="ident">ONLY_ONE_SOLUTION</span></code></dt>
 <dd>
 <div class="desc"><p>If set to <code>True</code>, the revision algorithm will by default only return one point that satisfies <span><span class="MathJax_Preview">\psi \circ \mu</span><script type="math/tex">\psi \circ \mu</script></span>.
 If not, it will return all solutions.
 By default, this constant is set to <code>True</code>.</p>
-<p>Note that this only change the default value of the <code>onlyOneSolution</code> parameter of <code><a title="olaaaf.revision.Revision" href="revision.html#olaaaf.revision.Revision">Revision</a></code>, it could still be changed
+<p>Note that this only change the default value of the <code>onlyOneSolution</code> parameter of <code>olaaaf.revision.Revision</code>, it could still be changed
 on a case-by-case basis for every new instance of this class.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.OR_LATEX_OPERATOR"><code class="name">var <span class="ident">OR_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.OR_LATEX_OPERATOR"><code class="name">var <span class="ident">OR_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.naryFormula.orOperator.Or&lt;code&gt; operator, defaulted as &lt;/code&gt;\lor</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.naryFormula.orOperator.Or&lt;code&gt; operator, defaulted as &lt;/code&gt;\lor</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.OR_PARSER_OPERATOR"><code class="name">var <span class="ident">OR_PARSER_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.OR_PARSER_OPERATOR"><code class="name">var <span class="ident">OR_PARSER_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formulaManager.FormulaManager.parser" href="formula/formulaManager.html#olaaaf.formula.formulaManager.FormulaManager.parser">FormulaManager.parser()</a></code> for the <code><a title="olaaaf.formula.naryFormula.orOperator.Or" href="formula/naryFormula/orOperator.html#olaaaf.formula.naryFormula.orOperator.Or">Or</a></code> operator, defaulted as <code>|</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formulaManager.FormulaManager.parser</code> for the <code>olaaaf.formula.naryFormula.orOperator.Or</code> operator, defaulted as <code>|</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.OR_STRING_OPERATOR"><code class="name">var <span class="ident">OR_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.OR_STRING_OPERATOR"><code class="name">var <span class="ident">OR_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.naryFormula.orOperator.Or" href="formula/naryFormula/orOperator.html#olaaaf.formula.naryFormula.orOperator.Or">Or</a></code> operator, defaulted as <code>|</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.naryFormula.orOperator.Or</code> operator, defaulted as <code>|</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.SET_VERBOSE"><code class="name">var <span class="ident">SET_VERBOSE</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.SET_VERBOSE"><code class="name">var <span class="ident">SET_VERBOSE</span></code></dt>
 <dd>
 <div class="desc"><p>Select the default value for the verbose display of the algorithm.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.TOP_LATEX_OPERATOR"><code class="name">var <span class="ident">TOP_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.TOP_LATEX_OPERATOR"><code class="name">var <span class="ident">TOP_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.top.Top&lt;code&gt; operator, defaulted as &lt;/code&gt;\top</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.nullaryFormula.top.Top&lt;code&gt; operator, defaulted as &lt;/code&gt;\top</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.TOP_STRING_OPERATOR"><code class="name">var <span class="ident">TOP_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.TOP_STRING_OPERATOR"><code class="name">var <span class="ident">TOP_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.nullaryFormula.top.Top" href="formula/nullaryFormula/top.html#olaaaf.formula.nullaryFormula.top.Top">Top</a></code> operator, defaulted as <code>TOP</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.nullaryFormula.top.Top</code> operator, defaulted as <code>TOP</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.XOR_LATEX_OPERATOR"><code class="name">var <span class="ident">XOR_LATEX_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.XOR_LATEX_OPERATOR"><code class="name">var <span class="ident">XOR_LATEX_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><code>&lt;a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula"&gt;Formula&lt;/a&gt;&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.binaryFormula.xorOperator.Xor&lt;code&gt; operator, defaulted as &lt;/code&gt;\oplus</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code><code>olaaaf.formula.formula.Formula&lt;/code&gt;.toLatex&lt;code&gt; for the &lt;/code&gt;olaaaf.formula.binaryFormula.xorOperator.Xor&lt;code&gt; operator, defaulted as &lt;/code&gt;\oplus</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.XOR_PARSER_OPERATOR"><code class="name">var <span class="ident">XOR_PARSER_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.XOR_PARSER_OPERATOR"><code class="name">var <span class="ident">XOR_PARSER_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formulaManager.FormulaManager.parser" href="formula/formulaManager.html#olaaaf.formula.formulaManager.FormulaManager.parser">FormulaManager.parser()</a></code> for the <code><a title="olaaaf.formula.binaryFormula.xorOperator.Xor" href="formula/binaryFormula/xorOperator.html#olaaaf.formula.binaryFormula.xorOperator.Xor">Xor</a></code> operator, defaulted as <code>&lt;+&gt;</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formulaManager.FormulaManager.parser</code> for the <code>olaaaf.formula.binaryFormula.xorOperator.Xor</code> operator, defaulted as <code>&lt;+&gt;</code>.</p></div>
 </dd>
-<dt id="olaaaf.constants.Constants.XOR_STRING_OPERATOR"><code class="name">var <span class="ident">XOR_STRING_OPERATOR</span></code></dt>
+<dt id="src.olaaaf.constants.Constants.XOR_STRING_OPERATOR"><code class="name">var <span class="ident">XOR_STRING_OPERATOR</span></code></dt>
 <dd>
-<div class="desc"><p>Value for the operator used in <code><a title="olaaaf.formula.formula.Formula" href="formula/formula.html#olaaaf.formula.formula.Formula">Formula</a></code>'s string display for the <code><a title="olaaaf.formula.binaryFormula.xorOperator.Xor" href="formula/binaryFormula/xorOperator.html#olaaaf.formula.binaryFormula.xorOperator.Xor">Xor</a></code> operator, defaulted as <code>XOR</code>.</p></div>
+<div class="desc"><p>Value for the operator used in <code>olaaaf.formula.formula.Formula</code>'s string display for the <code>olaaaf.formula.binaryFormula.xorOperator.Xor</code> operator, defaulted as <code>XOR</code>.</p></div>
 </dd>
 </dl>
 </dd>
@@ -169,50 +245,50 @@ on a case-by-case basis for every new instance of this class.</p></div>
 </section>
 </article>
 <nav id="sidebar">
-<h1>Index</h1>
 <div class="toc">
 <ul></ul>
 </div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="olaaaf" href="index.html">olaaaf</a></code></li>
+<li><code><a title="src.olaaaf" href="index.html">src.olaaaf</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="olaaaf.constants.Constants" href="#olaaaf.constants.Constants">Constants</a></code></h4>
+<h4><code><a title="src.olaaaf.constants.Constants" href="#src.olaaaf.constants.Constants">Constants</a></code></h4>
 <ul class="">
-<li><code><a title="olaaaf.constants.Constants.AND_LATEX_OPERATOR" href="#olaaaf.constants.Constants.AND_LATEX_OPERATOR">AND_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.AND_PARSER_OPERATOR" href="#olaaaf.constants.Constants.AND_PARSER_OPERATOR">AND_PARSER_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.AND_STRING_OPERATOR" href="#olaaaf.constants.Constants.AND_STRING_OPERATOR">AND_STRING_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.BOTTOM_LATEX_OPERATOR" href="#olaaaf.constants.Constants.BOTTOM_LATEX_OPERATOR">BOTTOM_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.BOTTOM_STRING_OPERATOR" href="#olaaaf.constants.Constants.BOTTOM_STRING_OPERATOR">BOTTOM_STRING_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.DISPLAY_DEPENDENCIES_WARNING" href="#olaaaf.constants.Constants.DISPLAY_DEPENDENCIES_WARNING">DISPLAY_DEPENDENCIES_WARNING</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.EQUIVALENCE_LATEX_OPERATOR" href="#olaaaf.constants.Constants.EQUIVALENCE_LATEX_OPERATOR">EQUIVALENCE_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.EQUIVALENCE_PARSER_OPERATOR" href="#olaaaf.constants.Constants.EQUIVALENCE_PARSER_OPERATOR">EQUIVALENCE_PARSER_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.EQUIVALENCE_STRING_OPERATOR" href="#olaaaf.constants.Constants.EQUIVALENCE_STRING_OPERATOR">EQUIVALENCE_STRING_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.EQ_LATEX_OPERATOR" href="#olaaaf.constants.Constants.EQ_LATEX_OPERATOR">EQ_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.GEQ_LATEX_OPERATOR" href="#olaaaf.constants.Constants.GEQ_LATEX_OPERATOR">GEQ_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.IMPLICATION_LATEX_OPERATOR" href="#olaaaf.constants.Constants.IMPLICATION_LATEX_OPERATOR">IMPLICATION_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.IMPLICATION_PARSER_OPERATOR" href="#olaaaf.constants.Constants.IMPLICATION_PARSER_OPERATOR">IMPLICATION_PARSER_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.IMPLICATION_STRING_OPERATOR" href="#olaaaf.constants.Constants.IMPLICATION_STRING_OPERATOR">IMPLICATION_STRING_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.LEQ_LATEX_OPERATOR" href="#olaaaf.constants.Constants.LEQ_LATEX_OPERATOR">LEQ_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.LINEAR_CONSTRAINT_STRING_DISPLAY_MULT" href="#olaaaf.constants.Constants.LINEAR_CONSTRAINT_STRING_DISPLAY_MULT">LINEAR_CONSTRAINT_STRING_DISPLAY_MULT</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.NOT_LATEX_OPERATOR" href="#olaaaf.constants.Constants.NOT_LATEX_OPERATOR">NOT_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.NOT_PARSER_OPERATOR" href="#olaaaf.constants.Constants.NOT_PARSER_OPERATOR">NOT_PARSER_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.NOT_STRING_OPERATOR" href="#olaaaf.constants.Constants.NOT_STRING_OPERATOR">NOT_STRING_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.ONLY_ONE_SOLUTION" href="#olaaaf.constants.Constants.ONLY_ONE_SOLUTION">ONLY_ONE_SOLUTION</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.OR_LATEX_OPERATOR" href="#olaaaf.constants.Constants.OR_LATEX_OPERATOR">OR_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.OR_PARSER_OPERATOR" href="#olaaaf.constants.Constants.OR_PARSER_OPERATOR">OR_PARSER_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.OR_STRING_OPERATOR" href="#olaaaf.constants.Constants.OR_STRING_OPERATOR">OR_STRING_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.SET_VERBOSE" href="#olaaaf.constants.Constants.SET_VERBOSE">SET_VERBOSE</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.TOP_LATEX_OPERATOR" href="#olaaaf.constants.Constants.TOP_LATEX_OPERATOR">TOP_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.TOP_STRING_OPERATOR" href="#olaaaf.constants.Constants.TOP_STRING_OPERATOR">TOP_STRING_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.XOR_LATEX_OPERATOR" href="#olaaaf.constants.Constants.XOR_LATEX_OPERATOR">XOR_LATEX_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.XOR_PARSER_OPERATOR" href="#olaaaf.constants.Constants.XOR_PARSER_OPERATOR">XOR_PARSER_OPERATOR</a></code></li>
-<li><code><a title="olaaaf.constants.Constants.XOR_STRING_OPERATOR" href="#olaaaf.constants.Constants.XOR_STRING_OPERATOR">XOR_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.AND_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.AND_LATEX_OPERATOR">AND_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.AND_PARSER_OPERATOR" href="#src.olaaaf.constants.Constants.AND_PARSER_OPERATOR">AND_PARSER_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.AND_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.AND_STRING_OPERATOR">AND_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.BOTTOM_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.BOTTOM_LATEX_OPERATOR">BOTTOM_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.BOTTOM_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.BOTTOM_STRING_OPERATOR">BOTTOM_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.DISPLAY_DEPENDENCIES_WARNING" href="#src.olaaaf.constants.Constants.DISPLAY_DEPENDENCIES_WARNING">DISPLAY_DEPENDENCIES_WARNING</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT" href="#src.olaaaf.constants.Constants.DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT">DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.EQUIVALENCE_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.EQUIVALENCE_LATEX_OPERATOR">EQUIVALENCE_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.EQUIVALENCE_PARSER_OPERATOR" href="#src.olaaaf.constants.Constants.EQUIVALENCE_PARSER_OPERATOR">EQUIVALENCE_PARSER_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.EQUIVALENCE_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.EQUIVALENCE_STRING_OPERATOR">EQUIVALENCE_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.EQ_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.EQ_LATEX_OPERATOR">EQ_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.GEQ_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.GEQ_LATEX_OPERATOR">GEQ_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.IMPLICATION_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.IMPLICATION_LATEX_OPERATOR">IMPLICATION_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.IMPLICATION_PARSER_OPERATOR" href="#src.olaaaf.constants.Constants.IMPLICATION_PARSER_OPERATOR">IMPLICATION_PARSER_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.IMPLICATION_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.IMPLICATION_STRING_OPERATOR">IMPLICATION_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.LEQ_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.LEQ_LATEX_OPERATOR">LEQ_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.LINEAR_CONSTRAINT_STRING_DISPLAY_MULT" href="#src.olaaaf.constants.Constants.LINEAR_CONSTRAINT_STRING_DISPLAY_MULT">LINEAR_CONSTRAINT_STRING_DISPLAY_MULT</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.NOT_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.NOT_LATEX_OPERATOR">NOT_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.NOT_PARSER_OPERATOR" href="#src.olaaaf.constants.Constants.NOT_PARSER_OPERATOR">NOT_PARSER_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.NOT_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.NOT_STRING_OPERATOR">NOT_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.ONLY_ONE_SOLUTION" href="#src.olaaaf.constants.Constants.ONLY_ONE_SOLUTION">ONLY_ONE_SOLUTION</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.OR_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.OR_LATEX_OPERATOR">OR_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.OR_PARSER_OPERATOR" href="#src.olaaaf.constants.Constants.OR_PARSER_OPERATOR">OR_PARSER_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.OR_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.OR_STRING_OPERATOR">OR_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.SET_VERBOSE" href="#src.olaaaf.constants.Constants.SET_VERBOSE">SET_VERBOSE</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.TOP_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.TOP_LATEX_OPERATOR">TOP_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.TOP_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.TOP_STRING_OPERATOR">TOP_STRING_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.XOR_LATEX_OPERATOR" href="#src.olaaaf.constants.Constants.XOR_LATEX_OPERATOR">XOR_LATEX_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.XOR_PARSER_OPERATOR" href="#src.olaaaf.constants.Constants.XOR_PARSER_OPERATOR">XOR_PARSER_OPERATOR</a></code></li>
+<li><code><a title="src.olaaaf.constants.Constants.XOR_STRING_OPERATOR" href="#src.olaaaf.constants.Constants.XOR_STRING_OPERATOR">XOR_STRING_OPERATOR</a></code></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +297,7 @@ on a case-by-case basis for every new instance of this class.</p></div>
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
 </footer>
 </body>
 </html>

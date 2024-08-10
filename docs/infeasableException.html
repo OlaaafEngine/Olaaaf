@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>olaaaf.distance.domain.domain API documentation</title>
-<meta name="description" content="Abstract class, representing the domain on which a distance function is defined.">
+<title>src.olaaaf.infeasableException API documentation</title>
+<meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -24,10 +24,9 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>olaaaf.distance.domain.domain</code></h1>
+<h1 class="title">Module <code>src.olaaaf.infeasableException</code></h1>
 </header>
 <section id="section-intro">
-<p>Abstract class, representing the domain on which a distance function is defined.</p>
 </section>
 <section>
 </section>
@@ -38,18 +37,26 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="olaaaf.distance.domain.domain.Domain"><code class="flex name class">
-<span>class <span class="ident">Domain</span></span>
+<dt id="src.olaaaf.infeasableException.InfeasableException"><code class="flex name class">
+<span>class <span class="ident">InfeasableException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Abstract class, representing the domain on which a distance function is defined.</p></div>
+<div class="desc"><p>Exception raised when a constraint system is infeasable.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InfeasableException(Exception):
+    &#34;&#34;&#34;
+    Exception raised when a constraint system is infeasable.
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li>abc.ABC</li>
-</ul>
-<h3>Subclasses</h3>
-<ul class="hlist">
-<li><a title="olaaaf.distance.domain.variableTupleDomaine.VariableTupleDomaine" href="variableTupleDomaine.html#olaaaf.distance.domain.variableTupleDomaine.VariableTupleDomaine">VariableTupleDomaine</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
 </ul>
 </dd>
 </dl>
@@ -62,13 +69,13 @@ hljs.highlightAll();
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="olaaaf.distance.domain" href="index.html">olaaaf.distance.domain</a></code></li>
+<li><code><a title="src.olaaaf" href="index.html">src.olaaaf</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="olaaaf.distance.domain.domain.Domain" href="#olaaaf.distance.domain.domain.Domain">Domain</a></code></h4>
+<h4><code><a title="src.olaaaf.infeasableException.InfeasableException" href="#src.olaaaf.infeasableException.InfeasableException">InfeasableException</a></code></h4>
 </li>
 </ul>
 </li>
