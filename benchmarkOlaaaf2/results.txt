@@ -1,0 +1,400 @@
+--------------
+KiwiMilkshakeExample
+Full DK ; Without Tableaux ; Without Max Dist
+162.8272154 
+
+--------------
+KiwiMilkshakeExample
+Full DK ; Without Tableaux ; With Max Dist
+143.0466699000001 
+
+--------------
+KiwiMilkshakeExample
+Full DK ; With Tableaux ; Without Max Dist
+42.282094400000005 
+
+--------------
+KiwiMilkshakeExample
+Full DK ; With Tableaux ; With Max Dist
+15.374978800000008 
+
+--------------
+KiwiMilkshakeExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+2.881398499999932 
+
+--------------
+KiwiMilkshakeExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+2.4595752000000175 
+
+--------------
+KiwiMilkshakeExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+1.1070128999999724 
+
+--------------
+KiwiMilkshakeExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+0.7454259999999522 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Full DK ; Without Tableaux ; Without Max Dist
+149.0944396 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Full DK ; Without Tableaux ; With Max Dist
+135.37123530000008 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Full DK ; With Tableaux ; Without Max Dist
+18.069994700000052 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Full DK ; With Tableaux ; With Max Dist
+5.37221969999996 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+2.3813285999999607 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+2.4217364999999518 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+0.6763597000001482 
+
+--------------
+KiwiMilkshakeNoBananaExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+0.5095194000000447 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Full DK ; Without Tableaux ; Without Max Dist
+178.6895224 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Full DK ; Without Tableaux ; With Max Dist
+143.54367209999987 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Full DK ; With Tableaux ; Without Max Dist
+42.06064319999996 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Full DK ; With Tableaux ; With Max Dist
+10.079961099999991 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+2.8919918999999936 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+2.7379737999999634 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+1.185819199999969 
+
+--------------
+KiwiMilkshakeSameNumberOfFruitTypesExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+0.7941254999998364 
+
+--------------
+CarrotCabageSaladExample
+Full DK ; Without Tableaux ; Without Max Dist
+4.956150199999911 
+
+--------------
+CarrotCabageSaladExample
+Full DK ; Without Tableaux ; With Max Dist
+4.039326800000026 
+
+--------------
+CarrotCabageSaladExample
+Full DK ; With Tableaux ; Without Max Dist
+4.120634500000051 
+
+--------------
+CarrotCabageSaladExample
+Full DK ; With Tableaux ; With Max Dist
+3.1134604999999738 
+
+--------------
+CarrotCabageSaladExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+5.08682419999991 
+
+--------------
+CarrotCabageSaladExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+3.5198179999999866 
+
+--------------
+CarrotCabageSaladExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+4.153655800000024 
+
+--------------
+CarrotCabageSaladExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+2.8908863000001475 
+
+--------------
+PieExample
+Full DK ; With Tableaux ; Without Max Dist
+11.372711099999833 
+
+--------------
+PieExample
+Full DK ; With Tableaux ; With Max Dist
+8.276466199999959 
+
+--------------
+PieExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+8.380774700000075 
+
+--------------
+PieExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+8.183268100000078 
+
+--------------
+PieExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+0.6857875999999123 
+
+--------------
+PieExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+0.6632646999996723 
+
+--------------
+BreastCancerExample
+Full DK ; Without Tableaux ; Without Max Dist
+0.4982134000001679 
+
+--------------
+BreastCancerExample
+Full DK ; Without Tableaux ; With Max Dist
+0.4033402999998543 
+
+--------------
+BreastCancerExample
+Full DK ; With Tableaux ; Without Max Dist
+0.3310490999997455 
+
+--------------
+BreastCancerExample
+Full DK ; With Tableaux ; With Max Dist
+0.23095790000024863 
+
+--------------
+BreastCancerExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+0.10868570000002364 
+
+--------------
+BreastCancerExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+0.1033993000000919 
+
+--------------
+BreastCancerExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+0.09019439999974566 
+
+--------------
+BreastCancerExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+0.08165060000010271 
+
+--------------
+BreastCancerNumericalExample
+Full DK ; Without Tableaux ; Without Max Dist
+48.750158400000146 
+
+--------------
+BreastCancerNumericalExample
+Full DK ; Without Tableaux ; With Max Dist
+35.555212499999925 
+
+--------------
+BreastCancerNumericalExample
+Full DK ; With Tableaux ; Without Max Dist
+20.54201920000014 
+
+--------------
+BreastCancerNumericalExample
+Full DK ; With Tableaux ; With Max Dist
+7.6620874000000185 
+
+--------------
+BreastCancerNumericalExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+0.5035026000000471 
+
+--------------
+BreastCancerNumericalExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+0.4908431000003475 
+
+--------------
+BreastCancerNumericalExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+0.17171360000020286 
+
+--------------
+BreastCancerNumericalExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+0.17098950000035984 
+
+--------------
+PieExample
+Full DK ; Without Tableaux ; Without Max Dist
+Timeout
+
+--------------
+PieExample
+Full DK ; Without Tableaux ; With Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Full DK ; Without Tableaux ; Without Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Full DK ; Without Tableaux ; With Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Full DK ; With Tableaux ; Without Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Full DK ; With Tableaux ; With Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+Timeout
+
+--------------
+HighDistanceExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Full DK ; Without Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Full DK ; Without Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Full DK ; With Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Full DK ; With Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedMilkshakeExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Full DK ; Without Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Full DK ; Without Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Full DK ; With Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Full DK ; With Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Partial DK (Without taxonomy) ; Without Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Partial DK (Without taxonomy) ; Without Tableaux ; With Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Partial DK (Without taxonomy) ; With Tableaux ; Without Max Dist
+Timeout
+
+--------------
+CombinedSaladExample
+Partial DK (Without taxonomy) ; With Tableaux ; With Max Dist
+Timeout
+

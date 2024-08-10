@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>src.olaaaf.revision API documentation</title>
+<meta name="description" content="Main class of the module, allowing the user to make the knowledge revision between two `olaaaf.formula.formula.Formula`
+\(\psi\) and \(\mu\) that are …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.olaaaf.revision</code></h1>
+</header>
+<section id="section-intro">
+<p>Main class of the module, allowing the user to make the knowledge revision between two <code>olaaaf.formula.formula.Formula</code>
+<span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> that are constraints.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.olaaaf.revision.Revision"><code class="flex name class">
+<span>class <span class="ident">Revision</span></span>
+<span>(</span><span>solverInit: MLOSolver, distance: DistanceFunction, simplifiers: list[Simplificator] = [], onlyOneSolution: bool = True, verbose: bool = True, projector: Projector = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Main class of the module, allowing the user to make the knowledge revision between two <code>olaaaf.formula.formula.Formula</code>
+<span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> that are mixed integer linear constraints.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>solverInit</code></strong> :&ensp;<code>olaaaf.mlo_solver.MLOSolver.MLOSolver</code></dt>
+<dd>The solver that will be used for optimization.</dd>
+<dt><strong><code>distance</code></strong> :&ensp;<code>olaaaf.distance.distance_function.distanceFunction.DistanceFunction</code></dt>
+<dd>The distance function that will be used and, more importantly, the weights <span><span class="MathJax_Preview">(w_i)</span><script type="math/tex">(w_i)</script></span> and <span><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span> arguments of it.
+The original algorithm is meant to be used with a <code>olaaaf.distance.distance_function.discreteL1DistanceFunction.DiscreteL1DistanceFunction</code>.</dd>
+<dt><strong><code>simplifiers</code></strong> :&ensp;<code>list</code> of <code>olaaaf.simplificator.simplificator.Simplificator</code>, optional</dt>
+<dd>List of all of the <code>olaaaf.simplificator.simplificator.Simplificator</code> that will be applied to the <code>olaaaf.formula.formula.Formula</code>,
+in order given by the list.</dd>
+<dt><strong><code>onlyOneSolution</code></strong> :&ensp;<code>boolean</code>, optional</dt>
+<dd>If set to <code>True</code>, the revision algorithm will only return one point that satisfies <span><span class="MathJax_Preview">\psi \circ \mu</span><script type="math/tex">\psi \circ \mu</script></span>.
+If not, it will return all solutions.
+By default, this constant is set to whichever one was chosen in <code>olaaaf.constants.Constants</code>.</dd>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>boolean</code>, optional</dt>
+<dd>If set to <code>True</code>, the revision algorithm will have a verbose display in the terminal.
+By default, this constant is set to whichever one was chosen in <code>olaaaf.constants.Constants</code>.</dd>
+<dt><strong><code>projector</code></strong> :&ensp;<code>boolean</code>, optional</dt>
+<dd>Projector algorithm to use, only necessary if <code>onlyOneSolution</code> is set to <code>False</code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Revision:
+    r&#34;&#34;&#34;
+    Main class of the module, allowing the user to make the knowledge revision between two `olaaaf.formula.formula.Formula`
+    \(\psi\) and \(\mu\) that are mixed integer linear constraints.
+
+    Parameters
+    ----------
+    solverInit : olaaaf.mlo_solver.MLOSolver.MLOSolver
+        The solver that will be used for optimization.
+    distance : olaaaf.distance.distance_function.distanceFunction.DistanceFunction
+        The distance function that will be used and, more importantly, the weights \((w_i)\) and \(\varepsilon\) arguments of it.
+        The original algorithm is meant to be used with a `olaaaf.distance.distance_function.discreteL1DistanceFunction.DiscreteL1DistanceFunction`.
+    simplifiers : list of olaaaf.simplificator.simplificator.Simplificator, optional
+        List of all of the `olaaaf.simplificator.simplificator.Simplificator` that will be applied to the `olaaaf.formula.formula.Formula`, 
+        in order given by the list.
+    onlyOneSolution : boolean, optional
+        If set to `True`, the revision algorithm will only return one point that satisfies \(\psi \circ \mu\).
+        If not, it will return all solutions.
+        By default, this constant is set to whichever one was chosen in `olaaaf.constants.Constants`.
+    verbose : boolean, optional
+        If set to `True`, the revision algorithm will have a verbose display in the terminal.
+        By default, this constant is set to whichever one was chosen in `olaaaf.constants.Constants`.
+    projector : boolean, optional
+        Projector algorithm to use, only necessary if `onlyOneSolution` is set to `False`.
+    &#34;&#34;&#34;
+    
+    __distance : DistanceFunction
+    __interpreter : FormulaInterpreter
+    __e2bConstraints: set[Formula]
+    _onlyOneSolution: bool
+
+    def __init__(self, solverInit : MLOSolver, distance : DistanceFunction, simplifiers : list[Simplificator] = [], onlyOneSolution: bool = Constants.ONLY_ONE_SOLUTION, verbose: bool = Constants.SET_VERBOSE, projector: Projector = None) -&gt; None:        
+        self.__distance = distance 
+        self.__interpreter = FormulaInterpreter(solverInit, distance, simplifiers)
+        self._onlyOneSolution = onlyOneSolution
+        self.__verbose = verbose
+
+        self.__e2bConstraints = set()
+
+        self.__projector = projector
+
+    def preload(self):
+        r&#34;&#34;&#34;
+        Methd used to preload the revision algorithm.
+
+        This step is necessary before using `execute` since it translates every non-`olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint`
+        into one and introduces new under-the-box variables that the user might want to use.
+        &#34;&#34;&#34;
+
+        weights = self.__distance.getWeights()
+        self.boolToInt = dict()
+
+        for var in weights.copy().keys():
+
+            if isinstance(var, PropositionalVariable):
+                self.__b2iPreload(var, weights)
+
+            if isinstance(var, EnumeratedType):
+
+                self.__e2bConstraints.add(var.generateConstraints())
+
+                for value in var.values.values():
+                    weights[value] = weights[var]
+                    self.__b2iPreload(value, weights)
+
+    def __b2iPreload(self, var, weights):
+
+        intVar = IntegerVariable.declare(&#34;b2i_&#34; + var.name, lowerBound=Fraction(0), upperBound=Fraction(1))
+
+        self.boolToInt[var] = intVar
+        weights[intVar] = weights[var]
+
+    def execute(self, psi : Formula, mu : Formula, withTableaux = True, withMaxDist = True) -&gt; tuple[Fraction, Formula]:
+        r&#34;&#34;&#34;
+        Execute the revision of \(\psi\) by \(\mu\).
+
+        Parameters
+        ----------
+        psi : `olaaaf.formula.formula.Formula`
+            \(\psi\), left part of the knowledge revision operator and `olaaaf.formula.formula.Formula` that will be revised.
+        mu : `olaaaf.formula.formula.Formula`
+            \(\mu\), right part of the knowledge revision operator and `olaaaf.formula.formula.Formula` that will be used to revise \(\psi\) by.
+        withTableaux: `boolean`
+            Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to `True`.
+        withMaxDist: `boolean`
+            Wether the currently known maximum distance should be used during the revision process. By default, set to `True`.
+            
+        Returns
+        -------
+        Fraction
+            Distance (calculated with the `olaaaf.distance.distance_function.distanceFunction.DistanceFunction`
+            given at the initialization of the class) between \(\psi\) and \(\mu\).
+        `olaaaf.formula.formula.Formula`
+            Result of the knowledge revison of \(\psi\) by \(\mu\).
+        &#34;&#34;&#34;
+
+        self.__withMaxDist = withMaxDist
+
+        self.__timeStart = time.perf_counter()
+
+        if len(self.__e2bConstraints) &gt;= 1:
+            psi &amp;= And(*self.__e2bConstraints)
+            mu &amp;= And(*self.__e2bConstraints)
+
+        if self.__verbose:
+            print(&#34;\n&#34; + self.__getTime(), &#34;Transforming Psi in DNF form&#34;)
+
+        if withTableaux:
+            psiDNF = psi.toDNFWithTableaux().toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            if not psiDNF:
+                raise(AttributeError(&#34;Psi is not satisfiable&#34;))
+        else:
+            psiDNF = psi.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
+
+        if self.__verbose:
+            print(&#34;\n&#34; + self.__getTime(), &#34;Transforming Mu in DNF form&#34;)
+
+        if withTableaux:
+            muDNF = mu.toDNFWithTableaux().toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNFWithTableaux()
+            if not muDNF:
+                raise(AttributeError(&#34;Mu is not satisfiable&#34;))
+        else:
+            muDNF = mu.toPCMLC(self.boolToInt).toLessOrEqConstraint().toDNF()
+
+        res = self.__executeDNF(self.__convertExplicit(psiDNF), self.__convertExplicit(muDNF))
+
+        if self.__verbose:
+            print(&#34;\n&#34; + self.__getTime(), f&#34;Solution found with distance of {res[0]}:\n&#34;)
+            try:
+                self.__organizedPrintResult(res[1])
+            except:
+                print(res[1])
+
+        return res
+        
+    def __executeDNF(self, psi: Formula, mu: Formula) -&gt; tuple[Fraction, Formula]:
+        
+        res = None
+        disRes = None
+
+        if self.__verbose:
+            print(&#34;&#34;)
+            psiIter = tqdm(psi.children, desc=f&#34;{self.__getTime()} Testing satisfiability of every child of Psi&#34;, mininterval=0.5)
+        else:
+            psiIter = psi.children
+
+        satPsi = set()
+        for miniPsi in psiIter:
+            if self.__interpreter.sat(miniPsi):
+                satPsi.add(miniPsi)
+
+        if len(satPsi) == 0:
+            raise(AttributeError(&#34;Psi is not satisfiable&#34;))
+
+        if self.__verbose:
+            print(self.__getTime(), f&#34;{len(satPsi)} satisfiable children of Psi found\n&#34;)
+            muIter = tqdm(mu.children, desc=f&#34;{self.__getTime()} Testing satisfiability of every child of Mu&#34;, mininterval=0.5)
+        else:
+            muIter = mu.children
+            
+        satMu = set()
+        for miniMu in muIter:
+            if self.__interpreter.sat(miniMu):
+                satMu.add(miniMu)
+
+        if len(satMu) == 0:
+            raise(AttributeError(&#34;Mu is not satisfiable&#34;))
+
+        maxIter = len(satPsi)*len(satMu)
+
+        if self.__verbose:
+            print(self.__getTime(), f&#34;{len(satMu)} satisfiable children of Mu found&#34;)
+            print(&#34;\n&#34; + self.__getTime(), f&#34;{maxIter} combinations of conjunctions found&#34;)
+
+        if(self._onlyOneSolution):
+
+            with ExitStack() as stack:
+
+                if self.__verbose:
+                    pbar = stack.enter_context(tqdm(total=maxIter, desc=f&#34;{self.__getTime()} Revision of every combination&#34;, mininterval=0.5))
+
+                for miniPsi in satPsi:
+                    for miniMu in satMu:
+
+                        # print(&#34;-----------------&#34;)
+                        # print(&#34;miniPsi:&#34;, miniPsi)
+                        # print(&#34;miniMu:&#34;, miniMu)
+                        if self.__withMaxDist:      
+                            lit = self.__executeLiteral(miniPsi, miniMu, disRes)
+                        else:
+                            lit = self.__executeLiteral(miniPsi, miniMu)
+
+                        if lit is None:
+                            pass
+                        elif self.__interpreter.sat(lit[1]):
+
+                            if not (lit[0] is None):
+                                if (disRes is None):
+                                    disRes = lit[0]
+                                    res = lit[1]
+                                elif (disRes &gt; lit[0]):
+                                    disRes = lit[0]
+                                    res = lit[1]
+                            else:
+                                if (disRes is None) &amp; (res is None):
+                                    res = lit[1]
+                        else:
+                            print(&#34;\nWarning: one revised litteral isn&#39;t satisfiable, consider using a bigger Epsilon value for the distance function.\n&#34;)
+
+                        if self.__verbose:
+                            pbar.update(1)
+
+        else:
+
+            setRes = set()
+            
+            with ExitStack() as stack:
+
+                if self.__verbose:
+                    pbar = stack.enter_context(tqdm(total=maxIter, desc=f&#34;{self.__getTime()} Revision of every combination&#34;, mininterval=0.5))
+
+                for miniPsi in satPsi:
+                    for miniMu in satMu:
+
+                        if self.__withMaxDist:      
+                            lit = self.__executeLiteral(miniPsi, miniMu, disRes)
+                        else:
+                            lit = self.__executeLiteral(miniPsi, miniMu)
+                        
+                        if lit is None:
+                            pass
+                        if not (lit[0] is None):
+                            if (disRes is None):
+                                disRes = lit[0]
+                                setRes = {lit[1]}
+                            elif (disRes == lit[0]):
+                                setRes.add(lit[1])
+                            elif (disRes &gt; lit[0]):
+                                disRes = lit[0]
+                                setRes = {lit[1]}
+                        else:
+                            if (disRes is None):
+                                setRes.add(lit[1])
+
+                        if self.__verbose:
+                            pbar.update(1)
+
+            res = Or(*setRes).toDNF()
+
+        return (disRes, self.__interpreter.simplifyMLC(res.toLessOrEqConstraint().toDNF()))
+    
+    def __executeLiteral(self, psi: Formula, mu: Formula, maxDist: Fraction = None) -&gt; tuple[Fraction, Formula]:
+        
+        from . import InfeasableException
+
+        epsilon = self.__distance._epsilon
+
+        # second step: find dStar (and psiPrime if onlyOneSoltuion)
+        try:
+            dStar, psiPrime = self.__executeConstraint(self.__interpreter.removeNot(psi), self.__interpreter.removeNot(mu), maxDist)
+        except InfeasableException as e:
+            return None
+
+        # third step: lambdaEpsilon
+        if dStar % epsilon == 0:
+            lambdaEpsilon = dStar
+        else:
+            lambdaEpsilon = epsilon * math.ceil(dStar / epsilon)
+            
+        # print(lambdaEpsilon, psiPrime)
+        # fourth step: find psiPrime (only if not onlyOneSolution)
+        if(not self._onlyOneSolution):
+            psiPrime = self.__expand(psi, lambdaEpsilon)
+    
+        # fifth step
+        if dStar % epsilon != 0:
+            # print(&#34;dStar % epsilon != 0&#34;)
+            if self._onlyOneSolution &amp; (not self.__interpreter.sat(psiPrime &amp; mu)):
+                try:
+                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
+                except InfeasableException as e:
+                    return None
+            # print(&#34;psiPrime2:&#34;, psiPrime)
+            return (lambdaEpsilon, psiPrime &amp; mu)
+        elif self.__interpreter.sat(psiPrime &amp; mu):
+            return (dStar, psiPrime &amp; mu)
+        else:
+            # print(&#34;else&#34;)
+            lambdaEpsilon = dStar + epsilon
+            if (self._onlyOneSolution):
+                try:
+                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
+                except InfeasableException as e:
+                    return None
+            else:
+                psiPrime = self.__expand(psi, lambdaEpsilon)
+            # print(&#34;psiPrime2:&#34;, psiPrime)
+            return(dStar, psiPrime &amp; mu)
+    
+    def __executeConstraint(self, phi: Formula, mu: Formula, maxDist: Fraction) -&gt; tuple[Fraction, Formula]:
+        return self.__interpreter.optimizeCouple(phi, mu, maxDist)
+    
+    def __convertExplicit(self, phi: Formula) -&gt; Formula:
+        
+        if isinstance(phi, And):
+            return Or(phi)
+        elif isinstance(phi, UnaryFormula) | isinstance(phi, NullaryFormula):
+            return Or(And(phi))
+        else:
+            orSet = set()
+            for miniPhi in phi.children:
+                if isinstance(miniPhi, And):
+                    orSet.add(miniPhi)
+                else:
+                    orSet.add(And(miniPhi))
+            return Or(*orSet)
+
+    def __expand(self, psi: Formula, lambdaEpsilon: Fraction) -&gt; Formula:
+        
+        yVariables = {v: v.__class__.declareAnonymous(ending = (&#34;y&#34; + str(v.name))) for v in psi.getVariables()}
+
+        constraints = list()
+
+        # Create x in M(psi) constraints and change variables
+        for miniPsi in psi.children:
+            if isinstance(miniPsi, Not):
+                const = miniPsi.children.clone()
+                iterVar = const.variables.copy()
+                for key in iterVar:
+                    const.variables[yVariables[key]] = const.variables[key]
+                    del const.variables[key]
+                constraints.append(Not(const))
+            else:
+                const = miniPsi.clone()
+                iterVar = const.variables.copy()
+                for key in iterVar:
+                    const.variables[yVariables[key]] = const.variables[key]
+                    del const.variables[key]
+                constraints.append(const)
+
+        # Add distance function constraints
+        zVariables = {v: v.__class__.declareAnonymous(ending = (&#34;z&#34; + str(v.name))) for v in psi.getVariables()}
+        for yVar in yVariables:
+            z = zVariables[yVar]
+            # Creating link between x, y and z
+            const = LinearConstraint(&#34;&#34;)
+            const.variables[yVar] = Fraction(-1)
+            const.variables[yVariables[yVar]] = Fraction(1)
+            const.variables[z] = Fraction(-1)
+            const.operator = ConstraintOperator.LEQ
+            const.bound = Fraction(0)
+            constraints.append(const)
+            const = LinearConstraint(&#34;&#34;)
+            const.variables[yVar] = Fraction(1)
+            const.variables[yVariables[yVar]] = Fraction(-1)
+            const.variables[z] = Fraction(-1)
+            const.operator = ConstraintOperator.LEQ
+            const.bound = Fraction(0)
+            constraints.append(const)
+            # Keeping z in memory
+            zVariables[yVar] = z
+
+        # TODO pas sûr de mon code, à tester
+        # TODO fonction de distance, les poids ?
+        # Generate distance constraint
+        distanceConstraint = LinearConstraint(&#34;&#34;)
+        distanceConstraint.operator = ConstraintOperator.LEQ
+        distanceConstraint.bound = lambdaEpsilon
+        for z in zVariables:
+            distanceConstraint.variables[zVariables[z]] = self.__distance.getWeights()[z]
+        constraints.append(distanceConstraint)
+
+        expandConstraint = And(*constraints)
+
+        return self.__projector.projectOn(expandConstraint, yVariables.keys())
+    
+    def __getTime(self):
+
+        timeNow = time.perf_counter()-self.__timeStart
+        m = int(timeNow//60)
+
+        s = timeNow%60
+        sbfr = int(s)
+        saftr = int((s-sbfr)*1000)
+
+        return &#34;{:0&gt;2d}m{:0&gt;2d}.{:0&gt;3d}s |&#34;.format(m, sbfr, saftr)
+    
+    def __organizedPrintResult(self, res):
+
+        variables = list()
+
+        if self._onlyOneSolution:
+            
+            resAnd = None
+            if len(res.children) &gt; 1:
+                raise AttributeError(&#34;res isn&#39;t a \&#34;onlyoneSolution\&#34;&#34;)
+            else:
+                for formula in res.children:
+                    resAnd = formula
+
+            for const in resAnd.children:
+
+                lc = const.clone()
+
+                if not lc.operator == ConstraintOperator.EQ:
+                    # TODO, min/max pour déterminer bound de chaque variable
+                    raise AttributeError(&#34;Can&#39;t print (yet) if not EQ&#34;)
+                elif len(lc.variables) &gt; 1:
+                    raise AttributeError(&#34;Can&#39;t print (yet) if more than one variable per constraint&#34;)
+                else:
+                    var = lc.variables.popitem()
+                    if (not var[0].name.startswith(&#34;b2i_&#34;)) &amp; (not var[0].name[1].isnumeric()) &amp; (not var[0].name.startswith(&#34;ak_&#34;)):
+                        variables.append((var[0], lc.bound / var[1])) # Taking coefficients into account, even though it should always be 1
+
+            maxVarLength = max([len(var[0].name) for var in variables])
+
+            for var, value in sorted(variables, key=lambda x: x[0].name.lower()):
+
+                if isinstance(var, IntegerVariable):
+                    print(&#34;{} = {}&#34;.format(var.name.rjust(maxVarLength), int(value)))
+                else:
+                    if (value == int(value)):
+                        print(&#34;{} = {}.&#34;.format(var.name.rjust(maxVarLength), int(value)))
+                    elif (value &gt;= 1e6) | (value &lt;= 1e-3):
+                        print(&#34;{} = {:#.3e}&#34;.format(var.name.rjust(maxVarLength), float(value)))
+                    else:
+                        print(&#34;{} = {:#.3g}&#34;.format(var.name.rjust(maxVarLength), float(value)))
+
+            print(&#34;&#34;)
+
+        else:
+            raise NotImplementedError(&#34;&#34;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.olaaaf.revision.Revision.execute"><code class="name flex">
+<span>def <span class="ident">execute</span></span>(<span>self, psi: Formula, mu: Formula, withTableaux=True, withMaxDist=True) ‑> tuple[fractions.Fraction, <a title="src.olaaaf.formula.formula.Formula" href="formula/formula.html#src.olaaaf.formula.formula.Formula">Formula</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the revision of <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> by <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>psi</code></strong> :&ensp;<code>olaaaf.formula.formula.Formula</code></dt>
+<dd><span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span>, left part of the knowledge revision operator and <code>olaaaf.formula.formula.Formula</code> that will be revised.</dd>
+<dt><strong><code>mu</code></strong> :&ensp;<code>olaaaf.formula.formula.Formula</code></dt>
+<dd><span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>, right part of the knowledge revision operator and <code>olaaaf.formula.formula.Formula</code> that will be used to revise <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> by.</dd>
+<dt><strong><code>withTableaux</code></strong> :&ensp;<code>boolean</code></dt>
+<dd>Wether the analytic tableaux method should be used to prune unsatisfiable branches. By default, set to <code>True</code>.</dd>
+<dt><strong><code>withMaxDist</code></strong> :&ensp;<code>boolean</code></dt>
+<dd>Wether the currently known maximum distance should be used during the revision process. By default, set to <code>True</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Fraction</code></dt>
+<dd>Distance (calculated with the <code>olaaaf.distance.distance_function.distanceFunction.DistanceFunction</code>
+given at the initialization of the class) between <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> and <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>.</dd>
+</dl>
+<p><code>olaaaf.formula.formula.Formula</code>
+Result of the knowledge revison of <span><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> by <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>.</p></div>
+</dd>
+<dt id="src.olaaaf.revision.Revision.preload"><code class="name flex">
+<span>def <span class="ident">preload</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Methd used to preload the revision algorithm.</p>
+<p>This step is necessary before using <code>execute</code> since it translates every non-<code>olaaaf.formula.nullaryFormula.constraint.linearConstraint.LinearConstraint</code>
+into one and introduces new under-the-box variables that the user might want to use.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.olaaaf" href="index.html">src.olaaaf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.olaaaf.revision.Revision" href="#src.olaaaf.revision.Revision">Revision</a></code></h4>
+<ul class="">
+<li><code><a title="src.olaaaf.revision.Revision.execute" href="#src.olaaaf.revision.Revision.execute">execute</a></code></li>
+<li><code><a title="src.olaaaf.revision.Revision.preload" href="#src.olaaaf.revision.Revision.preload">preload</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

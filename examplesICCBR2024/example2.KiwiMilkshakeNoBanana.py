@@ -8,6 +8,7 @@ from olaaaf import Adaptation
 from olaaaf.variable import RealVariable, IntegerVariable
 from olaaaf.distance import DiscreteL1DistanceFunction
 from olaaaf.simplificator import Daalmans
+from olaaaf.domainKnowledge import MiscellanousDomainKnowledge
 
 from fractions import Fraction
 
@@ -186,7 +187,7 @@ srce_case =  LinearConstraint("banana_u = 2")\
 # Target problem
 tgt_problem = FormulaManager.parser("kiwi & milkshake & (~banana)")
 
-min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk)
+min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, {"miscellanous": MiscellanousDomainKnowledge(dk)})
 
 """
      RESULT

@@ -8,6 +8,7 @@ from olaaaf import Adaptation
 from olaaaf.variable import RealVariable, IntegerVariable
 from olaaaf.distance import DiscreteL1DistanceFunction
 from olaaaf.simplificator import Daalmans
+from olaaaf.domainKnowledge import MiscellanousDomainKnowledge
 
 from fractions import Fraction
 
@@ -166,7 +167,7 @@ tgt_problem = PropositionalVariable("saladDish")\
     & PropositionalVariable("greenCabbage")\
     & ~PropositionalVariable("vinegar")
 
-min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, dk & ak)
+min_dist, tgt_case = adaptator.execute(srce_case, tgt_problem, {"miscellanous": MiscellanousDomainKnowledge(dk & ak)})
 
 """
      RESULT

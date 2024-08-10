@@ -5,6 +5,8 @@ greater than 1 in PCMLC as a syntax tree.
 
 from __future__ import annotations
 
+import itertools
+
 from .naryFormula import NaryFormula
 from ...constants import Constants
 # local import of And
@@ -175,7 +177,77 @@ class Or(NaryFormula):
 
         return And(*{formul._toPCMLCNeg(varDict) for formul in self.children})
 
-    
+    def _getBranches(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+        
+        branchesList = list()
+
+        for child in self.children:
+            branch = child._getBranches()
+
+            if branch is not None:
+                branchesList += branch
+
+        # Si aucune branche n'est satisfiable, on retourne None
+        if len(branchesList) == 0:
+            return None
+
+        return branchesList 
+
+    def _getBranchesNeg(self):
+        '''
+        Method used to get the branches of the analytic tableau representing the `olaaaf.formula.formula.Formula`,
+        automatically removing any closed one once it's caught. 
+        Used when a Negation is in play instead of `_getBranches()`.
+
+        Returns
+        ------
+        `list[dict[Constraint, bool]]`
+            A list of all branches, represented by a dictionnary matching every atom
+            `olaaaf.formula.nullaryFormula.constraint.constraint.Constraint` to a `bool` representing if it has a negation (`False`)
+            or not (`True`).
+            If all branches are closed, return `None`.
+        '''
+
+        branchesList = [child._getBranchesNeg() for child in self.children]
+        fullBranches = list()
+
+        for product in itertools.product(*branchesList):
+
+            mergedProduct = dict()
+
+            for literal in product:
+
+                for atom, isNotNeg in literal.items():
+
+                    if atom not in mergedProduct:
+                        mergedProduct[atom] = isNotNeg
+                    elif mergedProduct[atom] != isNotNeg:
+                        mergedProduct = None
+                        break
+                
+                if mergedProduct is None:
+                    break
+            
+            if mergedProduct is not None:
+                fullBranches.append(mergedProduct)
+
+        if len(fullBranches) == 0:
+            return None
+        
+        return fullBranches
+
     def __str__(self):
 
         symbol = Constants.OR_STRING_OPERATOR

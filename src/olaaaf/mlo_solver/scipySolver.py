@@ -12,6 +12,7 @@ from .MLOSolver import MLOSolver
 
 from fractions import Fraction
 import numpy as np
+import warnings
 from scipy.optimize import milp, Bounds, LinearConstraint
 
 class ScipySolver(MLOSolver) :
@@ -72,8 +73,13 @@ class ScipySolver(MLOSolver) :
                 limitUp.append(constraint[2])
 
         lc = LinearConstraint(tab, limitInf, limitUp)
+
+        options ={"presolve":False,
+                  "output_flag":False}
+
         # presolve at false to fixed status 4
-        result = milp(c=objectif, integrality=integers, constraints=lc, bounds=Bounds(boundsLower, boundsUpper), options={"presolve":False})
+        with warnings.catch_warnings(action="ignore"):
+            result = milp(c=objectif, integrality=integers, constraints=lc, bounds=Bounds(boundsLower, boundsUpper), options=options)
         res : tuple
         if result.status == 0:
             res = (OptimizationValues.OPTIMAL, [Fraction(x) for x in result.x], result.fun)
@@ -84,7 +90,8 @@ class ScipySolver(MLOSolver) :
             # to detect if the problem is unbounded we test if the objectiv function * -1 is unbounded
             # if it's not, the problem is infeasible
             for i in range(0,len(objectif)): objectif[i] *= -1
-            result = milp(c=objectif, integrality=integers, constraints=lc, bounds=Bounds(boundsLower, boundsUpper), options={"presolve":False})
+            with warnings.catch_warnings(action="ignore"):
+                result = milp(c=objectif, integrality=integers, constraints=lc, bounds=Bounds(boundsLower, boundsUpper), options=options)
             if result.status == 0 or result.status == 3:
                 res = (OptimizationValues.UNBOUNDED, [], float(np.inf))
             else: res = (OptimizationValues.INFEASIBLE, [], float(np.inf))

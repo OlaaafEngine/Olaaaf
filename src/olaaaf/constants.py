@@ -3,7 +3,7 @@ Class storing all global variables, allowing the user to easily customise the pr
 """
 
 class Constants():
-    
+
 
     ONLY_ONE_SOLUTION = True
     """
@@ -16,7 +16,14 @@ class Constants():
     """
 
     SET_VERBOSE = True #: Select the default value for the verbose display of the algorithm.
-    DISPLAY_DEPENDENCIES_WARNING = True #: Choose to display dependencies warning for optional packages.
+    DISPLAY_DEPENDENCIES_WARNING = False #: Choose to display dependencies warning for optional packages.
+
+    # ---------------------------------------------------
+    # Default values for domain knowledge inclusion
+    DOMAIN_KNOWLEDGE_INCLUSION_DEFAULT = {"conversion": True,
+                                          "existence": True,
+                                          "taxonomy": True,
+                                          "miscellanous": True}
 
     # ---------------------------------------------------
     # Operator used in `olaaaf.formula.formulaManager.FormulaManager.parser`.
