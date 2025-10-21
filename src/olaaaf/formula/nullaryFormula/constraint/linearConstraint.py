@@ -194,7 +194,7 @@ class LinearConstraint(Constraint):
             else: tabVar.append(self.variables[variable])
 
         if(op == ConstraintOperator.GEQ):
-            for i in range(0, len(tabVar)-1):
+            for i in range(0, len(tabVar)):
                 tabVar[i] *= -1
             bound *= -1
             op = ConstraintOperator.LEQ

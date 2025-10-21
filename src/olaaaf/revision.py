@@ -301,7 +301,7 @@ class Revision:
             # print("dStar % epsilon != 0")
             if self._onlyOneSolution & (not self.__interpreter.sat(psiPrime & mu)):
                 try:
-                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
+                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, None)[1]
                 except InfeasableException as e:
                     return None
             # print("psiPrime2:", psiPrime)
@@ -313,7 +313,7 @@ class Revision:
             lambdaEpsilon = dStar + epsilon
             if (self._onlyOneSolution):
                 try:
-                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, maxDist)[1]
+                    psiPrime = self.__interpreter.optimizeCoupleWithLimit(self.__interpreter.removeNot(psi, epsilon), self.__interpreter.removeNot(mu, epsilon), lambdaEpsilon, None)[1]
                 except InfeasableException as e:
                     return None
             else:
