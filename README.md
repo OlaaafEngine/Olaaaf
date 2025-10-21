@@ -45,7 +45,7 @@ To install Olaaaf, first download the latest release [here](https://github.com/O
 Once downloaded, install the package using pip:
 
 ```
-pip install ./olaaaf-2.0.1.whl
+pip install ./olaaaf-2.0.1-py3-none-any.whl
 ```
 
 Once installed, you can import olaaaf from anywhere like a standard Python package
